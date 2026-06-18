@@ -492,7 +492,7 @@ export const pageContent: Record<string, PageContent> = {
     sections: [
       {
         title: "Jadwal Umum",
-        body: "Ibadah Minggu dapat dibagi dalam beberapa jam pelayanan sesuai kebutuhan jemaat, misalnya ibadah pagi, ibadah umum, dan ibadah kategorial.",
+        body: "Ibadah Pagi: 06.30 - selesai\nIbadah Siang: 09.30 - selesai\nIbadah Sore: 18.00 - selesai\nIbadah Remaja: 09.00 - selesai\nSekolah Minggu: 07.00 - selesai",
       },
       {
         title: "Informasi Petugas",
@@ -621,4 +621,9 @@ export const pageContent: Record<string, PageContent> = {
   },
 };
 
-export const allPageSlugs = Object.keys(pageContent);
+export const allPageSlugs = Object.keys(pageContent).filter(
+  (slug) =>
+    !["warta-jemaat/warta-mingguan", "warta-jemaat/arsip-warta"].includes(
+      slug,
+    ),
+);

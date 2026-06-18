@@ -116,7 +116,9 @@ export function PageTemplate({ content }: PageTemplateProps) {
             {content.sections.map((section) => (
               <article className="rounded-md border border-slate-200 bg-white p-6" key={section.title}>
                 <h2 className="text-xl font-bold text-slate-950">{section.title}</h2>
-                <p className="mt-3 leading-7 text-slate-600">{section.body}</p>
+                <p className="mt-3 whitespace-pre-line leading-7 text-slate-600">
+                  {section.body}
+                </p>
               </article>
             ))}
 
