@@ -14,6 +14,7 @@ export type RetiredElderProfile = {
   name: string;
   role: string;
   servicePeriod: string;
+  bio: string;
 };
 
 export type GalleryImage = {
@@ -56,6 +57,7 @@ const retiredElderProfiles: RetiredElderProfile[] = Array.from(
     name: `Nama Sintua Purnabakti ${index + 1}`,
     role: `Jabatan Sintua Purnabakti ${index + 1}`,
     servicePeriod: `Masa Tugas ${index + 1}`,
+    bio: `Sintua Purnabakti ${index + 1} dikenal sebagai pelayan yang setia mendampingi kehidupan jemaat melalui ibadah, perkunjungan, partangiangan, dan pelayanan keluarga. Selama masa tugasnya, beliau turut menjaga persekutuan wijk serta memberi teladan dalam kerendahan hati, ketekunan, dan kepedulian kepada warga jemaat.`,
   }),
 );
 
@@ -150,8 +152,7 @@ export const pageContent: Record<string, PageContent> = {
         alt: "Suasana ibadah di dalam gereja",
         title: "Ibadah Minggu",
         category: "Ibadah",
-        description:
-          "Suasana ibadah Minggu bersama warga jemaat.",
+        description: "Suasana ibadah Minggu bersama warga jemaat.",
       },
       {
         src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=80",
@@ -174,24 +175,21 @@ export const pageContent: Record<string, PageContent> = {
         alt: "Kebersamaan dalam kegiatan komunitas",
         title: "Kegiatan Bersama",
         category: "Komunitas",
-        description:
-          "Kebersamaan jemaat dalam kegiatan gereja dan sosial.",
+        description: "Kebersamaan jemaat dalam kegiatan gereja dan sosial.",
       },
       {
         src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80",
         alt: "Anak-anak mengikuti kegiatan bersama",
         title: "Sekolah Minggu",
         category: "Anak",
-        description:
-          "Pelayanan anak dan pembinaan iman sejak dini.",
+        description: "Pelayanan anak dan pembinaan iman sejak dini.",
       },
       {
         src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80",
         alt: "Relawan melakukan pelayanan sosial",
         title: "Pelayanan Kasih",
         category: "Diakonia",
-        description:
-          "Pelayanan kasih dan kepedulian sosial jemaat.",
+        description: "Pelayanan kasih dan kepedulian sosial jemaat.",
       },
     ],
   },
@@ -496,9 +494,9 @@ export const pageContent: Record<string, PageContent> = {
     title: "Sintua Purnabakti",
     eyebrow: "Organisasi",
     description:
-      "Ruang penghargaan bagi para sintua purnabakti yang telah melayani jemaat dalam masa tugasnya.",
+      "Ruang penghormatan bagi para sintua purnabakti yang telah melayani jemaat dalam masa tugasnya.",
     summary:
-      "Sintua purnabakti adalah bagian penting dari perjalanan pelayanan gereja. Halaman ini disiapkan untuk memuat dokumentasi foto, nama, jabatan, dan masa tugas yang nantinya dapat diperbarui melalui CMS.",
+      "Sintua purnabakti adalah bagian penting dari perjalanan pelayanan gereja. Halaman ini memuat dokumentasi foto, nama, jabatan, masa tugas, dan kisah pelayanan singkat.",
     highlights: ["Dokumentasi pelayanan", "Masa tugas", "Pencarian nama"],
     sections: [
       {
@@ -506,8 +504,8 @@ export const pageContent: Record<string, PageContent> = {
         body: "Halaman ini menolong jemaat mengenal dan mengingat para sintua purnabakti yang pernah ambil bagian dalam pelayanan, penggembalaan, dan kehidupan persekutuan gereja.",
       },
       {
-        title: "Data CMS",
-        body: "Daftar sintua purnabakti disiapkan sebagai placeholder dan dapat disambungkan ke CMS untuk memperbarui foto, nama, jabatan, serta masa tugas.",
+        title: "Arsip Pelayanan",
+        body: "Daftar sintua purnabakti menjadi arsip penghormatan yang dapat terus dilengkapi dengan foto, masa tugas, dan cerita pelayanan singkat.",
       },
     ],
     retiredElderProfiles,
@@ -674,7 +672,5 @@ export const pageContent: Record<string, PageContent> = {
 
 export const allPageSlugs = Object.keys(pageContent).filter(
   (slug) =>
-    !["warta-jemaat/warta-mingguan", "warta-jemaat/arsip-warta"].includes(
-      slug,
-    ),
+    !["warta-jemaat/warta-mingguan", "warta-jemaat/arsip-warta"].includes(slug),
 );
