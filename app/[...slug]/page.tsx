@@ -23,7 +23,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${content.title} | HKBP Jemaat`,
+    title: `${content.title} | HKBP Resort Srengseng Sawah`,
     description: content.description,
   };
 }

@@ -4,9 +4,9 @@ import { SiteHeader } from "./_components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "HKBP Jemaat",
+  title: "HKBP Resort Srengseng Sawah",
   description:
-    "Website jemaat HKBP untuk informasi ibadah, organisasi, warta, berita, dan kontak gereja.",
+    "Website HKBP Resort Srengseng Sawah untuk informasi ibadah, organisasi, warta, berita, dan kontak gereja.",
 };
 
 export default function RootLayout({
@@ -15,10 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="id"
-      className="h-full antialiased"
-    >
+    <html lang="id" className="h-full antialiased">
       <body className="min-h-full bg-white text-slate-950">
         <div className="flex min-h-screen flex-col">
           <SiteHeader />

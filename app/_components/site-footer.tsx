@@ -15,25 +15,31 @@ export function SiteFooter() {
           </p>
         </div>
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="text-sm font-semibold tracking-wide text-slate-400 uppercase">
             Menu
           </h3>
           <div className="mt-3 grid gap-2">
             {NAVIGATION.slice(0, 5).map((item) => (
-              <Link className="text-sm text-slate-200 hover:text-white" href={item.href} key={item.href}>
+              <Link
+                className="text-sm text-slate-200 hover:text-white"
+                href={item.href}
+                key={item.href}
+              >
                 {item.title}
               </Link>
             ))}
           </div>
         </div>
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="text-sm font-semibold tracking-wide text-slate-400 uppercase">
             Kontak
           </h3>
           <div className="mt-3 grid gap-3 text-sm text-slate-200">
             <p className="flex gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              Jl. Gereja HKBP No. 1, Indonesia
+              Gg. Amalia Jl. Srengseng Sawah No.4, RT.3/RW.3, Srengseng Sawah,
+              Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota
+              Jakarta 12630
             </p>
             <p className="flex gap-2">
               <Phone className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
@@ -41,13 +47,13 @@ export function SiteFooter() {
             </p>
             <p className="flex gap-2">
               <Mail className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              sekretariat@hkbpjemaat.org
+              admin@hkbp.or.id
             </p>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-slate-400">
-        &copy; {new Date().getFullYear()} {SITE_NAME}. Hak cipta dilayani untuk kemuliaan Tuhan.
+        &copy; {new Date().getFullYear()} {SITE_NAME}.
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, UserRound } from "lucide-react";
 import type { PageContent } from "@/app/_data/site-content";
 
 type PageTemplateProps = {
@@ -45,6 +45,38 @@ export function PageTemplate({ content }: PageTemplateProps) {
           </aside>
 
           <div className="grid gap-5">
+            {content.pastorProfiles?.length ? (
+              <section className="grid gap-4">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-950">
+                    Daftar Pendeta
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    Foto dan nama pendeta akan diperbarui melalui CMS.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {content.pastorProfiles.map((pastor) => (
+                    <article
+                      className="overflow-hidden rounded-md border border-slate-200 bg-white"
+                      key={pastor.name}
+                    >
+                      <div className="flex aspect-[4/5] items-center justify-center bg-slate-100 text-slate-400">
+                        <UserRound size={52} strokeWidth={1.5} aria-hidden="true" />
+                        <span className="sr-only">Placeholder foto</span>
+                      </div>
+                      <div className="border-t border-slate-200 p-4">
+                        <h3 className="text-base font-bold text-slate-950">
+                          {pastor.name}
+                        </h3>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
             {content.sections.map((section) => (
               <article className="rounded-md border border-slate-200 bg-white p-6" key={section.title}>
                 <h2 className="text-xl font-bold text-slate-950">{section.title}</h2>

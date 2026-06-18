@@ -8,10 +8,13 @@ export type PageContent = {
     title: string;
     body: string;
   }[];
+  pastorProfiles?: {
+    name: string;
+  }[];
   callout?: string;
 };
 
-export const SITE_NAME = "HKBP Jemaat";
+export const SITE_NAME = "HKBP Resort Srengseng Sawah";
 
 export const pageContent: Record<string, PageContent> = {
   "tentang-gereja": {
@@ -20,7 +23,7 @@ export const pageContent: Record<string, PageContent> = {
     description:
       "Ruang pengenalan jemaat, arah pelayanan, dan dokumentasi kehidupan bergereja.",
     summary:
-      "HKBP Jemaat hadir sebagai rumah rohani yang menumbuhkan iman, persekutuan, kesaksian, dan pelayanan kasih bagi warga jemaat serta masyarakat sekitar.",
+      "HKBP Resort Srengseng Sawah hadir sebagai rumah rohani yang menumbuhkan iman, persekutuan, kesaksian, dan pelayanan kasih bagi warga jemaat serta masyarakat sekitar.",
     highlights: ["Sejarah pelayanan", "Visi dan misi", "Dokumentasi kegiatan"],
     sections: [
       {
@@ -40,7 +43,11 @@ export const pageContent: Record<string, PageContent> = {
       "Catatan perjalanan jemaat dari awal persekutuan hingga pelayanan yang berlangsung saat ini.",
     summary:
       "Sejarah jemaat adalah kisah pertumbuhan iman bersama: dimulai dari kerinduan warga untuk bersekutu, lalu berkembang melalui ibadah, partangiangan, pelayanan kategorial, dan pembangunan sarana pelayanan.",
-    highlights: ["Awal persekutuan", "Pertumbuhan jemaat", "Pelayanan masa kini"],
+    highlights: [
+      "Awal persekutuan",
+      "Pertumbuhan jemaat",
+      "Pelayanan masa kini",
+    ],
     sections: [
       {
         title: "Awal Persekutuan",
@@ -63,7 +70,11 @@ export const pageContent: Record<string, PageContent> = {
       "Arah bersama untuk menjadi jemaat yang bertumbuh, melayani, dan menjadi berkat.",
     summary:
       "Visi dan misi menjadi kompas pelayanan agar seluruh program gereja berjalan selaras dengan panggilan Kristus dan kebutuhan jemaat.",
-    highlights: ["Iman yang bertumbuh", "Persekutuan yang hangat", "Pelayanan yang berdampak"],
+    highlights: [
+      "Iman yang bertumbuh",
+      "Persekutuan yang hangat",
+      "Pelayanan yang berdampak",
+    ],
     sections: [
       {
         title: "Visi",
@@ -84,7 +95,11 @@ export const pageContent: Record<string, PageContent> = {
       "Dokumentasi kegiatan ibadah, persekutuan, pelayanan sosial, dan momen khusus jemaat.",
     summary:
       "Galeri membantu jemaat menyimpan ingatan bersama dan memperlihatkan wajah pelayanan gereja kepada warga serta tamu yang baru mengenal jemaat.",
-    highlights: ["Ibadah dan perayaan", "Kegiatan kategorial", "Pelayanan kasih"],
+    highlights: [
+      "Ibadah dan perayaan",
+      "Kegiatan kategorial",
+      "Pelayanan kasih",
+    ],
     sections: [
       {
         title: "Dokumentasi Ibadah",
@@ -105,7 +120,11 @@ export const pageContent: Record<string, PageContent> = {
       "Struktur pelayan gereja yang mendukung ibadah, pembinaan, kesaksian, dan pelayanan kasih.",
     summary:
       "Organisasi jemaat menolong pelayanan berjalan tertib: pendeta, parhalado, fungsionaris, dewan, dan wijk bekerja bersama sesuai tugas masing-masing.",
-    highlights: ["Pendeta dan parhalado", "Dewan pelayanan", "Wilayah atau wijk"],
+    highlights: [
+      "Pendeta dan parhalado",
+      "Dewan pelayanan",
+      "Wilayah atau wijk",
+    ],
     sections: [
       {
         title: "Koordinasi Pelayanan",
@@ -133,6 +152,17 @@ export const pageContent: Record<string, PageContent> = {
       {
         title: "Pelayanan Pastoral",
         body: "Pendeta mendampingi jemaat dalam pergumulan keluarga, sakit, dukacita, persiapan pernikahan, pembinaan iman, dan kebutuhan rohani lainnya.",
+      },
+    ],
+    pastorProfiles: [
+      {
+        name: "Nama Pendeta 1",
+      },
+      {
+        name: "Nama Pendeta 2",
+      },
+      {
+        name: "Nama Pendeta 3",
       },
     ],
   },
@@ -253,8 +283,7 @@ export const pageContent: Record<string, PageContent> = {
   "jadwal-pelayanan/ibadah-minggu": {
     title: "Ibadah Minggu",
     eyebrow: "Jadwal Pelayanan",
-    description:
-      "Jadwal ibadah Minggu dan susunan pelayanan utama jemaat.",
+    description: "Jadwal ibadah Minggu dan susunan pelayanan utama jemaat.",
     summary:
       "Ibadah Minggu menjadi pusat persekutuan jemaat untuk mendengar firman Tuhan, memuji, berdoa, dan mempersembahkan hidup bagi kemuliaan Allah.",
     highlights: ["Ibadah pagi", "Ibadah siang", "Pelayan liturgi"],
@@ -268,8 +297,7 @@ export const pageContent: Record<string, PageContent> = {
         body: "Bagian ini dapat memuat nama pengkhotbah, liturgis, pembaca epistel, song leader, pemusik, kolektan, dan petugas multimedia.",
       },
     ],
-    callout:
-      "Silakan sesuaikan jam ibadah dengan jadwal resmi jemaat.",
+    callout: "Silakan sesuaikan jam ibadah dengan jadwal resmi jemaat.",
   },
   "jadwal-pelayanan/partangiangan": {
     title: "Partangiangan",
@@ -400,11 +428,11 @@ export const pageContent: Record<string, PageContent> = {
     sections: [
       {
         title: "Alamat",
-        body: "Jl. Gereja HKBP No. 1, Indonesia. Ganti alamat ini dengan alamat resmi jemaat ketika data final tersedia.",
+        body: "Gg. Amalia Jl. Srengseng Sawah No.4, RT.3/RW.3, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630",
       },
       {
         title: "Kanal Komunikasi",
-        body: "Telepon/WhatsApp: 08xx-xxxx-xxxx. Email: sekretariat@hkbpjemaat.org. Informasi ini dapat disesuaikan dengan kontak resmi gereja.",
+        body: "Telepon/WhatsApp: 08xx-xxxx-xxxx. Email: admin@hkbp.or.id. Informasi ini dapat disesuaikan dengan kontak resmi gereja.",
       },
       {
         title: "Jam Pelayanan",
