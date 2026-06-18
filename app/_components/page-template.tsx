@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, UserRound } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock3,
+  Mail,
+  MapPin,
+  UserRound,
+} from "lucide-react";
 import { RetiredElderSearch } from "@/app/_components/retired-elder-search";
 import type { PageContent } from "@/app/_data/site-content";
 
@@ -37,7 +44,90 @@ function ProfileGrid({ profiles }: ProfileGridProps) {
   );
 }
 
+function ContactPageTemplate({ content }: PageTemplateProps) {
+  const sectionIcons = [MapPin, Mail, Clock3];
+
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+              {content.eyebrow}
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
+              {content.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              {content.description}
+            </p>
+          </div>
+          <div className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm leading-6 text-slate-600">
+              {content.summary}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div className="grid gap-4">
+          {content.sections.map((section, index) => {
+            const Icon = sectionIcons[index] ?? CheckCircle2;
+
+            return (
+              <article
+                className="rounded-md border border-slate-200 bg-white p-6"
+                key={section.title}
+              >
+                <div className="flex items-start gap-4">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-red-50 text-red-700">
+                    <Icon size={21} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-950">
+                      {section.title}
+                    </h2>
+                    <p className="mt-2 whitespace-pre-line leading-7 text-slate-600">
+                      {section.body}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {content.mapEmbedUrl ? (
+          <section className="overflow-hidden rounded-md border border-slate-200 bg-white">
+            <div className="border-b border-slate-200 p-6">
+              <h2 className="text-xl font-bold text-slate-950">
+                Lokasi Gereja
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                HKBP Srengseng Sawah Lutheran Church
+              </p>
+            </div>
+            <iframe
+              allowFullScreen
+              className="h-[26rem] w-full border-0 bg-slate-100 lg:h-full lg:min-h-[34rem]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src={content.mapEmbedUrl}
+              title="Peta lokasi HKBP Srengseng Sawah"
+            />
+          </section>
+        ) : null}
+      </section>
+    </main>
+  );
+}
+
 export function PageTemplate({ content }: PageTemplateProps) {
+  if (content.mapEmbedUrl) {
+    return <ContactPageTemplate content={content} />;
+  }
+
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
