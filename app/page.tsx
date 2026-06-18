@@ -47,25 +47,29 @@ export default function Home() {
                 [
                   "Ibadah Minggu",
                   "Informasi jam ibadah dan petugas pelayanan.",
+                  "/jadwal-pelayanan/ibadah-minggu",
                 ],
                 [
                   "Partangiangan",
                   "Jadwal persekutuan doa wijk dan kategorial.",
+                  "/jadwal-pelayanan/partangiangan",
                 ],
                 [
                   "Pelayanan Khusus",
                   "Baptis, sidi, pernikahan, dan penghiburan.",
+                  "/jadwal-pelayanan/pelayanan-khusus",
                 ],
-              ].map(([title, body]) => (
-                <div
-                  className="rounded-md bg-white p-4 text-slate-950"
+              ].map(([title, body, href]) => (
+                <Link
+                  className="rounded-md bg-white p-4 text-slate-950 transition hover:bg-white/90"
                   key={title}
+                  href={href}
                 >
                   <p className="font-bold">{title}</p>
                   <p className="mt-1 text-sm leading-6 text-slate-600">
                     {body}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
