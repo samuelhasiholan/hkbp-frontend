@@ -596,29 +596,6 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "berita-publikasi": {
-    title: "Berita & Publikasi",
-    eyebrow: "Kabar Jemaat",
-    description:
-      "Berita kegiatan, artikel renungan, pengumuman publik, dan publikasi pelayanan gereja.",
-    summary:
-      "Halaman ini menjadi ruang berbagi kabar baik tentang kegiatan jemaat, pelayanan kategorial, aksi sosial, dan tulisan yang membangun iman.",
-    highlights: ["Berita kegiatan", "Artikel", "Publikasi resmi"],
-    sections: [
-      {
-        title: "Berita Kegiatan",
-        body: "Memuat laporan kegiatan ibadah khusus, pelayanan sosial, pembinaan, kunjungan, rapat jemaat, dan aktivitas kategorial.",
-      },
-      {
-        title: "Artikel dan Renungan",
-        body: "Dapat diisi dengan tulisan singkat dari pendeta, pelayan, atau tim publikasi untuk menguatkan iman jemaat.",
-      },
-      {
-        title: "Publikasi Resmi",
-        body: "Mencakup pengumuman terbuka, undangan kegiatan, poster, atau informasi penting yang perlu diketahui jemaat dan masyarakat.",
-      },
-    ],
-  },
   kontak: {
     title: "Kontak",
     eyebrow: "Hubungi Kami",
