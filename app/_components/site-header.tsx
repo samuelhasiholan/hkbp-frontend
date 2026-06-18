@@ -1,7 +1,69 @@
 import Link from "next/link";
-import { ChevronDown, Church, Menu } from "lucide-react";
+import { ChevronDown, ChevronRight, Church, Menu } from "lucide-react";
 import { NAVIGATION } from "@/src/constants/navigation";
 import { SITE_NAME } from "@/app/_data/site-content";
+
+type NavigationItem = {
+  title: string;
+  href: string;
+  children?: NavigationItem[];
+};
+
+function DesktopDropdownItem({ item }: { item: NavigationItem }) {
+  if (!item.children?.length) {
+    return (
+      <Link
+        className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+        href={item.href}
+      >
+        {item.title}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="group/submenu relative">
+      <Link
+        className="flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+        href={item.href}
+      >
+        {item.title}
+        <ChevronRight size={15} aria-hidden="true" />
+      </Link>
+      <div className="invisible absolute left-full top-0 z-10 ml-2 w-64 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition group-hover/submenu:visible group-hover/submenu:opacity-100">
+        {item.children.map((child) => (
+          <Link
+            className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+            href={child.href}
+            key={child.href}
+          >
+            {child.title}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MobileNavigationItem({ item }: { item: NavigationItem }) {
+  return (
+    <div>
+      <Link
+        className="block rounded-md px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-red-50 hover:text-red-700"
+        href={item.href}
+      >
+        {item.title}
+      </Link>
+      {item.children?.length ? (
+        <div className="grid gap-1 pl-4">
+          {item.children.map((child) => (
+            <MobileNavigationItem item={child} key={child.href} />
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 export function SiteHeader() {
   return (
@@ -34,13 +96,7 @@ export function SiteHeader() {
                 </Link>
                 <div className="invisible absolute left-0 top-full w-64 translate-y-2 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                   {item.children.map((child) => (
-                    <Link
-                      className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
-                      href={child.href}
-                      key={child.href}
-                    >
-                      {child.title}
-                    </Link>
+                    <DesktopDropdownItem item={child} key={child.href} />
                   ))}
                 </div>
               </div>
@@ -73,13 +129,7 @@ export function SiteHeader() {
                 {item.children?.length ? (
                   <div className="grid gap-1 pb-1 pl-3">
                     {item.children.map((child) => (
-                      <Link
-                        className="rounded-md px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-red-50 hover:text-red-700"
-                        href={child.href}
-                        key={child.href}
-                      >
-                        {child.title}
-                      </Link>
+                      <MobileNavigationItem item={child} key={child.href} />
                     ))}
                   </div>
                 ) : null}

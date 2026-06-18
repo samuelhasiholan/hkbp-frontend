@@ -1,10 +1,41 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, UserRound } from "lucide-react";
+import { RetiredElderSearch } from "@/app/_components/retired-elder-search";
 import type { PageContent } from "@/app/_data/site-content";
 
 type PageTemplateProps = {
   content: PageContent;
 };
+
+type ProfileGridProps = {
+  profiles: NonNullable<PageContent["organizationProfiles"]>;
+};
+
+function ProfileGrid({ profiles }: ProfileGridProps) {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {profiles.map((profile) => (
+        <article
+          className="overflow-hidden rounded-md border border-slate-200 bg-white"
+          key={profile.name}
+        >
+          <div className="flex aspect-square items-center justify-center bg-slate-100 text-slate-400">
+            <UserRound size={52} strokeWidth={1.5} aria-hidden="true" />
+            <span className="sr-only">Placeholder foto</span>
+          </div>
+          <div className="border-t border-slate-200 p-4">
+            <h3 className="text-base font-bold text-slate-950">
+              {profile.name}
+            </h3>
+            <p className="mt-1 text-sm font-medium leading-6 text-slate-500">
+              {profile.role}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
 
 export function PageTemplate({ content }: PageTemplateProps) {
   return (
@@ -45,36 +76,41 @@ export function PageTemplate({ content }: PageTemplateProps) {
           </aside>
 
           <div className="grid gap-5">
-            {content.pastorProfiles?.length ? (
+            {content.organizationProfiles?.length ? (
               <section className="grid gap-4">
                 <div>
                   <h2 className="text-xl font-bold text-slate-950">
-                    Daftar Pendeta
+                    Daftar {content.title}
                   </h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Foto dan nama pendeta akan diperbarui melalui CMS.
+                    Foto, nama, dan jabatan akan diperbarui melalui CMS.
                   </p>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-3">
-                  {content.pastorProfiles.map((pastor) => (
-                    <article
-                      className="overflow-hidden rounded-md border border-slate-200 bg-white"
-                      key={pastor.name}
-                    >
-                      <div className="flex aspect-[4/5] items-center justify-center bg-slate-100 text-slate-400">
-                        <UserRound size={52} strokeWidth={1.5} aria-hidden="true" />
-                        <span className="sr-only">Placeholder foto</span>
-                      </div>
-                      <div className="border-t border-slate-200 p-4">
-                        <h3 className="text-base font-bold text-slate-950">
-                          {pastor.name}
-                        </h3>
-                      </div>
-                    </article>
-                  ))}
+                <ProfileGrid profiles={content.organizationProfiles} />
+              </section>
+            ) : null}
+
+            {content.councilSections?.map((section) => (
+              <section
+                className="scroll-mt-28 rounded-md border border-slate-200 bg-white p-6"
+                id={section.id}
+                key={section.id}
+              >
+                <h2 className="text-xl font-bold text-slate-950">
+                  {section.title}
+                </h2>
+                <p className="mt-3 leading-7 text-slate-600">
+                  {section.description}
+                </p>
+                <div className="mt-5">
+                  <ProfileGrid profiles={section.profiles} />
                 </div>
               </section>
+            ))}
+
+            {content.retiredElderProfiles?.length ? (
+              <RetiredElderSearch profiles={content.retiredElderProfiles} />
             ) : null}
 
             {content.sections.map((section) => (

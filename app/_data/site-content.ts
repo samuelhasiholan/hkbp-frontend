@@ -1,3 +1,21 @@
+type OrganizationProfile = {
+  name: string;
+  role: string;
+};
+
+type CouncilSection = {
+  id: string;
+  title: string;
+  description: string;
+  profiles: OrganizationProfile[];
+};
+
+export type RetiredElderProfile = {
+  name: string;
+  role: string;
+  servicePeriod: string;
+};
+
 export type PageContent = {
   title: string;
   eyebrow: string;
@@ -8,13 +26,28 @@ export type PageContent = {
     title: string;
     body: string;
   }[];
-  pastorProfiles?: {
-    name: string;
-  }[];
+  organizationProfiles?: OrganizationProfile[];
+  councilSections?: CouncilSection[];
+  retiredElderProfiles?: RetiredElderProfile[];
   callout?: string;
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
+
+const createSectionProfiles = (sectionName: string): OrganizationProfile[] =>
+  Array.from({ length: 5 }, (_, index) => ({
+    name: `Nama ${sectionName} ${index + 1}`,
+    role: `Jabatan ${sectionName} ${index + 1}`,
+  }));
+
+const retiredElderProfiles: RetiredElderProfile[] = Array.from(
+  { length: 20 },
+  (_, index) => ({
+    name: `Nama Sintua Purnabakti ${index + 1}`,
+    role: `Jabatan Sintua Purnabakti ${index + 1}`,
+    servicePeriod: `Masa Tugas ${index + 1}`,
+  }),
+);
 
 export const pageContent: Record<string, PageContent> = {
   "tentang-gereja": {
@@ -154,15 +187,18 @@ export const pageContent: Record<string, PageContent> = {
         body: "Pendeta mendampingi jemaat dalam pergumulan keluarga, sakit, dukacita, persiapan pernikahan, pembinaan iman, dan kebutuhan rohani lainnya.",
       },
     ],
-    pastorProfiles: [
+    organizationProfiles: [
       {
         name: "Nama Pendeta 1",
+        role: "Jabatan Pendeta 1",
       },
       {
         name: "Nama Pendeta 2",
+        role: "Jabatan Pendeta 2",
       },
       {
         name: "Nama Pendeta 3",
+        role: "Jabatan Pendeta 3",
       },
     ],
   },
@@ -184,6 +220,20 @@ export const pageContent: Record<string, PageContent> = {
         body: "Membantu penyusunan program, pelaporan, koordinasi antarbidang, serta memastikan keputusan pelayanan dapat ditindaklanjuti.",
       },
     ],
+    organizationProfiles: [
+      {
+        name: "Nama Fungsionaris 1",
+        role: "Jabatan Fungsionaris 1",
+      },
+      {
+        name: "Nama Fungsionaris 2",
+        role: "Jabatan Fungsionaris 2",
+      },
+      {
+        name: "Nama Fungsionaris 3",
+        role: "Jabatan Fungsionaris 3",
+      },
+    ],
   },
   "organisasi/dewan-koinonia": {
     title: "Dewan Koinonia",
@@ -201,6 +251,64 @@ export const pageContent: Record<string, PageContent> = {
       {
         title: "Tujuan",
         body: "Membentuk warga jemaat yang tekun bersekutu, mengenal firman, dan saling menopang dalam kehidupan sehari-hari.",
+      },
+    ],
+    organizationProfiles: [
+      {
+        name: "Nama Dewan Koinonia 1",
+        role: "Jabatan Dewan Koinonia 1",
+      },
+      {
+        name: "Nama Dewan Koinonia 2",
+        role: "Jabatan Dewan Koinonia 2",
+      },
+      {
+        name: "Nama Dewan Koinonia 3",
+        role: "Jabatan Dewan Koinonia 3",
+      },
+    ],
+    councilSections: [
+      {
+        id: "seksi-sekolah-minggu",
+        title: "Seksi Sekolah Minggu",
+        description:
+          "Seksi Sekolah Minggu mendampingi pelayanan anak melalui pembinaan iman, ibadah anak, dan kegiatan yang menolong anak mengenal firman Tuhan sejak dini.",
+        profiles: createSectionProfiles("Seksi Sekolah Minggu"),
+      },
+      {
+        id: "seksi-remaja",
+        title: "Seksi Remaja",
+        description:
+          "Seksi Remaja mengembangkan pembinaan iman dan persekutuan remaja agar bertumbuh dalam karakter, relasi yang sehat, dan keterlibatan pelayanan gereja.",
+        profiles: createSectionProfiles("Seksi Remaja"),
+      },
+      {
+        id: "seksi-naposobulung",
+        title: "Seksi Naposobulung",
+        description:
+          "Seksi Naposobulung menjadi ruang pelayanan pemuda untuk bertumbuh dalam iman, kepemimpinan, kreativitas, dan kesaksian di tengah jemaat.",
+        profiles: createSectionProfiles("Seksi Naposobulung"),
+      },
+      {
+        id: "seksi-parompuan",
+        title: "Seksi Parompuan",
+        description:
+          "Seksi Parompuan memperkuat pelayanan perempuan melalui persekutuan, pembinaan keluarga, pelayanan kasih, dan dukungan aktif dalam kehidupan jemaat.",
+        profiles: createSectionProfiles("Seksi Parompuan"),
+      },
+      {
+        id: "seksi-ama",
+        title: "Seksi Ama",
+        description:
+          "Seksi Ama menggerakkan pelayanan kaum bapak dalam pembinaan iman, teladan keluarga, persekutuan, dan keterlibatan dalam program gereja.",
+        profiles: createSectionProfiles("Seksi Ama"),
+      },
+      {
+        id: "seksi-lansia",
+        title: "Seksi Lansia",
+        description:
+          "Seksi Lansia memperhatikan warga lanjut usia melalui persekutuan, kunjungan, pendampingan rohani, dan kegiatan yang membangun sukacita bersama.",
+        profiles: createSectionProfiles("Seksi Lansia"),
       },
     ],
   },
@@ -222,6 +330,36 @@ export const pageContent: Record<string, PageContent> = {
         body: "Kesaksian jemaat diharapkan nyata melalui perkataan, tindakan, keterbukaan, dan kerja sama yang baik dengan lingkungan.",
       },
     ],
+    organizationProfiles: [
+      {
+        name: "Nama Dewan Marturia 1",
+        role: "Jabatan Dewan Marturia 1",
+      },
+      {
+        name: "Nama Dewan Marturia 2",
+        role: "Jabatan Dewan Marturia 2",
+      },
+      {
+        name: "Nama Dewan Marturia 3",
+        role: "Jabatan Dewan Marturia 3",
+      },
+    ],
+    councilSections: [
+      {
+        id: "seksi-zending",
+        title: "Seksi Zending",
+        description:
+          "Seksi Zending menggerakkan semangat pekabaran Injil, kepedulian misi, dan dukungan jemaat untuk pelayanan kesaksian di dalam maupun di luar lingkungan gereja.",
+        profiles: createSectionProfiles("Seksi Zending"),
+      },
+      {
+        id: "seksi-musik",
+        title: "Seksi Musik",
+        description:
+          "Seksi Musik mendukung pelayanan pujian melalui pembinaan pemusik, song leader, koor, dan tata pelayanan musik yang menolong jemaat beribadah.",
+        profiles: createSectionProfiles("Seksi Musik"),
+      },
+    ],
   },
   "organisasi/dewan-diakonia": {
     title: "Dewan Diakonia",
@@ -239,6 +377,50 @@ export const pageContent: Record<string, PageContent> = {
       {
         title: "Semangat Pelayanan",
         body: "Diakonia dilakukan dengan kasih, kerendahan hati, dan tanggung jawab supaya setiap bantuan benar-benar menjawab kebutuhan.",
+      },
+    ],
+    organizationProfiles: [
+      {
+        name: "Nama Dewan Diakonia 1",
+        role: "Jabatan Dewan Diakonia 1",
+      },
+      {
+        name: "Nama Dewan Diakonia 2",
+        role: "Jabatan Dewan Diakonia 2",
+      },
+      {
+        name: "Nama Dewan Diakonia 3",
+        role: "Jabatan Dewan Diakonia 3",
+      },
+    ],
+    councilSections: [
+      {
+        id: "seksi-diakoni-sosial",
+        title: "Seksi Diakoni Sosial",
+        description:
+          "Seksi Diakoni Sosial mengoordinasikan pelayanan kasih bagi warga jemaat dan masyarakat yang membutuhkan perhatian, dukungan, dan pendampingan.",
+        profiles: createSectionProfiles("Seksi Diakoni Sosial"),
+      },
+      {
+        id: "seksi-pendidikan",
+        title: "Seksi Pendidikan",
+        description:
+          "Seksi Pendidikan memperhatikan dukungan pendidikan, pembinaan belajar, dan program yang menolong warga jemaat bertumbuh dalam pengetahuan dan karakter.",
+        profiles: createSectionProfiles("Seksi Pendidikan"),
+      },
+      {
+        id: "seksi-kesehatan",
+        title: "Seksi Kesehatan",
+        description:
+          "Seksi Kesehatan mendukung pelayanan kesehatan jemaat melalui edukasi, perhatian kepada yang sakit, dan kegiatan promotif yang membangun kepedulian.",
+        profiles: createSectionProfiles("Seksi Kesehatan"),
+      },
+      {
+        id: "seksi-kemasyarakatan",
+        title: "Seksi Kemasyarakatan",
+        description:
+          "Seksi Kemasyarakatan menjembatani kepedulian gereja dengan lingkungan sekitar melalui kerja sama sosial, komunikasi, dan pelayanan masyarakat.",
+        profiles: createSectionProfiles("Seksi Kemasyarakatan"),
       },
     ],
   },
@@ -260,6 +442,26 @@ export const pageContent: Record<string, PageContent> = {
         body: "Biasanya meliputi partangiangan, pelayanan keluarga, gotong royong, dan dukungan saat ada peristiwa sukacita maupun dukacita.",
       },
     ],
+  },
+  "organisasi/sintua-purnabakti": {
+    title: "Sintua Purnabakti",
+    eyebrow: "Organisasi",
+    description:
+      "Ruang penghargaan bagi para sintua purnabakti yang telah melayani jemaat dalam masa tugasnya.",
+    summary:
+      "Sintua purnabakti adalah bagian penting dari perjalanan pelayanan gereja. Halaman ini disiapkan untuk memuat dokumentasi foto, nama, jabatan, dan masa tugas yang nantinya dapat diperbarui melalui CMS.",
+    highlights: ["Dokumentasi pelayanan", "Masa tugas", "Pencarian nama"],
+    sections: [
+      {
+        title: "Penghargaan Pelayanan",
+        body: "Halaman ini menolong jemaat mengenal dan mengingat para sintua purnabakti yang pernah ambil bagian dalam pelayanan, penggembalaan, dan kehidupan persekutuan gereja.",
+      },
+      {
+        title: "Data CMS",
+        body: "Daftar sintua purnabakti disiapkan sebagai placeholder dan dapat disambungkan ke CMS untuk memperbarui foto, nama, jabatan, serta masa tugas.",
+      },
+    ],
+    retiredElderProfiles,
   },
   "jadwal-pelayanan": {
     title: "Jadwal Pelayanan",
