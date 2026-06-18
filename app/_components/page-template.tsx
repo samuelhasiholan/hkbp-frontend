@@ -7,6 +7,7 @@ import {
   MapPin,
   UserRound,
 } from "lucide-react";
+import { GalleryGrid } from "@/app/_components/gallery-grid";
 import { RetiredElderSearch } from "@/app/_components/retired-elder-search";
 import type { PageContent } from "@/app/_data/site-content";
 
@@ -123,7 +124,46 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
   );
 }
 
+function GalleryPageTemplate({ content }: PageTemplateProps) {
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            {content.eyebrow}
+          </p>
+          <div className="mt-4 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div>
+              <h1 className="max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
+                {content.title}
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+                {content.description}
+              </p>
+            </div>
+            <div className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm leading-6 text-slate-600">
+                {content.summary}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {content.galleryImages?.length ? (
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <GalleryGrid images={content.galleryImages} />
+        </section>
+      ) : null}
+    </main>
+  );
+}
+
 export function PageTemplate({ content }: PageTemplateProps) {
+  if (content.galleryImages?.length) {
+    return <GalleryPageTemplate content={content} />;
+  }
+
   if (content.mapEmbedUrl) {
     return <ContactPageTemplate content={content} />;
   }
@@ -211,6 +251,10 @@ export function PageTemplate({ content }: PageTemplateProps) {
                 </p>
               </article>
             ))}
+
+            {content.galleryImages?.length ? (
+              <GalleryGrid images={content.galleryImages} />
+            ) : null}
 
             {content.mapEmbedUrl ? (
               <article className="overflow-hidden rounded-md border border-slate-200 bg-white">
