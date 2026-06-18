@@ -122,6 +122,24 @@ export function PageTemplate({ content }: PageTemplateProps) {
               </article>
             ))}
 
+            {content.mapEmbedUrl ? (
+              <article className="overflow-hidden rounded-md border border-slate-200 bg-white">
+                <div className="p-6">
+                  <h2 className="text-xl font-bold text-slate-950">
+                    Lokasi Gereja
+                  </h2>
+                </div>
+                <iframe
+                  allowFullScreen
+                  className="aspect-[4/3] w-full border-0 bg-slate-100 sm:aspect-[16/9]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={content.mapEmbedUrl}
+                  title={`Peta lokasi ${content.title}`}
+                />
+              </article>
+            ) : null}
+
             {content.callout ? (
               <div className="rounded-md border border-red-200 bg-red-50 p-5 text-sm font-medium leading-6 text-red-900">
                 {content.callout}

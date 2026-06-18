@@ -30,6 +30,7 @@ export type PageContent = {
   councilSections?: CouncilSection[];
   retiredElderProfiles?: RetiredElderProfile[];
   callout?: string;
+  mapEmbedUrl?: string;
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
@@ -618,6 +619,8 @@ export const pageContent: Record<string, PageContent> = {
         body: "Kantor gereja melayani administrasi jemaat pada hari kerja sesuai jadwal sekretariat. Untuk pelayanan darurat, hubungi pendeta atau parhalado wijk.",
       },
     ],
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.3854148016317!2d106.82937057509652!3d-6.3441070936456985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec3230939161%3A0xb778022ec0c0afde!2sHKBP%20Srengseng%20Sawah%20Lutheran%20Church!5e0!3m2!1sen!2sid!4v1781768122519!5m2!1sen!2sid",
   },
 };
 
