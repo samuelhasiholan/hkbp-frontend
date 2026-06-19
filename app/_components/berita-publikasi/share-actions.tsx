@@ -76,7 +76,7 @@ export function ShareActions({ title }: ShareActionsProps) {
 
           return (
             <button
-              className="inline-flex size-10 items-center justify-center rounded-md border border-slate-200 text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+              className="inline-flex size-10 items-center justify-center rounded-md border border-slate-200 text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
               key={link.label}
               onClick={() => openShareWindow(link.getUrl)}
               title={`Bagikan ke ${link.label}`}
@@ -88,7 +88,7 @@ export function ShareActions({ title }: ShareActionsProps) {
           );
         })}
         <button
-          className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm font-bold text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+          className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm font-bold text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
           onClick={copyLink}
           type="button"
         >

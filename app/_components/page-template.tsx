@@ -83,11 +83,11 @@ function ChildPageLinks({ childPages, title }: ChildPageLinksProps) {
 
           return (
             <Link
-              className="group flex min-h-48 flex-col rounded-md border border-slate-200 bg-white p-5 transition hover:border-red-200 hover:bg-red-50"
+              className="group flex min-h-48 flex-col rounded-md border border-slate-200 bg-white p-5 transition hover:border-hkbp-border hover:bg-hkbp-soft"
               href={childPage.href}
               key={childPage.href}
             >
-              <span className="flex size-11 items-center justify-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-white">
+              <span className="flex size-11 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link transition group-hover:bg-white">
                 <Icon size={21} aria-hidden="true" />
               </span>
               <span className="mt-5 text-lg font-bold text-slate-950">
@@ -96,7 +96,7 @@ function ChildPageLinks({ childPages, title }: ChildPageLinksProps) {
               <span className="mt-2 grow text-sm leading-6 text-slate-600">
                 {childPage.description}
               </span>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-red-700">
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hkbp-link">
                 Buka halaman
                 <ArrowRight
                   className="size-4 transition group-hover:translate-x-1"
@@ -119,7 +119,7 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -148,7 +148,7 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
                 key={section.title}
               >
                 <div className="flex items-start gap-4">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-red-50 text-red-700">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
                     <Icon size={21} aria-hidden="true" />
                   </span>
                   <div>
@@ -195,7 +195,7 @@ function GalleryPageTemplate({ content }: PageTemplateProps) {
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-          <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+          <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
             {content.eyebrow}
           </p>
           <div className="mt-4 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -221,6 +221,168 @@ function GalleryPageTemplate({ content }: PageTemplateProps) {
           <GalleryGrid images={content.galleryImages} />
         </section>
       ) : null}
+    </main>
+  );
+}
+
+function ArticlePageTemplate({ content }: PageTemplateProps) {
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
+              {content.eyebrow}
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
+              {content.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              {content.description}
+            </p>
+          </div>
+
+          <aside className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm leading-6 text-slate-600">
+              {content.summary}
+            </p>
+            <div className="mt-5 grid gap-3">
+              {content.highlights.map((highlight) => (
+                <p
+                  className="flex items-start gap-3 text-sm font-semibold text-slate-800"
+                  key={highlight}
+                >
+                  <CheckCircle2
+                    className="mt-0.5 size-4 shrink-0 text-hkbp-link"
+                    aria-hidden="true"
+                  />
+                  {highlight}
+                </p>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+        <article className="text-slate-700">
+          {content.sections.map((section, index) => (
+            <section
+              className={index === 0 ? undefined : "mt-10 border-t border-slate-200 pt-10"}
+              key={section.title}
+            >
+              <h2 className="text-2xl font-bold tracking-normal text-slate-950">
+                {section.title}
+              </h2>
+              <div className="mt-5 whitespace-pre-line text-base leading-8">
+                {section.body}
+              </div>
+            </section>
+          ))}
+        </article>
+      </section>
+    </main>
+  );
+}
+
+function WijkPageTemplate({ content }: PageTemplateProps) {
+  const wijkItems = content.wijkItems ?? [];
+
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
+              {content.eyebrow}
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
+              {content.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              {content.description}
+            </p>
+          </div>
+
+          <aside className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm leading-6 text-slate-600">
+              {content.summary}
+            </p>
+            <div className="mt-5 grid gap-3">
+              {content.highlights.map((highlight) => (
+                <p
+                  className="flex items-start gap-3 text-sm font-semibold text-slate-800"
+                  key={highlight}
+                >
+                  <CheckCircle2
+                    className="mt-0.5 size-4 shrink-0 text-hkbp-link"
+                    aria-hidden="true"
+                  />
+                  {highlight}
+                </p>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
+        <div className="grid h-fit gap-5">
+          {content.sections.map((section) => (
+            <article
+              className="rounded-md border border-slate-200 bg-white p-6"
+              key={section.title}
+            >
+              <h2 className="text-xl font-bold text-slate-950">
+                {section.title}
+              </h2>
+              <p className="mt-3 leading-7 text-slate-600">{section.body}</p>
+            </article>
+          ))}
+        </div>
+
+        <section>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold tracking-normal text-slate-950">
+                Daftar Wijk
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Nama dan keterangan wijk dapat diperbarui melalui CMS.
+              </p>
+            </div>
+            <span className="hidden rounded-md border border-hkbp-border bg-hkbp-soft px-3 py-2 text-sm font-bold text-hkbp-link sm:inline-flex">
+              {wijkItems.length} Wijk
+            </span>
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {wijkItems.map((wijk, index) => (
+              <article
+                className="rounded-md border border-slate-200 bg-white p-5 transition hover:border-hkbp-border hover:bg-hkbp-soft"
+                key={wijk.name}
+              >
+                <div className="flex items-start gap-4">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+                    <MapPin size={21} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                      Wijk {index + 1}
+                    </p>
+                    <h3 className="mt-1 text-lg font-bold text-slate-950">
+                      {wijk.name}
+                    </h3>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-6 text-slate-600">
+                  {wijk.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
     </main>
   );
 }
@@ -258,7 +420,7 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -269,14 +431,14 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                className="inline-flex items-center gap-2 rounded-md bg-red-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-red-800"
+                className="inline-flex items-center gap-2 rounded-md bg-hkbp-primary px-4 py-2.5 text-sm font-bold text-white transition hover:bg-hkbp-primary-hover"
                 href="/kontak"
               >
                 {primaryActionLabel}
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link
-                className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-800 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+                className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-800 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
                 href={secondaryActionHref}
               >
                 <CalendarDays size={16} aria-hidden="true" />
@@ -296,7 +458,7 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
                   key={highlight}
                 >
                   <CheckCircle2
-                    className="mt-0.5 size-4 shrink-0 text-red-700"
+                    className="mt-0.5 size-4 shrink-0 text-hkbp-link"
                     aria-hidden="true"
                   />
                   {highlight}
@@ -318,7 +480,7 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
                   className="rounded-md border border-slate-200 bg-white p-6"
                   key={section.title}
                 >
-                  <span className="flex size-11 items-center justify-center rounded-md bg-red-50 text-red-700">
+                  <span className="flex size-11 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
                     <Icon size={21} aria-hidden="true" />
                   </span>
                   <h2 className="mt-5 text-xl font-bold text-slate-950">
@@ -369,6 +531,14 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
 }
 
 export function PageTemplate({ content }: PageTemplateProps) {
+  if (content.layoutVariant === "article") {
+    return <ArticlePageTemplate content={content} />;
+  }
+
+  if (content.layoutVariant === "wijk") {
+    return <WijkPageTemplate content={content} />;
+  }
+
   if (
     content.layoutVariant === "pastors" ||
     content.layoutVariant === "officers" ||
@@ -390,7 +560,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -426,7 +596,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
                     key={highlight}
                   >
                     <CheckCircle2
-                      className="mt-0.5 size-4 shrink-0 text-red-700"
+                      className="mt-0.5 size-4 shrink-0 text-hkbp-link"
                       aria-hidden="true"
                     />
                     {highlight}
@@ -520,14 +690,14 @@ export function PageTemplate({ content }: PageTemplateProps) {
             ) : null}
 
             {content.callout ? (
-              <div className="rounded-md border border-red-200 bg-red-50 p-5 text-sm font-medium leading-6 text-red-900">
+              <div className="rounded-md border border-hkbp-border bg-hkbp-soft p-5 text-sm font-medium leading-6 text-hkbp-link-strong">
                 {content.callout}
               </div>
             ) : null}
 
             {content.childPages?.length ? null : (
               <Link
-                className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-red-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-red-800"
+                className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-hkbp-primary px-4 py-2.5 text-sm font-bold text-white transition hover:bg-hkbp-primary-hover"
                 href="/kontak"
               >
                 Hubungi Gereja

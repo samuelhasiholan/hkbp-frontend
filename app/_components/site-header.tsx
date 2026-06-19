@@ -13,7 +13,7 @@ function DesktopDropdownItem({ item }: { item: NavigationItem }) {
   if (!item.children?.length) {
     return (
       <Link
-        className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+        className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-hkbp-soft hover:text-hkbp-link"
         href={item.href}
       >
         {item.title}
@@ -24,7 +24,7 @@ function DesktopDropdownItem({ item }: { item: NavigationItem }) {
   return (
     <div className="group/submenu relative">
       <Link
-        className="flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+        className="flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-hkbp-soft hover:text-hkbp-link"
         href={item.href}
       >
         {item.title}
@@ -33,7 +33,7 @@ function DesktopDropdownItem({ item }: { item: NavigationItem }) {
       <div className="invisible absolute left-full top-0 z-10 ml-2 w-64 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition group-hover/submenu:visible group-hover/submenu:opacity-100">
         {item.children.map((child) => (
           <Link
-            className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-red-50 hover:text-red-700"
+            className="block rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-hkbp-soft hover:text-hkbp-link"
             href={child.href}
             key={child.href}
           >
@@ -49,7 +49,7 @@ function MobileNavigationItem({ item }: { item: NavigationItem }) {
   return (
     <div>
       <Link
-        className="block rounded-md px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-red-50 hover:text-red-700"
+        className="block rounded-md px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-hkbp-soft hover:text-hkbp-link"
         href={item.href}
       >
         {item.title}
@@ -70,7 +70,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-red-700 text-white">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-hkbp-brand text-white">
             <Church size={22} aria-hidden="true" />
           </span>
           <span className="min-w-0">
@@ -89,7 +89,7 @@ export function SiteHeader() {
               <div className="group relative" key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex h-10 items-center gap-1 rounded-md px-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-red-700"
+                  className="flex h-10 items-center gap-1 rounded-md px-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-hkbp-link"
                 >
                   {item.title}
                   <ChevronDown size={15} aria-hidden="true" />
@@ -102,7 +102,7 @@ export function SiteHeader() {
               </div>
             ) : (
               <Link
-                className="flex h-10 items-center rounded-md px-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-red-700"
+                className="flex h-10 items-center rounded-md px-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-hkbp-link"
                 href={item.href}
                 key={item.href}
               >

@@ -68,7 +68,7 @@ export function PdfViewer({
     <section className="overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm">
       <div className="flex flex-col gap-4 border-b border-slate-200 bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <p className="text-xs font-bold uppercase tracking-wide text-red-700">
+          <p className="text-xs font-bold uppercase tracking-wide text-hkbp-link">
             PDF Warta
           </p>
           <h2 className="mt-1 text-xl font-bold text-slate-950">{title}</h2>
@@ -82,7 +82,7 @@ export function PdfViewer({
 
         <div className="flex flex-wrap gap-2">
           <a
-            className="inline-flex h-10 items-center gap-2 rounded-md bg-red-700 px-3 text-sm font-bold text-white transition hover:bg-red-800"
+            className="inline-flex h-10 items-center gap-2 rounded-md bg-hkbp-primary px-3 text-sm font-bold text-white transition hover:bg-hkbp-primary-hover"
             download={fileName}
             href={fileUrl}
           >
@@ -90,7 +90,7 @@ export function PdfViewer({
             Unduh
           </a>
           <button
-            className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
             onClick={sharePdf}
             type="button"
           >
@@ -98,7 +98,7 @@ export function PdfViewer({
             Share
           </button>
           <button
-            className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
             onClick={copyLink}
             type="button"
           >
@@ -110,7 +110,7 @@ export function PdfViewer({
             {copied ? "Tersalin" : "Salin"}
           </button>
           <a
-            className="inline-flex size-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-700"
+            className="inline-flex size-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
             href={fileUrl}
             rel="noreferrer"
             target="_blank"

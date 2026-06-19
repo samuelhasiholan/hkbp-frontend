@@ -51,7 +51,7 @@ export function HomeGalleryCarousel({ images }: HomeGalleryCarouselProps) {
               key={image.src}
               style={{ width: `${100 / images.length}%` }}
             >
-              <span className="relative block aspect-[4/3] overflow-hidden rounded-md border border-slate-200 bg-slate-100 shadow-sm transition group-hover:border-red-200 group-hover:shadow-md">
+              <span className="relative block aspect-[4/3] overflow-hidden rounded-md border border-slate-200 bg-slate-100 shadow-sm transition group-hover:border-hkbp-border group-hover:shadow-md">
                 <Image
                   alt={image.alt}
                   className="object-cover transition duration-300 group-hover:scale-105"
@@ -72,8 +72,8 @@ export function HomeGalleryCarousel({ images }: HomeGalleryCarouselProps) {
               <button
                 className={`h-2.5 rounded-full transition ${
                   index === activeIndex
-                    ? "w-8 bg-red-600"
-                    : "w-2.5 bg-slate-300 hover:bg-red-200"
+                    ? "w-8 bg-hkbp-primary"
+                    : "w-2.5 bg-slate-300 hover:bg-hkbp-border"
                 }`}
                 key={index}
                 onClick={() => setActiveIndex(index)}
@@ -86,7 +86,7 @@ export function HomeGalleryCarousel({ images }: HomeGalleryCarouselProps) {
 
           <div className="flex items-center gap-2">
             <button
-              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-red-200 hover:text-red-700"
+              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-hkbp-border hover:text-hkbp-link"
               onClick={() =>
                 setActiveIndex((index) =>
                   index === 0 ? totalSlides : index - 1,
@@ -98,7 +98,7 @@ export function HomeGalleryCarousel({ images }: HomeGalleryCarouselProps) {
               <ChevronLeft size={18} aria-hidden="true" />
             </button>
             <button
-              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-red-200 hover:text-red-700"
+              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-hkbp-border hover:text-hkbp-link"
               onClick={() =>
                 setActiveIndex((index) =>
                   index >= totalSlides ? 0 : index + 1,

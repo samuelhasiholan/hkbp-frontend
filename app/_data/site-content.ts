@@ -24,6 +24,11 @@ export type GalleryImage = {
   description: string;
 };
 
+export type WijkItem = {
+  name: string;
+  description: string;
+};
+
 export type PageContent = {
   title: string;
   eyebrow: string;
@@ -43,9 +48,10 @@ export type PageContent = {
   councilSections?: CouncilSection[];
   retiredElderProfiles?: RetiredElderProfile[];
   galleryImages?: GalleryImage[];
+  wijkItems?: WijkItem[];
   callout?: string;
   mapEmbedUrl?: string;
-  layoutVariant?: "pastors" | "officers" | "council";
+  layoutVariant?: "article" | "wijk" | "pastors" | "officers" | "council";
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
@@ -109,27 +115,28 @@ export const pageContent: Record<string, PageContent> = {
   "tentang-gereja/sejarah": {
     title: "Sejarah",
     eyebrow: "Tentang Gereja",
+    layoutVariant: "article",
     description:
       "Catatan perjalanan jemaat dari awal persekutuan hingga pelayanan yang berlangsung saat ini.",
     summary:
-      "Sejarah jemaat adalah kisah pertumbuhan iman bersama: dimulai dari kerinduan warga untuk bersekutu, lalu berkembang melalui ibadah, partangiangan, pelayanan kategorial, dan pembangunan sarana pelayanan.",
+      "Sejarah jemaat adalah kisah pertumbuhan iman bersama yang dapat terus dilengkapi melalui CMS sesuai arsip resmi gereja.",
     highlights: [
-      "Awal persekutuan",
-      "Pertumbuhan jemaat",
-      "Pelayanan masa kini",
+      "Diresmikan 2 Januari 1966",
+      "Bertumbuh sebagai Resort Srengseng Sawah",
+      "Arsip dapat diperbarui dari CMS",
     ],
     sections: [
       {
-        title: "Awal Persekutuan",
-        body: "Persekutuan jemaat lahir dari kebutuhan warga HKBP di daerah ini untuk memiliki tempat beribadah, saling menguatkan, dan melayani bersama dalam tradisi gereja Batak.",
+        title: "Perjalanan Jemaat",
+        body: "HKBP Srengseng Sawah (Resort Srengseng Sawah) diresmikan dan berdiri sejak 2 Januari 1966 sebagai tempat persekutuan warga HKBP yang tinggal di wilayah Srengseng Sawah dan sekitarnya. Kehadiran gereja ini lahir dari kerinduan jemaat untuk beribadah, saling menguatkan, dan melayani bersama dalam kehidupan bergereja yang tertib serta berakar pada firman Tuhan.\n\nSeiring berjalannya waktu, persekutuan yang semula sederhana terus bertumbuh melalui ibadah Minggu, partangiangan, pelayanan keluarga, dan pembinaan kategorial. Warga jemaat mengambil bagian dalam pelayanan sesuai talenta masing-masing, mulai dari pelayanan ibadah, musik gerejawi, sekolah Minggu, naposo, kaum bapak, kaum ibu, hingga perhatian sosial bagi sesama.",
       },
       {
         title: "Perkembangan Pelayanan",
-        body: "Seiring bertambahnya keluarga jemaat, pelayanan berkembang melalui pembentukan wijk, kegiatan kategorial, pembinaan anak dan remaja, serta penataan jadwal ibadah yang lebih teratur.",
+        body: "Dalam proses pertumbuhan jemaat, HKBP Srengseng Sawah semakin menata pelayanan melalui pembentukan wijk, penguatan parhalado, penyusunan program pelayanan, dan pengembangan sarana gereja. Setiap tahap perjalanan menjadi bagian dari kesaksian iman bahwa gereja bertumbuh karena penyertaan Tuhan serta kesetiaan warga jemaat yang melayani dari generasi ke generasi.\n\nSebagai resort, HKBP Srengseng Sawah terus menghidupi panggilan pelayanan di tengah perubahan lingkungan dan kebutuhan jemaat. Pelayanan diarahkan untuk membangun persekutuan yang hangat, pembinaan iman yang berkesinambungan, serta kesaksian kasih yang nyata bagi keluarga jemaat dan masyarakat sekitar.",
       },
       {
-        title: "Warisan Iman",
-        body: "Setiap generasi dipanggil menjaga warisan iman itu dengan kesetiaan beribadah, keterlibatan dalam pelayanan, dan keterbukaan untuk menjawab kebutuhan zaman.",
+        title: "Catatan CMS",
+        body: "Teks sejarah ini disiapkan sebagai contoh awal dan dapat diperbarui melalui CMS ketika arsip resmi, nama tokoh pelayanan, tanggal penting, foto dokumentasi, atau keterangan tambahan sudah tersedia. Admin dapat mengganti isi paragraf tanpa mengubah layout halaman.",
       },
     ],
   },
@@ -671,19 +678,62 @@ export const pageContent: Record<string, PageContent> = {
   "organisasi/wilayah-wijk": {
     title: "Wilayah (Wijk)",
     eyebrow: "Organisasi",
+    layoutVariant: "wijk",
     description:
-      "Pembagian wilayah pelayanan untuk mempererat perhatian dan koordinasi antar keluarga jemaat.",
+      "Ruang pelayanan terdekat bagi keluarga jemaat untuk bertumbuh dalam persekutuan, perhatian, dan komunikasi yang hangat.",
     summary:
-      "Wijk membantu gereja hadir lebih dekat dengan keluarga jemaat melalui partangiangan, kunjungan, pendataan, dan komunikasi pelayanan.",
-    highlights: ["Pendataan keluarga", "Partangiangan wijk", "Kunjungan"],
+      "Setiap wijk menjadi lingkar pelayanan yang menolong gereja hadir lebih dekat di tengah kehidupan keluarga jemaat.",
+    highlights: [
+      "Partangiangan dan persekutuan keluarga",
+      "Kunjungan serta perhatian pastoral",
+      "Koordinasi informasi pelayanan jemaat",
+    ],
     sections: [
       {
-        title: "Fungsi Wijk",
-        body: "Menjadi ruang pelayanan terdekat bagi keluarga jemaat, termasuk pengumuman, koordinasi kegiatan, dan perhatian terhadap kondisi warga.",
+        title: "Hidup Bersekutu di Wijk",
+        body: "Wijk adalah tempat warga jemaat saling mengenal, saling mendoakan, dan saling menopang dalam kehidupan sehari-hari. Melalui wijk, pelayanan gereja tidak hanya hadir dalam ibadah Minggu, tetapi juga dekat dengan rumah, keluarga, sukacita, pergumulan, dan kebutuhan warga jemaat.",
       },
       {
-        title: "Kegiatan Wijk",
-        body: "Biasanya meliputi partangiangan, pelayanan keluarga, gotong royong, dan dukungan saat ada peristiwa sukacita maupun dukacita.",
+        title: "Pelayanan yang Dekat",
+        body: "Kegiatan wijk dapat meliputi partangiangan, kunjungan keluarga, pendataan jemaat, penyampaian informasi gereja, gotong royong, serta dukungan saat ada peristiwa sukacita maupun dukacita. Konten ini disiapkan agar nantinya dapat diperbarui dari CMS sesuai data dan kebutuhan pelayanan terbaru.",
+      },
+    ],
+    wijkItems: [
+      {
+        name: "Zaitun",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Galilea",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Yerusalem",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Nazareth",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Judea",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Getsemane",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Diaspora",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Betlehem",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
+      },
+      {
+        name: "Kana",
+        description: "Jalan abc, jalan def, ... dan sekitarnya",
       },
     ],
   },

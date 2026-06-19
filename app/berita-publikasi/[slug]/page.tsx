@@ -99,11 +99,11 @@ export default async function PublicationDetailPage({
 
           <aside className="grid h-fit gap-4 lg:sticky lg:top-24">
             <ShareActions title={item.title} />
-            <div className="rounded-md border border-red-200 bg-red-50 p-5">
-              <p className="text-sm font-bold text-red-950">
+            <div className="rounded-md border border-hkbp-border bg-hkbp-soft p-5">
+              <p className="text-sm font-bold text-hkbp-ink">
                 Informasi sample
               </p>
-              <p className="mt-2 text-sm leading-6 text-red-900">
+              <p className="mt-2 text-sm leading-6 text-hkbp-link-strong">
                 Konten ini dapat diganti dengan data CMS atau API saat sumber
                 publikasi resmi sudah tersedia.
               </p>

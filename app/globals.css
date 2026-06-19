@@ -3,13 +3,50 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hkbp-brand: #0000ff;
+  --hkbp-primary: #0033cc;
+  --hkbp-primary-hover: #002699;
+  --hkbp-link: #0000cc;
+  --hkbp-link-strong: #000099;
+  --hkbp-ink: #000066;
+  --hkbp-soft: #eef2ff;
+  --hkbp-border: #ccd6ff;
+  --hkbp-hero-start: #03083d;
+  --hkbp-hero-end: #070b3f;
+  --hkbp-hero-glow: rgba(0, 0, 255, 0.2);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-hkbp-brand: var(--hkbp-brand);
+  --color-hkbp-primary: var(--hkbp-primary);
+  --color-hkbp-primary-hover: var(--hkbp-primary-hover);
+  --color-hkbp-link: var(--hkbp-link);
+  --color-hkbp-link-strong: var(--hkbp-link-strong);
+  --color-hkbp-ink: var(--hkbp-ink);
+  --color-hkbp-soft: var(--hkbp-soft);
+  --color-hkbp-border: var(--hkbp-border);
+  --color-hkbp-hero-start: var(--hkbp-hero-start);
+  --color-hkbp-hero-end: var(--hkbp-hero-end);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@layer utilities {
+  .bg-hkbp-hero {
+    background:
+      radial-gradient(
+        circle at 20% 20%,
+        var(--hkbp-hero-glow),
+        transparent 32%
+      ),
+      linear-gradient(
+        135deg,
+        var(--hkbp-hero-start),
+        var(--hkbp-hero-end)
+      );
+  }
 }
 
 @media (prefers-color-scheme: dark) {

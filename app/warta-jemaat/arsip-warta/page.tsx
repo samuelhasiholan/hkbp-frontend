@@ -14,7 +14,7 @@ export default function ArsipWartaPage() {
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               Warta Jemaat
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -27,7 +27,7 @@ export default function ArsipWartaPage() {
           </div>
           <div className="grid gap-3 self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
             <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-red-50 text-red-700">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
                 <Archive size={18} aria-hidden="true" />
               </span>
               <p className="text-sm leading-6 text-slate-600">

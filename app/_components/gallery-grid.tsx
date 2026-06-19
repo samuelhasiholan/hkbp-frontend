@@ -51,7 +51,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {visibleImages.map((image) => (
           <button
-            className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-red-200 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+            className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-hkbp-border hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-hkbp-primary focus-visible:ring-offset-2"
             key={image.src}
             onClick={() => setSelectedImage(image)}
             type="button"
@@ -80,7 +80,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
           </p>
           <div className="flex items-center gap-2">
             <button
-              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-red-200 hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-45"
+              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-hkbp-border hover:text-hkbp-link disabled:cursor-not-allowed disabled:opacity-45"
               disabled={activePage === 1}
               onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
               type="button"
@@ -108,8 +108,8 @@ export function GalleryGrid({ images }: GalleryGridProps) {
                 <button
                   className={`flex size-10 items-center justify-center rounded-md border text-sm font-bold transition ${
                     isActive
-                      ? "border-red-600 bg-red-600 text-white"
-                      : "border-slate-300 bg-white text-slate-700 hover:border-red-200 hover:text-red-700"
+                      ? "border-hkbp-primary bg-hkbp-primary text-white"
+                      : "border-slate-300 bg-white text-slate-700 hover:border-hkbp-border hover:text-hkbp-link"
                   }`}
                   key={page}
                   onClick={() => setCurrentPage(page)}
@@ -122,7 +122,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               );
             })}
             <button
-              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-red-200 hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-45"
+              className="flex size-10 items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 transition hover:border-hkbp-border hover:text-hkbp-link disabled:cursor-not-allowed disabled:opacity-45"
               disabled={activePage === totalPages}
               onClick={() =>
                 setCurrentPage((page) => Math.min(totalPages, page + 1))
@@ -151,7 +151,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
           />
           <div className="relative w-full max-w-5xl overflow-hidden rounded-md bg-white shadow-2xl">
             <button
-              className="absolute top-3 right-3 z-10 flex size-10 items-center justify-center rounded-md bg-white/95 text-slate-900 shadow-sm transition hover:bg-red-50 hover:text-red-700"
+              className="absolute top-3 right-3 z-10 flex size-10 items-center justify-center rounded-md bg-white/95 text-slate-900 shadow-sm transition hover:bg-hkbp-soft hover:text-hkbp-link"
               onClick={() => setSelectedImage(null)}
               type="button"
               aria-label="Tutup galeri"

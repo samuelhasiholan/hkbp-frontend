@@ -37,14 +37,14 @@ export function ArchiveBrowser({ items }: ArchiveBrowserProps) {
               <button
                 className={`rounded-md border p-4 text-left transition ${
                   isSelected
-                    ? "border-red-200 bg-red-50"
-                    : "border-slate-200 bg-white hover:border-red-200 hover:bg-slate-50"
+                    ? "border-hkbp-border bg-hkbp-soft"
+                    : "border-slate-200 bg-white hover:border-hkbp-border hover:bg-slate-50"
                 }`}
                 key={item.slug}
                 onClick={() => setSelectedSlug(item.slug)}
                 type="button"
               >
-                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-red-700">
+                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-hkbp-link">
                   <CalendarDays size={14} aria-hidden="true" />
                   {item.date}
                 </span>

@@ -29,7 +29,7 @@ export default function BeritaPublikasiPage() {
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               Kabar Jemaat
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -59,7 +59,7 @@ export default function BeritaPublikasiPage() {
             <section className="grid gap-5" key={section.title}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <span className="inline-flex size-10 items-center justify-center rounded-md bg-red-50 text-red-700">
+                  <span className="inline-flex size-10 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
                     <Icon size={21} aria-hidden="true" />
                   </span>
                   <h2 className="mt-3 text-2xl font-bold text-slate-950">
@@ -74,7 +74,7 @@ export default function BeritaPublikasiPage() {
               <div className="grid gap-5 md:grid-cols-3">
                 {items.map((item) => (
                   <Link
-                    className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-red-200 hover:shadow-md"
+                    className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-hkbp-border hover:shadow-md"
                     href={`/berita-publikasi/${item.slug}`}
                     key={item.slug}
                   >
@@ -99,7 +99,7 @@ export default function BeritaPublikasiPage() {
                       <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
                         {item.excerpt}
                       </p>
-                      <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-red-700">
+                      <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-hkbp-link">
                         Baca detail
                         <ArrowRight
                           className="transition group-hover:translate-x-0.5"

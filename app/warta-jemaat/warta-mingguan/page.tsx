@@ -14,7 +14,7 @@ export default function WartaMingguanPage() {
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-red-700">
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               Warta Jemaat
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -39,12 +39,12 @@ export default function WartaMingguanPage() {
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-3 md:grid-cols-3">
           <div className="rounded-md border border-slate-200 bg-white p-4">
-            <CalendarDays className="size-5 text-red-700" aria-hidden="true" />
+            <CalendarDays className="size-5 text-hkbp-link" aria-hidden="true" />
             <p className="mt-3 text-sm font-bold text-slate-950">Tanggal</p>
             <p className="mt-1 text-sm text-slate-600">{weeklyWarta.date}</p>
           </div>
           <div className="rounded-md border border-slate-200 bg-white p-4">
-            <Palette className="size-5 text-red-700" aria-hidden="true" />
+            <Palette className="size-5 text-hkbp-link" aria-hidden="true" />
             <p className="mt-3 text-sm font-bold text-slate-950">
               Warna Liturgi
             </p>
@@ -53,7 +53,7 @@ export default function WartaMingguanPage() {
             </p>
           </div>
           <div className="rounded-md border border-slate-200 bg-white p-4">
-            <UserRound className="size-5 text-red-700" aria-hidden="true" />
+            <UserRound className="size-5 text-hkbp-link" aria-hidden="true" />
             <p className="mt-3 text-sm font-bold text-slate-950">
               Pelayan Firman
             </p>

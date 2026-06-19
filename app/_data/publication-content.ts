@@ -46,7 +46,7 @@ export const publications: PublicationItem[] = [
     date: "Minggu, 7 Juni 2026",
     author: "Tim Publikasi",
     readTime: "3 menit baca",
-    thumbnailTone: "from-red-700 via-rose-600 to-amber-500",
+    thumbnailTone: "from-hkbp-primary via-sky-600 to-cyan-400",
     content: [
       "Pelayanan kasih menjadi salah satu wujud nyata panggilan gereja untuk hadir di tengah kebutuhan jemaat. Kegiatan ini melibatkan parhalado, kategorial, dan relawan yang bersama-sama menyiapkan paket dukungan serta kunjungan pastoral.",
       "Selain menyalurkan bantuan, tim juga mendengarkan pergumulan keluarga dan mendoakan setiap rumah yang dikunjungi. Kehadiran sederhana seperti ini diharapkan menumbuhkan rasa saling menopang di antara warga jemaat.",
@@ -126,7 +126,7 @@ export const publications: PublicationItem[] = [
     date: "Kamis, 4 Juni 2026",
     author: "Dewan Koinonia",
     readTime: "5 menit baca",
-    thumbnailTone: "from-stone-800 via-red-700 to-pink-500",
+    thumbnailTone: "from-stone-800 via-hkbp-brand to-sky-400",
     content: [
       "Keluarga adalah tempat pertama banyak orang belajar mengenal kasih, pengampunan, dan kesetiaan. Karena itu, rumah juga dapat menjadi ruang pertumbuhan iman yang hangat dan terbuka.",
       "Ibadah keluarga tidak harus panjang. Membaca firman, menyanyikan satu lagu, berbagi cerita, dan berdoa bersama sudah dapat membentuk kebiasaan rohani yang berarti.",
@@ -142,7 +142,7 @@ export const publications: PublicationItem[] = [
     date: "Jumat, 12 Juni 2026",
     author: "Sekretariat Gereja",
     readTime: "2 menit baca",
-    thumbnailTone: "from-zinc-900 via-red-800 to-yellow-500",
+    thumbnailTone: "from-zinc-900 via-hkbp-brand to-yellow-500",
     content: [
       "Majelis jemaat mengundang seluruh pelayan terkait untuk menghadiri rapat koordinasi pelayanan. Agenda utama mencakup evaluasi kegiatan berjalan, penetapan jadwal pelayanan, dan persiapan program bulan berikutnya.",
       "Peserta rapat dimohon membawa catatan bidang pelayanan masing-masing agar pembahasan dapat berjalan tertib dan keputusan dapat segera ditindaklanjuti.",
@@ -158,7 +158,7 @@ export const publications: PublicationItem[] = [
     date: "Senin, 8 Juni 2026",
     author: "Sekretariat Gereja",
     readTime: "3 menit baca",
-    thumbnailTone: "from-blue-900 via-slate-700 to-red-500",
+    thumbnailTone: "from-blue-900 via-slate-700 to-hkbp-brand",
     content: [
       "Gereja membuka pendaftaran katekisasi bagi warga jemaat yang memenuhi syarat dan akan mengikuti pembinaan iman menuju pengakuan percaya. Orang tua atau wali dapat menghubungi sekretariat untuk memperoleh formulir dan daftar kelengkapan.",
       "Kelas katekisasi akan membahas pokok iman Kristen, pengenalan liturgi, tanggung jawab warga jemaat, dan kehidupan bersekutu dalam gereja.",
@@ -174,7 +174,7 @@ export const publications: PublicationItem[] = [
     date: "Minggu, 31 Mei 2026",
     author: "Tim Media",
     readTime: "2 menit baca",
-    thumbnailTone: "from-red-900 via-amber-700 to-emerald-500",
+    thumbnailTone: "from-hkbp-ink via-hkbp-brand to-emerald-500",
     content: [
       "Tim media menerbitkan poster jadwal ibadah hari besar gerejawi sebagai bahan informasi bagi jemaat. Poster ini dapat dibagikan melalui grup wijk, media sosial, dan kanal komunikasi gereja.",
       "Jemaat diharapkan memperhatikan jam ibadah, lokasi, dan informasi petugas pelayanan yang tercantum. Bila ada penyesuaian jadwal, pembaruan akan disampaikan melalui pengumuman resmi.",

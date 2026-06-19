@@ -41,7 +41,7 @@ export function RetiredElderSearch({ profiles }: RetiredElderSearchProps) {
         />
         <span className="sr-only">Cari berdasarkan nama</span>
         <input
-          className="h-11 w-full rounded-md border border-slate-200 bg-white pl-10 pr-3 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-red-300 focus:ring-4 focus:ring-red-100"
+          className="h-11 w-full rounded-md border border-slate-200 bg-white pl-10 pr-3 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-hkbp-primary focus:ring-4 focus:ring-hkbp-primary/10"
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Cari berdasarkan nama"
           type="search"
@@ -53,12 +53,12 @@ export function RetiredElderSearch({ profiles }: RetiredElderSearchProps) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProfiles.map((profile) => (
             <button
-              className="group overflow-hidden rounded-md border border-slate-200 bg-white text-left transition hover:border-red-200 hover:shadow-md"
+              className="group overflow-hidden rounded-md border border-slate-200 bg-white text-left transition hover:border-hkbp-border hover:shadow-md"
               key={profile.name}
               onClick={() => setSelectedProfile(profile)}
               type="button"
             >
-              <div className="flex aspect-square items-center justify-center bg-slate-100 text-slate-400 transition group-hover:bg-red-50 group-hover:text-red-700">
+              <div className="flex aspect-square items-center justify-center bg-slate-100 text-slate-400 transition group-hover:bg-hkbp-soft group-hover:text-hkbp-link">
                 <UserRound size={52} strokeWidth={1.5} aria-hidden="true" />
                 <span className="sr-only">Placeholder foto</span>
               </div>
@@ -97,7 +97,7 @@ export function RetiredElderSearch({ profiles }: RetiredElderSearchProps) {
           />
           <div className="relative grid w-full max-w-3xl overflow-hidden rounded-md bg-white shadow-2xl sm:grid-cols-[0.75fr_1.25fr]">
             <button
-              className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-md bg-white/95 text-slate-900 shadow-sm transition hover:bg-red-50 hover:text-red-700"
+              className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-md bg-white/95 text-slate-900 shadow-sm transition hover:bg-hkbp-soft hover:text-hkbp-link"
               onClick={() => setSelectedProfile(null)}
               type="button"
               aria-label="Tutup biografi"
@@ -109,7 +109,7 @@ export function RetiredElderSearch({ profiles }: RetiredElderSearchProps) {
               <span className="sr-only">Placeholder foto</span>
             </div>
             <div className="p-6 sm:p-8">
-              <p className="text-xs font-bold uppercase tracking-wide text-red-700">
+              <p className="text-xs font-bold uppercase tracking-wide text-hkbp-link">
                 Sintua Purnabakti
               </p>
               <h3 className="mt-2 text-2xl font-bold text-slate-950">
