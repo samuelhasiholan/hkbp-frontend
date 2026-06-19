@@ -24,6 +24,11 @@ type ProfileGridProps = {
   profiles: NonNullable<PageContent["organizationProfiles"]>;
 };
 
+type ChildPageLinksProps = {
+  childPages: NonNullable<PageContent["childPages"]>;
+  title: string;
+};
+
 function ProfileGrid({ profiles }: ProfileGridProps) {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -47,6 +52,62 @@ function ProfileGrid({ profiles }: ProfileGridProps) {
         </article>
       ))}
     </div>
+  );
+}
+
+function ChildPageLinks({ childPages, title }: ChildPageLinksProps) {
+  const linkIcons = [
+    BookOpenText,
+    HeartHandshake,
+    CalendarDays,
+    UsersRound,
+    MapPin,
+    Mail,
+    Clock3,
+  ];
+
+  return (
+    <section className="grid gap-4">
+      <div>
+        <h2 className="text-xl font-bold text-slate-950">
+          Jelajahi {title}
+        </h2>
+        <p className="mt-2 text-sm leading-6 text-slate-600">
+          Pilih halaman berikut untuk melihat informasi yang lebih lengkap.
+        </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        {childPages.map((childPage, index) => {
+          const Icon = linkIcons[index] ?? BookOpenText;
+
+          return (
+            <Link
+              className="group flex min-h-48 flex-col rounded-md border border-slate-200 bg-white p-5 transition hover:border-red-200 hover:bg-red-50"
+              href={childPage.href}
+              key={childPage.href}
+            >
+              <span className="flex size-11 items-center justify-center rounded-md bg-red-50 text-red-700 transition group-hover:bg-white">
+                <Icon size={21} aria-hidden="true" />
+              </span>
+              <span className="mt-5 text-lg font-bold text-slate-950">
+                {childPage.title}
+              </span>
+              <span className="mt-2 grow text-sm leading-6 text-slate-600">
+                {childPage.description}
+              </span>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-red-700">
+                Buka halaman
+                <ArrowRight
+                  className="size-4 transition group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -346,22 +407,43 @@ export function PageTemplate({ content }: PageTemplateProps) {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-          <aside className="h-fit rounded-md border border-slate-200 bg-white p-5">
-            <h2 className="text-sm font-bold uppercase tracking-wide text-slate-500">
-              Fokus Halaman
-            </h2>
-            <div className="mt-4 grid gap-3">
-              {content.highlights.map((highlight) => (
-                <p className="flex items-start gap-3 text-sm font-medium text-slate-800" key={highlight}>
-                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-red-700" aria-hidden="true" />
-                  {highlight}
-                </p>
-              ))}
-            </div>
-          </aside>
+        <div
+          className={
+            content.childPages?.length
+              ? "grid gap-8"
+              : "grid gap-8 lg:grid-cols-[0.75fr_1.25fr]"
+          }
+        >
+          {content.childPages?.length ? null : (
+            <aside className="h-fit rounded-md border border-slate-200 bg-white p-5">
+              <h2 className="text-sm font-bold uppercase tracking-wide text-slate-500">
+                Fokus Halaman
+              </h2>
+              <div className="mt-4 grid gap-3">
+                {content.highlights.map((highlight) => (
+                  <p
+                    className="flex items-start gap-3 text-sm font-medium text-slate-800"
+                    key={highlight}
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 size-4 shrink-0 text-red-700"
+                      aria-hidden="true"
+                    />
+                    {highlight}
+                  </p>
+                ))}
+              </div>
+            </aside>
+          )}
 
           <div className="grid gap-5">
+            {content.childPages?.length ? (
+              <ChildPageLinks
+                childPages={content.childPages}
+                title={content.title}
+              />
+            ) : null}
+
             {content.organizationProfiles?.length ? (
               <section className="grid gap-4">
                 <div>
@@ -399,14 +481,21 @@ export function PageTemplate({ content }: PageTemplateProps) {
               <RetiredElderSearch profiles={content.retiredElderProfiles} />
             ) : null}
 
-            {content.sections.map((section) => (
-              <article className="rounded-md border border-slate-200 bg-white p-6" key={section.title}>
-                <h2 className="text-xl font-bold text-slate-950">{section.title}</h2>
-                <p className="mt-3 whitespace-pre-line leading-7 text-slate-600">
-                  {section.body}
-                </p>
-              </article>
-            ))}
+            {content.childPages?.length
+              ? null
+              : content.sections.map((section) => (
+                  <article
+                    className="rounded-md border border-slate-200 bg-white p-6"
+                    key={section.title}
+                  >
+                    <h2 className="text-xl font-bold text-slate-950">
+                      {section.title}
+                    </h2>
+                    <p className="mt-3 whitespace-pre-line leading-7 text-slate-600">
+                      {section.body}
+                    </p>
+                  </article>
+                ))}
 
             {content.galleryImages?.length ? (
               <GalleryGrid images={content.galleryImages} />
@@ -436,13 +525,15 @@ export function PageTemplate({ content }: PageTemplateProps) {
               </div>
             ) : null}
 
-            <Link
-              className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-red-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-red-800"
-              href="/kontak"
-            >
-              Hubungi Gereja
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+            {content.childPages?.length ? null : (
+              <Link
+                className="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-red-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-red-800"
+                href="/kontak"
+              >
+                Hubungi Gereja
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            )}
           </div>
         </div>
       </section>

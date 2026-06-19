@@ -32,6 +32,11 @@ export type PageContent = {
   description: string;
   summary: string;
   highlights: string[];
+  childPages?: {
+    title: string;
+    description: string;
+    href: string;
+  }[];
   sections: {
     title: string;
     body: string;
@@ -72,6 +77,26 @@ export const pageContent: Record<string, PageContent> = {
     summary:
       "HKBP Resort Srengseng Sawah hadir sebagai rumah rohani yang menumbuhkan iman, persekutuan, kesaksian, dan pelayanan kasih bagi warga jemaat serta masyarakat sekitar.",
     highlights: ["Sejarah pelayanan", "Visi dan misi", "Dokumentasi kegiatan"],
+    childPages: [
+      {
+        title: "Sejarah",
+        description:
+          "Telusuri perjalanan jemaat dari awal persekutuan hingga pelayanan yang berlangsung saat ini.",
+        href: "/tentang-gereja/sejarah",
+      },
+      {
+        title: "Visi & Misi",
+        description:
+          "Lihat arah pelayanan bersama yang menuntun pertumbuhan iman, persekutuan, dan kesaksian jemaat.",
+        href: "/tentang-gereja/visi-misi",
+      },
+      {
+        title: "Galeri",
+        description:
+          "Buka dokumentasi kegiatan ibadah, pelayanan kategorial, dan momen kebersamaan jemaat.",
+        href: "/tentang-gereja/galeri",
+      },
+    ],
     sections: [
       {
         title: "Identitas Jemaat",
@@ -206,6 +231,50 @@ export const pageContent: Record<string, PageContent> = {
       "Pendeta dan parhalado",
       "Dewan pelayanan",
       "Wilayah atau wijk",
+    ],
+    childPages: [
+      {
+        title: "Pendeta",
+        description:
+          "Kenali para pelayan tertahbis yang memimpin penggembalaan, firman, dan sakramen.",
+        href: "/organisasi/pendeta",
+      },
+      {
+        title: "Fungsionaris",
+        description:
+          "Lihat pelayan yang mengelola administrasi, keuangan, dan koordinasi kegiatan jemaat.",
+        href: "/organisasi/fungsionaris",
+      },
+      {
+        title: "Dewan Koinonia",
+        description:
+          "Masuk ke bidang persekutuan, pembinaan iman, dan pelayanan kategorial jemaat.",
+        href: "/organisasi/dewan-koinonia",
+      },
+      {
+        title: "Dewan Marturia",
+        description:
+          "Telusuri bidang kesaksian, publikasi, musik, dan pewartaan kabar baik.",
+        href: "/organisasi/dewan-marturia",
+      },
+      {
+        title: "Dewan Diakonia",
+        description:
+          "Buka bidang pelayanan kasih, kepedulian sosial, dan pendampingan warga jemaat.",
+        href: "/organisasi/dewan-diakonia",
+      },
+      {
+        title: "Wilayah (Wijk)",
+        description:
+          "Lihat pembagian wilayah pelayanan yang mempererat perhatian antar keluarga jemaat.",
+        href: "/organisasi/wilayah-wijk",
+      },
+      {
+        title: "Sintua Purnabakti",
+        description:
+          "Temukan arsip penghormatan bagi para sintua yang pernah melayani jemaat.",
+        href: "/organisasi/sintua-purnabakti",
+      },
     ],
     sections: [
       {
@@ -540,6 +609,26 @@ export const pageContent: Record<string, PageContent> = {
     summary:
       "Jadwal pelayanan membantu jemaat menyiapkan diri untuk beribadah, melayani, dan hadir dalam kegiatan persekutuan dengan tertib.",
     highlights: ["Ibadah Minggu", "Partangiangan", "Pelayanan khusus"],
+    childPages: [
+      {
+        title: "Ibadah Minggu",
+        description:
+          "Lihat jadwal ibadah Minggu, jam kebaktian, dan informasi susunan pelayanan utama.",
+        href: "/jadwal-pelayanan/ibadah-minggu",
+      },
+      {
+        title: "Partangiangan",
+        description:
+          "Buka jadwal persekutuan doa di wijk, rumah keluarga, dan kelompok kategorial.",
+        href: "/jadwal-pelayanan/partangiangan",
+      },
+      {
+        title: "Pelayanan Khusus",
+        description:
+          "Temukan informasi pelayanan baptis, sidi, pernikahan, penghiburan, dan pastoral.",
+        href: "/jadwal-pelayanan/pelayanan-khusus",
+      },
+    ],
     sections: [
       {
         title: "Informasi Terpadu",
@@ -616,6 +705,20 @@ export const pageContent: Record<string, PageContent> = {
     summary:
       "Warta jemaat menjadi kanal informasi resmi agar warga mengetahui agenda pelayanan, pokok doa, kegiatan, dan keputusan penting gereja.",
     highlights: ["Warta mingguan", "Pengumuman", "Arsip"],
+    childPages: [
+      {
+        title: "Warta Mingguan",
+        description:
+          "Buka warta terbaru untuk ibadah dan kegiatan minggu berjalan.",
+        href: "/warta-jemaat/warta-mingguan",
+      },
+      {
+        title: "Arsip Warta",
+        description:
+          "Cari kumpulan warta terdahulu sebagai dokumentasi dan rujukan pelayanan.",
+        href: "/warta-jemaat/arsip-warta",
+      },
+    ],
     sections: [
       {
         title: "Isi Warta",
