@@ -1,6 +1,7 @@
-type OrganizationProfile = {
+export type OrganizationProfile = {
   name: string;
   role: string;
+  bio?: string;
 };
 
 type CouncilSection = {
@@ -41,6 +42,7 @@ export type PageContent = {
   galleryImages?: GalleryImage[];
   callout?: string;
   mapEmbedUrl?: string;
+  layoutVariant?: "pastors" | "officers" | "council";
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
@@ -219,6 +221,7 @@ export const pageContent: Record<string, PageContent> = {
   "organisasi/pendeta": {
     title: "Pendeta",
     eyebrow: "Organisasi",
+    layoutVariant: "pastors",
     description:
       "Pelayan tertahbis yang memimpin penggembalaan, pemberitaan firman, dan pelayanan sakramen.",
     summary:
@@ -236,22 +239,26 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
-        name: "Nama Pendeta 1",
-        role: "Jabatan Pendeta 1",
+        name: "Pdt. Nama Pendeta 1",
+        role: "Pendeta Resort",
+        bio: "Melayani jemaat melalui pemberitaan firman, pelayanan sakramen, perkunjungan pastoral, dan pendampingan keluarga. Dalam keseharian pelayanan, pendeta membantu menjaga arah pelayanan gereja tetap berakar pada firman Tuhan dan kebutuhan jemaat.",
       },
       {
-        name: "Nama Pendeta 2",
-        role: "Jabatan Pendeta 2",
+        name: "Pdt. Nama Pendeta 2",
+        role: "Pendeta Fungsional",
+        bio: "Berfokus pada pembinaan iman lintas usia, pendampingan kategorial, serta penguatan kehidupan keluarga jemaat melalui pengajaran, kunjungan, dan percakapan pastoral.",
       },
       {
-        name: "Nama Pendeta 3",
-        role: "Jabatan Pendeta 3",
+        name: "Pdt. Nama Pendeta 3",
+        role: "Pendeta Pelayanan",
+        bio: "Mendukung pelayanan ibadah, liturgi, dan pelayanan khusus seperti baptis, sidi, pernikahan, penghiburan, serta pendampingan jemaat dalam momen penting kehidupan.",
       },
     ],
   },
   "organisasi/fungsionaris": {
     title: "Fungsionaris",
     eyebrow: "Organisasi",
+    layoutVariant: "officers",
     description:
       "Pelayan yang membantu pengelolaan administrasi, keuangan, dan koordinasi kegiatan jemaat.",
     summary:
@@ -269,22 +276,26 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
-        name: "Nama Fungsionaris 1",
-        role: "Jabatan Fungsionaris 1",
+        name: "Nama Ketua",
+        role: "Ketua",
+        bio: "Ketua membantu mengarahkan koordinasi fungsionaris, memastikan keputusan rapat ditindaklanjuti, dan menjaga komunikasi pelayanan berjalan tertib bersama pendeta, parhalado, dan bidang-bidang pelayanan.",
       },
       {
-        name: "Nama Fungsionaris 2",
-        role: "Jabatan Fungsionaris 2",
+        name: "Nama Sekretaris",
+        role: "Sekretaris",
+        bio: "Sekretaris mendukung kerapian administrasi jemaat melalui pencatatan agenda, notulen, arsip surat, dan dokumentasi keputusan agar pelayanan dapat berjalan transparan dan mudah ditelusuri.",
       },
       {
-        name: "Nama Fungsionaris 3",
-        role: "Jabatan Fungsionaris 3",
+        name: "Nama Bendahara",
+        role: "Bendahara",
+        bio: "Bendahara membantu mengelola pemasukan, pengeluaran, dan pelaporan keuangan jemaat dengan teliti, bertanggung jawab, serta mendukung kebutuhan operasional pelayanan gereja.",
       },
     ],
   },
   "organisasi/dewan-koinonia": {
     title: "Dewan Koinonia",
     eyebrow: "Organisasi",
+    layoutVariant: "council",
     description:
       "Bidang yang memperkuat persekutuan, pembinaan iman, dan kehidupan kategorial jemaat.",
     summary:
@@ -303,15 +314,18 @@ export const pageContent: Record<string, PageContent> = {
     organizationProfiles: [
       {
         name: "Nama Dewan Koinonia 1",
-        role: "Jabatan Dewan Koinonia 1",
+        role: "Ketua Dewan Koinonia",
+        bio: "Mengoordinasikan pelayanan koinonia agar pembinaan iman, persekutuan kategorial, dan kehidupan keluarga jemaat berjalan terarah serta saling mendukung.",
       },
       {
         name: "Nama Dewan Koinonia 2",
-        role: "Jabatan Dewan Koinonia 2",
+        role: "Sekretaris Dewan Koinonia",
+        bio: "Mendukung perencanaan, pencatatan, dan tindak lanjut program koinonia bersama seksi-seksi agar pelayanan pembinaan jemaat berjalan tertib.",
       },
       {
         name: "Nama Dewan Koinonia 3",
-        role: "Jabatan Dewan Koinonia 3",
+        role: "Bendahara Dewan Koinonia",
+        bio: "Membantu pengelolaan kebutuhan pelayanan koinonia secara bertanggung jawab untuk mendukung kegiatan kategorial dan pembinaan jemaat.",
       },
     ],
     councilSections: [
@@ -362,6 +376,7 @@ export const pageContent: Record<string, PageContent> = {
   "organisasi/dewan-marturia": {
     title: "Dewan Marturia",
     eyebrow: "Organisasi",
+    layoutVariant: "council",
     description:
       "Bidang kesaksian gereja melalui pekabaran Injil, komunikasi, dan keterlibatan publik.",
     summary:
@@ -380,15 +395,18 @@ export const pageContent: Record<string, PageContent> = {
     organizationProfiles: [
       {
         name: "Nama Dewan Marturia 1",
-        role: "Jabatan Dewan Marturia 1",
+        role: "Ketua Dewan Marturia",
+        bio: "Mengoordinasikan pelayanan kesaksian gereja melalui pewartaan, komunikasi, publikasi, dan penguatan semangat misi jemaat.",
       },
       {
         name: "Nama Dewan Marturia 2",
-        role: "Jabatan Dewan Marturia 2",
+        role: "Sekretaris Dewan Marturia",
+        bio: "Mendukung administrasi program marturia, pencatatan kegiatan, dan koordinasi antar seksi agar pelayanan kesaksian berjalan rapi.",
       },
       {
         name: "Nama Dewan Marturia 3",
-        role: "Jabatan Dewan Marturia 3",
+        role: "Bendahara Dewan Marturia",
+        bio: "Membantu pengelolaan kebutuhan pelayanan marturia secara tertib untuk mendukung program zending, musik, dan publikasi gereja.",
       },
     ],
     councilSections: [
@@ -411,6 +429,7 @@ export const pageContent: Record<string, PageContent> = {
   "organisasi/dewan-diakonia": {
     title: "Dewan Diakonia",
     eyebrow: "Organisasi",
+    layoutVariant: "council",
     description:
       "Bidang pelayanan kasih untuk warga jemaat dan masyarakat yang membutuhkan perhatian.",
     summary:
@@ -429,15 +448,18 @@ export const pageContent: Record<string, PageContent> = {
     organizationProfiles: [
       {
         name: "Nama Dewan Diakonia 1",
-        role: "Jabatan Dewan Diakonia 1",
+        role: "Ketua Dewan Diakonia",
+        bio: "Mengoordinasikan pelayanan kasih jemaat agar kunjungan, kepedulian sosial, dan pendampingan warga dapat berjalan tepat sasaran.",
       },
       {
         name: "Nama Dewan Diakonia 2",
-        role: "Jabatan Dewan Diakonia 2",
+        role: "Sekretaris Dewan Diakonia",
+        bio: "Mendukung pencatatan program, koordinasi pelayanan, dan dokumentasi kebutuhan diakonia supaya pelayanan kasih dapat ditindaklanjuti dengan baik.",
       },
       {
         name: "Nama Dewan Diakonia 3",
-        role: "Jabatan Dewan Diakonia 3",
+        role: "Bendahara Dewan Diakonia",
+        bio: "Membantu mengelola dukungan dan kebutuhan pelayanan diakonia secara bertanggung jawab bagi warga jemaat dan masyarakat yang membutuhkan.",
       },
     ],
     councilSections: [
