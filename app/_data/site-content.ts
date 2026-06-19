@@ -1,6 +1,13 @@
+export type ProfilePhoto = {
+  src: string;
+  alt: string;
+};
+
 export type OrganizationProfile = {
+  id: string;
   name: string;
   role: string;
+  photo?: ProfilePhoto;
   bio?: string;
 };
 
@@ -12,9 +19,11 @@ type CouncilSection = {
 };
 
 export type RetiredElderProfile = {
+  id: string;
   name: string;
   role: string;
   servicePeriod: string;
+  photo?: ProfilePhoto;
   bio: string;
 };
 
@@ -58,13 +67,15 @@ export const SITE_NAME = "HKBP Resort Srengseng Sawah";
 
 const createSectionProfiles = (sectionName: string): OrganizationProfile[] =>
   Array.from({ length: 5 }, (_, index) => ({
+    id: `${sectionName.toLowerCase().replaceAll(" ", "-")}-${index + 1}`,
     name: `Nama ${sectionName} ${index + 1}`,
     role: `Jabatan ${sectionName} ${index + 1}`,
   }));
 
 const retiredElderProfiles: RetiredElderProfile[] = Array.from(
-  { length: 20 },
+  { length: 50 },
   (_, index) => ({
+    id: `sintua-purnabakti-${index + 1}`,
     name: `Nama Sintua Purnabakti ${index + 1}`,
     role: `Jabatan Sintua Purnabakti ${index + 1}`,
     servicePeriod: `Masa Tugas ${index + 1}`,
@@ -421,16 +432,19 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
+        id: "pendeta-resort",
         name: "Pdt. Nama Pendeta 1",
         role: "Pendeta Resort",
         bio: "Melayani jemaat melalui pemberitaan firman, pelayanan sakramen, perkunjungan pastoral, dan pendampingan keluarga. Dalam keseharian pelayanan, pendeta membantu menjaga arah pelayanan gereja tetap berakar pada firman Tuhan dan kebutuhan jemaat.",
       },
       {
+        id: "pendeta-fungsional",
         name: "Pdt. Nama Pendeta 2",
         role: "Pendeta Fungsional",
         bio: "Berfokus pada pembinaan iman lintas usia, pendampingan kategorial, serta penguatan kehidupan keluarga jemaat melalui pengajaran, kunjungan, dan percakapan pastoral.",
       },
       {
+        id: "pendeta-pelayanan",
         name: "Pdt. Nama Pendeta 3",
         role: "Pendeta Pelayanan",
         bio: "Mendukung pelayanan ibadah, liturgi, dan pelayanan khusus seperti baptis, sidi, pernikahan, penghiburan, serta pendampingan jemaat dalam momen penting kehidupan.",
@@ -458,16 +472,19 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
+        id: "fungsionaris-ketua",
         name: "Nama Ketua",
         role: "Ketua",
         bio: "Ketua membantu mengarahkan koordinasi fungsionaris, memastikan keputusan rapat ditindaklanjuti, dan menjaga komunikasi pelayanan berjalan tertib bersama pendeta, parhalado, dan bidang-bidang pelayanan.",
       },
       {
+        id: "fungsionaris-sekretaris",
         name: "Nama Sekretaris",
         role: "Sekretaris",
         bio: "Sekretaris mendukung kerapian administrasi jemaat melalui pencatatan agenda, notulen, arsip surat, dan dokumentasi keputusan agar pelayanan dapat berjalan transparan dan mudah ditelusuri.",
       },
       {
+        id: "fungsionaris-bendahara",
         name: "Nama Bendahara",
         role: "Bendahara",
         bio: "Bendahara membantu mengelola pemasukan, pengeluaran, dan pelaporan keuangan jemaat dengan teliti, bertanggung jawab, serta mendukung kebutuhan operasional pelayanan gereja.",
@@ -495,16 +512,19 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
+        id: "dewan-koinonia-ketua",
         name: "Nama Dewan Koinonia 1",
         role: "Ketua Dewan Koinonia",
         bio: "Mengoordinasikan pelayanan koinonia agar pembinaan iman, persekutuan kategorial, dan kehidupan keluarga jemaat berjalan terarah serta saling mendukung.",
       },
       {
+        id: "dewan-koinonia-sekretaris",
         name: "Nama Dewan Koinonia 2",
         role: "Sekretaris Dewan Koinonia",
         bio: "Mendukung perencanaan, pencatatan, dan tindak lanjut program koinonia bersama seksi-seksi agar pelayanan pembinaan jemaat berjalan tertib.",
       },
       {
+        id: "dewan-koinonia-bendahara",
         name: "Nama Dewan Koinonia 3",
         role: "Bendahara Dewan Koinonia",
         bio: "Membantu pengelolaan kebutuhan pelayanan koinonia secara bertanggung jawab untuk mendukung kegiatan kategorial dan pembinaan jemaat.",
@@ -576,16 +596,19 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
+        id: "dewan-marturia-ketua",
         name: "Nama Dewan Marturia 1",
         role: "Ketua Dewan Marturia",
         bio: "Mengoordinasikan pelayanan kesaksian gereja melalui pewartaan, komunikasi, publikasi, dan penguatan semangat misi jemaat.",
       },
       {
+        id: "dewan-marturia-sekretaris",
         name: "Nama Dewan Marturia 2",
         role: "Sekretaris Dewan Marturia",
         bio: "Mendukung administrasi program marturia, pencatatan kegiatan, dan koordinasi antar seksi agar pelayanan kesaksian berjalan rapi.",
       },
       {
+        id: "dewan-marturia-bendahara",
         name: "Nama Dewan Marturia 3",
         role: "Bendahara Dewan Marturia",
         bio: "Membantu pengelolaan kebutuhan pelayanan marturia secara tertib untuk mendukung program zending, musik, dan publikasi gereja.",
@@ -629,16 +652,19 @@ export const pageContent: Record<string, PageContent> = {
     ],
     organizationProfiles: [
       {
+        id: "dewan-diakonia-ketua",
         name: "Nama Dewan Diakonia 1",
         role: "Ketua Dewan Diakonia",
         bio: "Mengoordinasikan pelayanan kasih jemaat agar kunjungan, kepedulian sosial, dan pendampingan warga dapat berjalan tepat sasaran.",
       },
       {
+        id: "dewan-diakonia-sekretaris",
         name: "Nama Dewan Diakonia 2",
         role: "Sekretaris Dewan Diakonia",
         bio: "Mendukung pencatatan program, koordinasi pelayanan, dan dokumentasi kebutuhan diakonia supaya pelayanan kasih dapat ditindaklanjuti dengan baik.",
       },
       {
+        id: "dewan-diakonia-bendahara",
         name: "Nama Dewan Diakonia 3",
         role: "Bendahara Dewan Diakonia",
         bio: "Membantu mengelola dukungan dan kebutuhan pelayanan diakonia secara bertanggung jawab bagi warga jemaat dan masyarakat yang membutuhkan.",

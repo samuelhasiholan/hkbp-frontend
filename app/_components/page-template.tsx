@@ -31,16 +31,25 @@ type ChildPageLinksProps = {
 
 function ProfileGrid({ profiles }: ProfileGridProps) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
       {profiles.map((profile) => (
         <article
           className="overflow-hidden rounded-md border border-slate-200 bg-white"
-          key={profile.name}
+          key={profile.id}
         >
-          <div className="flex aspect-square items-center justify-center bg-slate-100 text-slate-400">
-            <UserRound size={52} strokeWidth={1.5} aria-hidden="true" />
-            <span className="sr-only">Placeholder foto</span>
-          </div>
+          {profile.photo?.src ? (
+            <div
+              className="aspect-square bg-cover bg-center bg-slate-100"
+              role="img"
+              aria-label={profile.photo.alt}
+              style={{ backgroundImage: `url("${profile.photo.src}")` }}
+            />
+          ) : (
+            <div className="flex aspect-square items-center justify-center bg-slate-100 text-slate-400">
+              <UserRound size={52} strokeWidth={1.5} aria-hidden="true" />
+              <span className="sr-only">Placeholder foto</span>
+            </div>
+          )}
           <div className="border-t border-slate-200 p-4">
             <h3 className="text-base font-bold text-slate-950">
               {profile.name}
@@ -389,7 +398,6 @@ function WijkPageTemplate({ content }: PageTemplateProps) {
 
 function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
   const profiles = content.organizationProfiles ?? [];
-  const sectionIcons = [BookOpenText, HeartHandshake];
   const isPastorPage = content.layoutVariant === "pastors";
   const isOfficerPage = content.layoutVariant === "officers";
   const profileLabel = isPastorPage
@@ -470,32 +478,10 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-4 lg:grid-cols-2">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {content.sections.map((section, index) => {
-              const Icon = sectionIcons[index] ?? UsersRound;
-
-              return (
-                <article
-                  className="rounded-md border border-slate-200 bg-white p-6"
-                  key={section.title}
-                >
-                  <span className="flex size-11 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
-                    <Icon size={21} aria-hidden="true" />
-                  </span>
-                  <h2 className="mt-5 text-xl font-bold text-slate-950">
-                    {section.title}
-                  </h2>
-                  <p className="mt-3 leading-7 text-slate-600">
-                    {section.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-
+        <div className="grid gap-4">
           {profiles.length ? (
             <OrganizationPeopleGrid
+              columns="wide"
               description={teamDescription}
               label={profileLabel}
               profiles={profiles}
@@ -531,6 +517,10 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
 }
 
 export function PageTemplate({ content }: PageTemplateProps) {
+  const isTransitOrDirectoryPage =
+    Boolean(content.childPages?.length) ||
+    Boolean(content.retiredElderProfiles?.length);
+
   if (content.layoutVariant === "article") {
     return <ArticlePageTemplate content={content} />;
   }
@@ -579,12 +569,12 @@ export function PageTemplate({ content }: PageTemplateProps) {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div
           className={
-            content.childPages?.length
+            isTransitOrDirectoryPage
               ? "grid gap-8"
               : "grid gap-8 lg:grid-cols-[0.75fr_1.25fr]"
           }
         >
-          {content.childPages?.length ? null : (
+          {isTransitOrDirectoryPage ? null : (
             <aside className="h-fit rounded-md border border-slate-200 bg-white p-5">
               <h2 className="text-sm font-bold uppercase tracking-wide text-slate-500">
                 Fokus Halaman
@@ -651,7 +641,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
               <RetiredElderSearch profiles={content.retiredElderProfiles} />
             ) : null}
 
-            {content.childPages?.length
+            {isTransitOrDirectoryPage
               ? null
               : content.sections.map((section) => (
                   <article

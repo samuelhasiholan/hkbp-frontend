@@ -10,16 +10,64 @@ type OrganizationPeopleGridProps = {
   profiles: OrganizationProfile[];
   title: string;
   description: string;
+  columns?: "default" | "wide";
 };
+
+function ProfilePhoto({
+  profile,
+  size = "card",
+}: {
+  profile: OrganizationProfile;
+  size?: "card" | "modal";
+}) {
+  const photoLabel = profile.photo?.alt ?? `Foto ${profile.name}`;
+
+  if (profile.photo?.src) {
+    return (
+      <div
+        className={
+          size === "modal"
+            ? "min-h-64 bg-cover bg-center bg-slate-100"
+            : "aspect-square bg-cover bg-center bg-slate-100"
+        }
+        role="img"
+        aria-label={photoLabel}
+        style={{ backgroundImage: `url("${profile.photo.src}")` }}
+      />
+    );
+  }
+
+  return (
+    <div
+      className={
+        size === "modal"
+          ? "flex min-h-64 items-center justify-center bg-slate-100 text-slate-400"
+          : "flex aspect-square items-center justify-center bg-slate-100 text-slate-400 transition group-hover:bg-hkbp-soft group-hover:text-hkbp-link"
+      }
+    >
+      <UserRound
+        size={size === "modal" ? 88 : 56}
+        strokeWidth={size === "modal" ? 1.4 : 1.5}
+        aria-hidden="true"
+      />
+      <span className="sr-only">Placeholder foto</span>
+    </div>
+  );
+}
 
 export function OrganizationPeopleGrid({
   label,
   profiles,
   title,
   description,
+  columns = "default",
 }: OrganizationPeopleGridProps) {
   const [selectedProfile, setSelectedProfile] =
     useState<OrganizationProfile | null>(null);
+  const gridColumns =
+    columns === "wide"
+      ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+      : "grid gap-4 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
     <section className="grid gap-4">
@@ -28,18 +76,15 @@ export function OrganizationPeopleGrid({
         <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={gridColumns}>
         {profiles.map((profile) => (
           <button
             className="group flex h-full flex-col overflow-hidden rounded-md border border-slate-200 bg-white text-left transition hover:border-hkbp-border hover:shadow-md"
-            key={profile.name}
+            key={profile.id}
             onClick={() => setSelectedProfile(profile)}
             type="button"
           >
-            <div className="flex aspect-square items-center justify-center bg-slate-100 text-slate-400 transition group-hover:bg-hkbp-soft group-hover:text-hkbp-link">
-              <UserRound size={56} strokeWidth={1.5} aria-hidden="true" />
-              <span className="sr-only">Placeholder foto</span>
-            </div>
+            <ProfilePhoto profile={profile} />
             <div className="flex grow flex-col border-t border-slate-200 p-4">
               <p className="text-xs font-bold uppercase tracking-wide text-hkbp-link">
                 {label}
@@ -77,10 +122,7 @@ export function OrganizationPeopleGrid({
             >
               <X size={20} aria-hidden="true" />
             </button>
-            <div className="flex min-h-64 items-center justify-center bg-slate-100 text-slate-400">
-              <UserRound size={88} strokeWidth={1.4} aria-hidden="true" />
-              <span className="sr-only">Placeholder foto</span>
-            </div>
+            <ProfilePhoto profile={selectedProfile} size="modal" />
             <div className="p-6 sm:p-8">
               <p className="text-xs font-bold uppercase tracking-wide text-hkbp-link">
                 {label}
