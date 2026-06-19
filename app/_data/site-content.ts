@@ -21,8 +21,6 @@ export type RetiredElderProfile = {
 export type GalleryImage = {
   src: string;
   alt: string;
-  title: string;
-  category: string;
   description: string;
 };
 
@@ -177,45 +175,33 @@ export const pageContent: Record<string, PageContent> = {
       {
         src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80",
         alt: "Suasana ibadah di dalam gereja",
-        title: "Ibadah Minggu",
-        category: "Ibadah",
         description: "Suasana ibadah Minggu bersama warga jemaat.",
       },
       {
         src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=80",
         alt: "Kegiatan persekutuan jemaat di ruang terbuka",
-        title: "Persekutuan Jemaat",
-        category: "Persekutuan",
         description:
           "Kebersamaan warga jemaat dalam persekutuan dan kegiatan keluarga.",
       },
       {
         src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
         alt: "Kelompok pelayanan berkumpul bersama",
-        title: "Pelayanan Kategorial",
-        category: "Pelayanan",
         description:
           "Kegiatan kategorial, pembinaan iman, dan pelayanan kunjungan.",
       },
       {
         src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80",
         alt: "Kebersamaan dalam kegiatan komunitas",
-        title: "Kegiatan Bersama",
-        category: "Komunitas",
         description: "Kebersamaan jemaat dalam kegiatan gereja dan sosial.",
       },
       {
         src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80",
         alt: "Anak-anak mengikuti kegiatan bersama",
-        title: "Sekolah Minggu",
-        category: "Anak",
         description: "Pelayanan anak dan pembinaan iman sejak dini.",
       },
       {
         src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80",
         alt: "Relawan melakukan pelayanan sosial",
-        title: "Pelayanan Kasih",
-        category: "Diakonia",
         description: "Pelayanan kasih dan kepedulian sosial jemaat.",
       },
     ],
