@@ -154,6 +154,7 @@ export const pageContent: Record<string, PageContent> = {
   "tentang-gereja/visi-misi": {
     title: "Visi & Misi",
     eyebrow: "Tentang Gereja",
+    layoutVariant: "article",
     description:
       "Arah bersama untuk menjadi jemaat yang bertumbuh, melayani, dan menjadi berkat.",
     summary:
@@ -165,12 +166,20 @@ export const pageContent: Record<string, PageContent> = {
     ],
     sections: [
       {
+        title: "Arah Pelayanan Bersama",
+        body: "Visi dan misi menolong seluruh pelayanan jemaat bergerak dalam arah yang sama. Setiap ibadah, pembinaan, persekutuan, kesaksian, dan pelayanan kasih diarahkan untuk membangun jemaat yang setia kepada firman Tuhan serta peka terhadap kebutuhan keluarga dan masyarakat sekitar.",
+      },
+      {
         title: "Visi",
-        body: "Menjadi jemaat HKBP yang berakar dalam firman Tuhan, hidup dalam persekutuan yang saling mengasihi, dan hadir sebagai berkat bagi masyarakat.",
+        body: "Menjadi jemaat HKBP yang berakar dalam firman Tuhan, hidup dalam persekutuan yang saling mengasihi, bertumbuh dalam iman, dan hadir sebagai berkat bagi masyarakat.",
       },
       {
         title: "Misi",
-        body: "Membangun ibadah yang hidup, memperkuat pembinaan iman keluarga, menggerakkan pelayanan kategorial, meningkatkan kepedulian sosial, dan mengelola pelayanan gereja secara tertib serta transparan.",
+        body: "Membangun ibadah yang hidup dan tertib, memperkuat pembinaan iman keluarga, menggerakkan pelayanan kategorial, meningkatkan kepedulian sosial, serta mengelola pelayanan gereja secara transparan dan bertanggung jawab.",
+      },
+      {
+        title: "Catatan CMS",
+        body: "Rumusan visi dan misi di halaman ini disiapkan sebagai data awal. Admin nantinya dapat memperbarui judul, isi visi, isi misi, dan keterangan pendukung melalui CMS sesuai keputusan resmi majelis jemaat.",
       },
     ],
     callout:
@@ -825,18 +834,27 @@ export const pageContent: Record<string, PageContent> = {
   "jadwal-pelayanan/ibadah-minggu": {
     title: "Ibadah Minggu",
     eyebrow: "Jadwal Pelayanan",
+    layoutVariant: "article",
     description: "Jadwal ibadah Minggu dan susunan pelayanan utama jemaat.",
     summary:
       "Ibadah Minggu menjadi pusat persekutuan jemaat untuk mendengar firman Tuhan, memuji, berdoa, dan mempersembahkan hidup bagi kemuliaan Allah.",
-    highlights: ["Ibadah pagi", "Ibadah siang", "Pelayan liturgi"],
+    highlights: [
+      "Jadwal ibadah dapat diperbarui",
+      "Susunan pelayan dapat diatur dari CMS",
+      "Informasi Minggu berjalan",
+    ],
     sections: [
       {
         title: "Jadwal Umum",
-        body: "Ibadah Pagi: 06.30 - selesai\nIbadah Siang: 09.30 - selesai\nIbadah Sore: 18.00 - selesai\nIbadah Remaja: 09.00 - selesai\nSekolah Minggu: 07.00 - selesai",
+        body: "Ibadah Minggu dilaksanakan sebagai ruang utama persekutuan jemaat untuk memuji Tuhan, mendengar firman, berdoa, dan menerima penguatan iman bersama keluarga besar HKBP Resort Srengseng Sawah.\n\nIbadah Pagi: 06.30 - selesai\nIbadah Siang: 09.30 - selesai\nIbadah Sore: 18.00 - selesai\nIbadah Remaja: 09.00 - selesai\nSekolah Minggu: 07.00 - selesai",
       },
       {
-        title: "Informasi Petugas",
-        body: "Bagian ini dapat memuat nama pengkhotbah, liturgis, pembaca epistel, song leader, pemusik, kolektan, dan petugas multimedia.",
+        title: "Susunan Pelayanan",
+        body: "Bagian ini dapat memuat nama pengkhotbah, liturgis, pembaca epistel, song leader, pemusik, kolektan, penerima tamu, petugas multimedia, dan pelayan lain yang bertugas dalam ibadah Minggu.\n\nInformasi susunan pelayanan dapat diperbarui setiap minggu melalui CMS agar warga jemaat dan pelayan dapat mempersiapkan diri dengan baik.",
+      },
+      {
+        title: "Catatan CMS",
+        body: "Konten jadwal ibadah Minggu ini disiapkan sebagai data awal. Admin nantinya dapat mengubah jam ibadah, daftar pelayan, tema ibadah, catatan khusus, atau pengumuman tambahan melalui CMS tanpa mengubah layout halaman.",
       },
     ],
     callout: "Silakan sesuaikan jam ibadah dengan jadwal resmi jemaat.",
@@ -844,38 +862,56 @@ export const pageContent: Record<string, PageContent> = {
   "jadwal-pelayanan/partangiangan": {
     title: "Partangiangan",
     eyebrow: "Jadwal Pelayanan",
+    layoutVariant: "article",
     description:
       "Jadwal persekutuan doa di rumah keluarga, wijk, dan kelompok kategorial.",
     summary:
       "Partangiangan mempererat persekutuan keluarga jemaat melalui doa, nyanyian, pembacaan firman, dan saling menguatkan.",
-    highlights: ["Partangiangan wijk", "Tuan rumah", "Pelayan firman"],
+    highlights: [
+      "Jadwal wijk dan kategorial",
+      "Tuan rumah dan lokasi",
+      "Pelayan firman dan catatan khusus",
+    ],
     sections: [
       {
         title: "Partangiangan Wijk",
-        body: "Jadwal dapat menampilkan wijk, tanggal, alamat atau tuan rumah, pelayan firman, dan catatan khusus untuk warga yang hadir.",
+        body: "Partangiangan wijk menjadi ruang persekutuan keluarga jemaat untuk berdoa, bernyanyi, membaca firman Tuhan, dan saling menguatkan dalam kehidupan sehari-hari. Melalui partangiangan, warga jemaat dapat semakin dekat satu sama lain dan semakin terhubung dengan pelayanan gereja.\n\nJadwal dapat menampilkan nama wijk, tanggal, waktu, alamat atau tuan rumah, pelayan firman, serta catatan khusus bagi warga yang hadir.",
       },
       {
         title: "Persekutuan Kategorial",
-        body: "Selain wijk, partangiangan juga dapat dilakukan oleh kelompok kategorial sesuai program pembinaan jemaat.",
+        body: "Selain partangiangan wijk, persekutuan doa juga dapat dilakukan oleh kelompok kategorial sesuai program pembinaan jemaat, seperti remaja, naposo, ama, parompuan, lansia, atau kelompok pelayanan lainnya.\n\nSetiap jadwal dapat diperbarui melalui CMS agar informasi kegiatan, tempat, pelayan, dan kebutuhan persiapan selalu sesuai dengan agenda terbaru.",
+      },
+      {
+        title: "Catatan CMS",
+        body: "Konten partangiangan ini disiapkan sebagai data awal. Admin nantinya dapat menambah daftar jadwal, mengganti nama tuan rumah, memperbarui alamat, menambahkan pelayan firman, atau memberi catatan khusus melalui CMS.",
       },
     ],
   },
   "jadwal-pelayanan/pelayanan-khusus": {
     title: "Pelayanan Khusus",
     eyebrow: "Jadwal Pelayanan",
+    layoutVariant: "article",
     description:
       "Informasi pelayanan baptis, sidi, pernikahan, penghiburan, dan kegiatan gerejawi khusus.",
     summary:
       "Pelayanan khusus membantu jemaat melewati momen penting kehidupan dengan pendampingan firman, doa, dan tata pelayanan gereja.",
-    highlights: ["Baptis dan sidi", "Pernikahan", "Penghiburan"],
+    highlights: [
+      "Baptis, sidi, dan pernikahan",
+      "Penghiburan dan kunjungan pastoral",
+      "Persyaratan dapat diperbarui",
+    ],
     sections: [
       {
         title: "Jenis Pelayanan",
-        body: "Meliputi baptisan kudus, naik sidi, pemberkatan pernikahan, perkunjungan orang sakit, penghiburan dukacita, dan pelayanan pastoral lainnya.",
+        body: "Pelayanan khusus meliputi baptisan kudus, naik sidi, pemberkatan pernikahan, perkunjungan orang sakit, penghiburan dukacita, dan pelayanan pastoral lainnya. Setiap pelayanan dilaksanakan dengan pendampingan firman, doa, serta tata pelayanan gereja yang tertib.",
       },
       {
         title: "Koordinasi",
-        body: "Warga jemaat dapat menghubungi kantor gereja atau parhalado wijk untuk mengetahui persyaratan, jadwal, dan pendampingan yang diperlukan.",
+        body: "Warga jemaat dapat menghubungi kantor gereja, pendeta, atau parhalado wijk untuk mengetahui persyaratan, jadwal, dokumen yang perlu disiapkan, serta bentuk pendampingan yang diperlukan.\n\nInformasi ini dapat diperbarui melalui CMS sesuai ketentuan terbaru gereja, jadwal pelayanan, dan kebutuhan pastoral jemaat.",
+      },
+      {
+        title: "Catatan CMS",
+        body: "Konten pelayanan khusus ini disiapkan sebagai data awal. Admin nantinya dapat memperbarui jenis pelayanan, persyaratan, jadwal koordinasi, kontak pelayanan, dan catatan pastoral melalui CMS tanpa mengubah layout halaman.",
       },
     ],
   },
@@ -916,10 +952,10 @@ export const pageContent: Record<string, PageContent> = {
     title: "Warta Mingguan",
     eyebrow: "Warta Jemaat",
     description:
-      "Warta terbaru yang dibagikan untuk ibadah dan kegiatan minggu berjalan.",
+      "Warta minggu ini terbuka otomatis dalam PDF viewer, lengkap dengan tombol unduh dan share untuk memudahkan distribusi kepada jemaat.",
     summary:
-      "Halaman ini disiapkan untuk menampilkan warta terbaru, baik sebagai ringkasan web maupun tautan unduhan PDF.",
-    highlights: ["Tata ibadah", "Pengumuman", "Unduh PDF"],
+      "Halaman ini disiapkan untuk menampilkan warta terbaru, baik sebagai ringkasan web maupun tautan unduhan PDF resmi gereja dalam Bahasa Indonesia dan Bahasa Batak.",
+    highlights: ["Tanggal warta", "Warna liturgi", "Dua versi bahasa"],
     sections: [
       {
         title: "Warta Terbaru",
@@ -927,7 +963,7 @@ export const pageContent: Record<string, PageContent> = {
       },
       {
         title: "Distribusi Digital",
-        body: "Warta mingguan dapat dibagikan melalui tautan website agar mudah diakses oleh warga jemaat sebelum dan sesudah ibadah.",
+        body: "Warta mingguan dapat dibagikan melalui tautan website agar mudah diakses oleh warga jemaat sebelum dan sesudah ibadah. Setiap warta dapat memiliki dua versi PDF, yaitu Bahasa Indonesia dan Bahasa Batak.",
       },
     ],
   },
@@ -935,18 +971,45 @@ export const pageContent: Record<string, PageContent> = {
     title: "Arsip Warta",
     eyebrow: "Warta Jemaat",
     description:
-      "Kumpulan warta jemaat terdahulu untuk dokumentasi dan rujukan.",
+      "Beberapa sample warta minggu yang sudah berlalu. Pilih salah satu arsip untuk langsung menampilkan PDF viewer di halaman ini.",
     summary:
       "Arsip warta membantu gereja menyimpan jejak pelayanan, pengumuman, dan kegiatan dari waktu ke waktu secara mudah dicari.",
-    highlights: ["Arsip bulanan", "Dokumen PDF", "Riwayat pengumuman"],
+    highlights: [
+      "Data CMS atau PDF resmi",
+      "Versi Indonesia dan Batak",
+      "Riwayat pengumuman",
+    ],
     sections: [
       {
-        title: "Penyimpanan",
-        body: "Warta dapat dikelompokkan berdasarkan tahun dan bulan sehingga admin maupun warga jemaat mudah menemukan dokumen lama.",
+        title: "Data Arsip",
+        body: "Arsip sample ini siap diganti dengan data CMS atau file PDF resmi gereja ketika tersedia. Setiap arsip warta disiapkan untuk menyimpan dua versi PDF: Bahasa Indonesia dan Bahasa Batak.",
       },
       {
-        title: "Manfaat",
-        body: "Arsip berguna untuk laporan pelayanan, dokumentasi program, dan rujukan saat mengevaluasi kegiatan gereja.",
+        title: "Cara Membuka",
+        body: "Klik kartu arsip untuk membuka warta, lalu gunakan toolbar PDF untuk unduh, share, salin tautan, atau buka tab baru.",
+      },
+    ],
+  },
+  "berita-publikasi": {
+    title: "Berita & Publikasi",
+    eyebrow: "Kabar Jemaat",
+    description:
+      "Kumpulan berita kegiatan, artikel renungan, dan publikasi resmi untuk mendukung kehidupan persekutuan jemaat.",
+    summary:
+      "Setiap section berisi sample thumbnail yang dapat dibuka ke halaman detail, lengkap dengan fitur berbagi ke media sosial dan salin tautan.",
+    highlights: [
+      "Berita kegiatan",
+      "Artikel dan renungan",
+      "Publikasi resmi",
+    ],
+    sections: [
+      {
+        title: "Konten CMS",
+        body: "Judul halaman, deskripsi, ringkasan, kategori publikasi, artikel, thumbnail, tanggal, penulis, dan isi detail dapat dipetakan dari CMS.",
+      },
+      {
+        title: "Distribusi Digital",
+        body: "Setiap publikasi dapat dibagikan melalui tautan website agar informasi pelayanan, renungan, dan pengumuman resmi mudah dijangkau jemaat.",
       },
     ],
   },
@@ -979,5 +1042,9 @@ export const pageContent: Record<string, PageContent> = {
 
 export const allPageSlugs = Object.keys(pageContent).filter(
   (slug) =>
-    !["warta-jemaat/warta-mingguan", "warta-jemaat/arsip-warta"].includes(slug),
+    ![
+      "warta-jemaat/warta-mingguan",
+      "warta-jemaat/arsip-warta",
+      "berita-publikasi",
+    ].includes(slug),
 );

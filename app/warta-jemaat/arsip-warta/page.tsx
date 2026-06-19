@@ -1,11 +1,13 @@
 import { Archive, Search } from "lucide-react";
 import { ArchiveBrowser } from "@/app/_components/warta/archive-browser";
+import { pageContent } from "@/app/_data/site-content";
 import { archivedWarta } from "@/app/_data/warta-content";
 
+const content = pageContent["warta-jemaat/arsip-warta"];
+
 export const metadata = {
-  title: "Arsip Warta | HKBP Resort Srengseng Sawah",
-  description:
-    "Arsip sample warta jemaat terdahulu yang dapat dibuka dalam PDF viewer, diunduh, dan dibagikan.",
+  title: `${content.title} | HKBP Resort Srengseng Sawah`,
+  description: content.description,
 };
 
 export default function ArsipWartaPage() {
@@ -15,14 +17,13 @@ export default function ArsipWartaPage() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
-              Warta Jemaat
+              {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
-              Arsip Warta
+              {content.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-              Beberapa sample warta minggu yang sudah berlalu. Pilih salah satu
-              arsip untuk langsung menampilkan PDF viewer di halaman ini.
+              {content.description}
             </p>
           </div>
           <div className="grid gap-3 self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
@@ -31,8 +32,7 @@ export default function ArsipWartaPage() {
                 <Archive size={18} aria-hidden="true" />
               </span>
               <p className="text-sm leading-6 text-slate-600">
-                Arsip sample ini siap diganti dengan data CMS atau file PDF
-                resmi gereja ketika tersedia.
+                {content.sections[0]?.body}
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -40,8 +40,7 @@ export default function ArsipWartaPage() {
                 <Search size={18} aria-hidden="true" />
               </span>
               <p className="text-sm leading-6 text-slate-600">
-                Klik kartu arsip untuk membuka warta, lalu gunakan toolbar PDF
-                untuk unduh, share, salin tautan, atau buka tab baru.
+                {content.sections[1]?.body}
               </p>
             </div>
           </div>

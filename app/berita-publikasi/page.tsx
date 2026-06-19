@@ -10,6 +10,9 @@ import {
   getPublicationsByCategory,
   publicationSections,
 } from "@/app/_data/publication-content";
+import { pageContent } from "@/app/_data/site-content";
+
+const content = pageContent["berita-publikasi"];
 
 const sectionIcons = {
   "Berita Kegiatan": Newspaper,
@@ -18,9 +21,8 @@ const sectionIcons = {
 };
 
 export const metadata = {
-  title: "Berita & Publikasi | HKBP Resort Srengseng Sawah",
-  description:
-    "Berita kegiatan, artikel renungan, dan publikasi resmi HKBP Resort Srengseng Sawah.",
+  title: `${content.title} | HKBP Resort Srengseng Sawah`,
+  description: content.description,
 };
 
 export default function BeritaPublikasiPage() {
@@ -30,21 +32,18 @@ export default function BeritaPublikasiPage() {
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
-              Kabar Jemaat
+              {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
-              Berita & Publikasi
+              {content.title}
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-              Kumpulan berita kegiatan, artikel renungan, dan publikasi resmi
-              untuk mendukung kehidupan persekutuan jemaat.
+              {content.description}
             </p>
           </div>
           <div className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
             <p className="text-sm leading-6 text-slate-600">
-              Setiap section berisi tiga sample thumbnail yang dapat dibuka ke
-              halaman detail, lengkap dengan fitur berbagi ke media sosial dan
-              salin tautan.
+              {content.summary}
             </p>
           </div>
         </div>

@@ -56,7 +56,7 @@ export function ArchiveBrowser({ items }: ArchiveBrowserProps) {
                 </span>
                 <span className="mt-3 flex items-center gap-2 text-xs font-semibold text-slate-500">
                   <FileText size={14} aria-hidden="true" />
-                  {item.fileName}
+                  {item.pdfVersions.length} versi PDF
                 </span>
               </button>
             );
@@ -67,8 +67,7 @@ export function ArchiveBrowser({ items }: ArchiveBrowserProps) {
       <PdfViewer
         date={selectedWarta.date}
         description={selectedWarta.excerpt}
-        fileName={selectedWarta.fileName}
-        fileUrl={selectedWarta.fileUrl}
+        pdfVersions={selectedWarta.pdfVersions}
         title={selectedWarta.title}
       />
     </div>
