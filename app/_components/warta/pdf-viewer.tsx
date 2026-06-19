@@ -1,7 +1,8 @@
 "use client";
 
 import { Check, Copy, Download, ExternalLink, Share2 } from "lucide-react";
-import { useMemo, useState } from "react";
+import type { ComponentType, ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { WartaPdfVersion } from "@/app/_data/warta-content";
 
 type PdfViewerProps = {
@@ -11,17 +12,43 @@ type PdfViewerProps = {
   description?: string;
 };
 
+type PdfDocumentProps = {
+  children?: ReactNode;
+  className?: string;
+  file: string;
+  loading?: ReactNode;
+  onLoadSuccess?: ({ numPages }: { numPages: number }) => void;
+};
+
+type PdfPageProps = {
+  className?: string;
+  pageNumber: number;
+  renderAnnotationLayer?: boolean;
+  renderTextLayer?: boolean;
+  width: number;
+};
+
+type ReactPdfComponents = {
+  Document: ComponentType<PdfDocumentProps>;
+  Page: ComponentType<PdfPageProps>;
+};
+
 export function PdfViewer({
   title,
   date,
   pdfVersions,
   description,
 }: PdfViewerProps) {
+  const pdfContainerRef = useRef<HTMLDivElement>(null);
+  const [reactPdf, setReactPdf] = useState<ReactPdfComponents | null>(null);
   const [selectedLanguage, setSelectedLanguage] =
     useState<WartaPdfVersion["language"]>(
       pdfVersions[0]?.language ?? "indonesia",
     );
   const [copied, setCopied] = useState(false);
+  const [numPages, setNumPages] = useState(0);
+  const [loadedFileUrl, setLoadedFileUrl] = useState("");
+  const [pageWidth, setPageWidth] = useState(720);
   const selectedPdf =
     pdfVersions.find((version) => version.language === selectedLanguage) ??
     pdfVersions[0];
@@ -33,6 +60,47 @@ export function PdfViewer({
 
     return new URL(selectedPdf?.fileUrl ?? "", window.location.origin).toString();
   }, [selectedPdf?.fileUrl]);
+
+  useEffect(() => {
+    let isActive = true;
+
+    const loadReactPdf = async () => {
+      const { Document, Page, pdfjs } = await import("react-pdf");
+
+      pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.react-pdf.mjs";
+
+      if (isActive) {
+        setReactPdf({
+          Document: Document as ComponentType<PdfDocumentProps>,
+          Page: Page as ComponentType<PdfPageProps>,
+        });
+      }
+    };
+
+    void loadReactPdf();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    const container = pdfContainerRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const updatePageWidth = () => {
+      setPageWidth(Math.max(280, Math.min(container.clientWidth - 32, 900)));
+    };
+    const observer = new ResizeObserver(updatePageWidth);
+
+    updatePageWidth();
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, []);
 
   if (!selectedPdf) {
     return null;
@@ -155,11 +223,43 @@ export function PdfViewer({
         </div>
       </div>
 
-      <iframe
-        className="h-[72vh] min-h-[34rem] w-full bg-slate-100"
-        src={`${selectedPdf.fileUrl}#toolbar=0&navpanes=0&view=FitH`}
-        title={`${title} ${selectedPdf.label}`}
-      />
+      <div
+        className="h-[72vh] min-h-[34rem] overflow-auto bg-slate-100 p-4"
+        ref={pdfContainerRef}
+      >
+        {reactPdf ? (
+          <reactPdf.Document
+            className="mx-auto grid justify-items-center gap-4"
+            file={selectedPdf.fileUrl}
+            loading={
+              <div className="rounded-md bg-white px-4 py-3 text-sm font-medium text-slate-600 shadow-sm">
+                Memuat PDF...
+              </div>
+            }
+            onLoadSuccess={({ numPages: nextNumPages }) => {
+              setLoadedFileUrl(selectedPdf.fileUrl);
+              setNumPages(nextNumPages);
+            }}
+          >
+            {loadedFileUrl === selectedPdf.fileUrl
+              ? Array.from({ length: numPages }, (_, index) => (
+                  <reactPdf.Page
+                    className="overflow-hidden rounded-sm bg-white shadow-sm"
+                    key={`${selectedPdf.fileUrl}-${index + 1}`}
+                    pageNumber={index + 1}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                    width={pageWidth}
+                  />
+                ))
+              : null}
+          </reactPdf.Document>
+        ) : (
+          <div className="mx-auto w-fit rounded-md bg-white px-4 py-3 text-sm font-medium text-slate-600 shadow-sm">
+            Memuat PDF...
+          </div>
+        )}
+      </div>
     </section>
   );
 }
