@@ -204,6 +204,126 @@ export const pageContent: Record<string, PageContent> = {
         alt: "Relawan melakukan pelayanan sosial",
         description: "Pelayanan kasih dan kepedulian sosial jemaat.",
       },
+      {
+        src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80&sig=7",
+        alt: "Suasana ibadah dan pujian jemaat",
+        description: "Dokumentasi ibadah dan pujian bersama jemaat.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=80&sig=8",
+        alt: "Persekutuan keluarga jemaat",
+        description: "Momen kebersamaan keluarga jemaat dalam persekutuan.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80&sig=9",
+        alt: "Kelompok pelayanan kategorial",
+        description: "Kegiatan pelayanan kategorial dan pembinaan iman.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80&sig=10",
+        alt: "Kegiatan bersama warga jemaat",
+        description: "Kebersamaan warga jemaat dalam kegiatan gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80&sig=11",
+        alt: "Kegiatan anak sekolah minggu",
+        description: "Pelayanan anak dan sekolah Minggu.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80&sig=12",
+        alt: "Pelayanan kasih jemaat",
+        description: "Pelayanan sosial dan kepedulian jemaat.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80&sig=13",
+        alt: "Ibadah Minggu bersama jemaat",
+        description: "Suasana ibadah Minggu di gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=80&sig=14",
+        alt: "Persekutuan jemaat di ruang terbuka",
+        description: "Kegiatan persekutuan dan kebersamaan jemaat.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80&sig=15",
+        alt: "Kegiatan pembinaan kategorial",
+        description: "Pembinaan iman dan pelayanan kategorial.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80&sig=16",
+        alt: "Komunitas jemaat berkumpul",
+        description: "Kegiatan komunitas dan persekutuan jemaat.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80&sig=17",
+        alt: "Pelayanan anak dalam gereja",
+        description: "Kegiatan anak-anak dalam pelayanan gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80&sig=18",
+        alt: "Aksi pelayanan sosial jemaat",
+        description: "Aksi kepedulian sosial dan pelayanan kasih.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80&sig=19",
+        alt: "Ruang ibadah gereja",
+        description: "Dokumentasi suasana ruang ibadah gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=80&sig=20",
+        alt: "Kebersamaan warga dalam kegiatan gereja",
+        description: "Kebersamaan warga dalam agenda gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80&sig=21",
+        alt: "Pelayanan kelompok jemaat",
+        description: "Pelayanan kelompok dan pembinaan warga jemaat.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80&sig=22",
+        alt: "Kegiatan komunitas gereja",
+        description: "Kegiatan komunitas dan persekutuan gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80&sig=23",
+        alt: "Anak-anak mengikuti kegiatan gereja",
+        description: "Kegiatan anak dan pembinaan iman sejak dini.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80&sig=24",
+        alt: "Relawan jemaat dalam pelayanan",
+        description: "Relawan jemaat mengambil bagian dalam pelayanan.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80&sig=25",
+        alt: "Ibadah dan perayaan gerejawi",
+        description: "Dokumentasi ibadah dan perayaan gerejawi.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1200&q=80&sig=26",
+        alt: "Persekutuan warga jemaat",
+        description: "Persekutuan warga jemaat dalam kegiatan bersama.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80&sig=27",
+        alt: "Kegiatan pelayanan dan kunjungan",
+        description: "Kegiatan pelayanan, pembinaan, dan kunjungan.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80&sig=28",
+        alt: "Momen kebersamaan jemaat",
+        description: "Momen kebersamaan jemaat dalam kegiatan gereja.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80&sig=29",
+        alt: "Pelayanan anak dan keluarga",
+        description: "Pelayanan anak dan keluarga jemaat.",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80&sig=30",
+        alt: "Pelayanan kasih di lingkungan jemaat",
+        description: "Pelayanan kasih di lingkungan jemaat.",
+      },
     ],
   },
   organisasi: {
