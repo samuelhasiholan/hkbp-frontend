@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, Clock, UserRound } from "lucide-react";
+import { ArrowLeft, CalendarDays, UserRound } from "lucide-react";
 import { ShareActions } from "@/app/_components/berita-publikasi/share-actions";
 import { publications } from "@/app/_data/publication-content";
 import { getPublicationBySlug } from "@/app/_lib/backend-content";
@@ -107,10 +107,6 @@ export default async function PublicationDetailPage({
                 <span className="inline-flex items-center gap-2 rounded-md bg-white/12 px-3 py-2 backdrop-blur">
                   <UserRound size={16} aria-hidden="true" />
                   {item.author}
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-md bg-white/12 px-3 py-2 backdrop-blur">
-                  <Clock size={16} aria-hidden="true" />
-                  {item.readTime}
                 </span>
               </div>
             </div>
