@@ -7,7 +7,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { HomeGalleryCarousel } from "@/app/_components/home-gallery-carousel";
-import { publications } from "@/app/_data/publication-content";
+import { getPageContent, getPublications } from "@/app/_lib/backend-content";
 import { pageContent } from "@/app/_data/site-content";
 
 const monthIndexes: Record<string, number> = {
@@ -40,23 +40,26 @@ const getPublicationTime = (date: string) => {
   ).getTime();
 };
 
-const latestPublications = [...publications]
-  .sort(
-    (first, second) =>
-      getPublicationTime(second.date) - getPublicationTime(first.date),
-  )
-  .slice(0, 3);
+export default async function Home() {
+  const publications = await getPublications();
+  const latestPublications = [...publications]
+    .sort(
+      (first, second) =>
+        getPublicationTime(second.date) - getPublicationTime(first.date),
+    )
+    .slice(0, 3);
+  const galleryContent =
+    (await getPageContent("tentang-gereja/galeri")) ??
+    pageContent["tentang-gereja/galeri"];
+  const galleryImages = galleryContent.galleryImages ?? [];
 
-const galleryImages = pageContent["tentang-gereja/galeri"].galleryImages ?? [];
-
-export default function Home() {
   return (
     <main className="bg-white">
       <section className="relative overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0 bg-hkbp-hero" />
+        <div className="bg-hkbp-hero absolute inset-0" />
         <div className="relative mx-auto grid min-h-[calc(100vh-4.25rem)] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
           <div>
-            <p className="text-sm font-bold tracking-wide text-hkbp-soft uppercase">
+            <p className="text-hkbp-soft text-sm font-bold tracking-wide uppercase">
               Website Resmi
             </p>
             <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-normal sm:text-6xl">
@@ -68,7 +71,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-hkbp-primary px-5 py-3 text-sm font-bold text-white transition hover:bg-hkbp-primary-hover"
+                className="bg-hkbp-primary hover:bg-hkbp-primary-hover inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-bold text-white transition"
                 href="/jadwal-pelayanan/ibadah-minggu"
               >
                 Lihat Jadwal Ibadah
@@ -150,11 +153,11 @@ export default function Home() {
 
             return (
               <Link
-                className="rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-hkbp-border hover:shadow-md"
+                className="hover:border-hkbp-border rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
                 href={item.href}
                 key={item.href}
               >
-                <span className="flex size-10 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+                <span className="bg-hkbp-soft text-hkbp-link flex size-10 items-center justify-center rounded-md">
                   <Icon size={21} aria-hidden="true" />
                 </span>
                 <h2 className="mt-4 text-lg font-bold text-slate-950">
@@ -173,7 +176,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-bold tracking-wide text-hkbp-link uppercase">
+              <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
                 Berita Terbaru
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-normal text-slate-950">
@@ -185,7 +188,7 @@ export default function Home() {
               </p>
             </div>
             <Link
-              className="inline-flex items-center gap-2 text-sm font-bold text-hkbp-link"
+              className="text-hkbp-link inline-flex items-center gap-2 text-sm font-bold"
               href="/berita-publikasi"
             >
               Lihat semua publikasi
@@ -196,7 +199,7 @@ export default function Home() {
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {latestPublications.map((item) => (
               <Link
-                className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-hkbp-border hover:shadow-md"
+                className="group hover:border-hkbp-border overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
                 href={`/berita-publikasi/${item.slug}`}
                 key={item.slug}
               >
@@ -221,7 +224,7 @@ export default function Home() {
                   <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
                     {item.excerpt}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-hkbp-link">
+                  <span className="text-hkbp-link mt-4 inline-flex items-center gap-2 text-sm font-bold">
                     Baca detail
                     <ArrowRight
                       className="transition group-hover:translate-x-0.5"
@@ -239,7 +242,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-bold tracking-wide text-hkbp-link uppercase">
+            <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
               Galeri Ringkas
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-normal text-slate-950">
@@ -251,7 +254,7 @@ export default function Home() {
             </p>
           </div>
           <Link
-            className="inline-flex items-center gap-2 text-sm font-bold text-hkbp-link"
+            className="text-hkbp-link inline-flex items-center gap-2 text-sm font-bold"
             href="/tentang-gereja/galeri"
           >
             Buka galeri

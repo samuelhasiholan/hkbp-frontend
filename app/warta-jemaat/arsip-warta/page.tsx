@@ -1,7 +1,7 @@
 import { Archive, Search } from "lucide-react";
 import { ArchiveBrowser } from "@/app/_components/warta/archive-browser";
 import { pageContent } from "@/app/_data/site-content";
-import { archivedWarta } from "@/app/_data/warta-content";
+import { getArchivedWarta } from "@/app/_lib/backend-content";
 
 const content = pageContent["warta-jemaat/arsip-warta"];
 
@@ -10,13 +10,15 @@ export const metadata = {
   description: content.description,
 };
 
-export default function ArsipWartaPage() {
+export default async function ArsipWartaPage() {
+  const archivedWarta = await getArchivedWarta();
+
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
+            <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
               {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
@@ -28,7 +30,7 @@ export default function ArsipWartaPage() {
           </div>
           <div className="grid gap-3 self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
             <div className="flex items-start gap-3">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+              <span className="bg-hkbp-soft text-hkbp-link flex size-9 shrink-0 items-center justify-center rounded-md">
                 <Archive size={18} aria-hidden="true" />
               </span>
               <p className="text-sm leading-6 text-slate-600">

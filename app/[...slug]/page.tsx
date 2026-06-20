@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import { PageTemplate } from "@/app/_components/page-template";
 import { allPageSlugs, pageContent } from "@/app/_data/site-content";
+import { getPageContent } from "@/app/_lib/backend-content";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return allPageSlugs.map((slug) => ({
@@ -16,7 +17,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  const content = pageContent[slug.join("/")];
+  const content =
+    (await getPageContent(slug.join("/"))) ?? pageContent[slug.join("/")];
 
   if (!content) {
     return {};
@@ -34,7 +36,7 @@ export default async function Page({
   params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  const content = pageContent[slug.join("/")];
+  const content = await getPageContent(slug.join("/"));
 
   if (!content) {
     notFound();

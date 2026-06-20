@@ -2,12 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Clock, UserRound } from "lucide-react";
 import { ShareActions } from "@/app/_components/berita-publikasi/share-actions";
-import {
-  getPublicationBySlug,
-  publications,
-} from "@/app/_data/publication-content";
+import { publications } from "@/app/_data/publication-content";
+import { getPublicationBySlug } from "@/app/_lib/backend-content";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return publications.map((item) => ({
@@ -21,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const item = getPublicationBySlug(slug);
+  const item = await getPublicationBySlug(slug);
 
   if (!item) {
     return {};
@@ -39,7 +37,7 @@ export default async function PublicationDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const item = getPublicationBySlug(slug);
+  const item = await getPublicationBySlug(slug);
 
   if (!item) {
     notFound();
@@ -61,7 +59,7 @@ export default async function PublicationDetailPage({
               Kembali
             </Link>
             <div className="mt-12 max-w-4xl">
-              <p className="text-sm font-bold uppercase tracking-wide text-white/80">
+              <p className="text-sm font-bold tracking-wide text-white/80 uppercase">
                 {item.category}
               </p>
               <h1 className="mt-4 text-4xl font-bold tracking-normal sm:text-5xl">
@@ -99,13 +97,13 @@ export default async function PublicationDetailPage({
 
           <aside className="grid h-fit gap-4 lg:sticky lg:top-24">
             <ShareActions title={item.title} />
-            <div className="rounded-md border border-hkbp-border bg-hkbp-soft p-5">
-              <p className="text-sm font-bold text-hkbp-ink">
-                Informasi sample
+            <div className="border-hkbp-border bg-hkbp-soft rounded-md border p-5">
+              <p className="text-hkbp-ink text-sm font-bold">
+                Informasi publikasi
               </p>
-              <p className="mt-2 text-sm leading-6 text-hkbp-link-strong">
-                Konten ini dapat diganti dengan data CMS atau API saat sumber
-                publikasi resmi sudah tersedia.
+              <p className="text-hkbp-link-strong mt-2 text-sm leading-6">
+                Konten ini ditampilkan dari data publikasi resmi yang sudah
+                diterbitkan.
               </p>
             </div>
           </aside>

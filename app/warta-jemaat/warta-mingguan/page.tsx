@@ -1,6 +1,6 @@
 import { PdfViewer } from "@/app/_components/warta/pdf-viewer";
 import { pageContent } from "@/app/_data/site-content";
-import { weeklyWarta } from "@/app/_data/warta-content";
+import { getCurrentWarta } from "@/app/_lib/backend-content";
 
 const content = pageContent["warta-jemaat/warta-mingguan"];
 
@@ -9,13 +9,15 @@ export const metadata = {
   description: content.description,
 };
 
-export default function WartaMingguanPage() {
+export default async function WartaMingguanPage() {
+  const weeklyWarta = await getCurrentWarta();
+
   return (
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
+            <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
               {content.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
