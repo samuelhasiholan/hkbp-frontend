@@ -42,6 +42,7 @@ export type PastorGreeting = {
   eyebrow: string;
   title: string;
   body: string;
+  pastorProfileId?: string;
   pastorName: string;
   pastorRole: string;
   photoUrl?: string;
