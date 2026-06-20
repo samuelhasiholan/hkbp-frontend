@@ -96,9 +96,6 @@ export default async function PublicationDetailPage({
               <h1 className="mt-4 text-4xl font-bold tracking-normal sm:text-5xl">
                 {item.title}
               </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-white/86">
-                {item.excerpt}
-              </p>
               <div className="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-white/86">
                 <span className="inline-flex items-center gap-2 rounded-md bg-white/12 px-3 py-2 backdrop-blur">
                   <CalendarDays size={16} aria-hidden="true" />

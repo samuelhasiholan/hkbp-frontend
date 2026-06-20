@@ -38,6 +38,15 @@ export type WijkItem = {
   description: string;
 };
 
+export type PastorGreeting = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  pastorName: string;
+  pastorRole: string;
+  photoUrl?: string;
+};
+
 export type PageContent = {
   title: string;
   eyebrow: string;
@@ -64,6 +73,14 @@ export type PageContent = {
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
+
+export const defaultPastorGreeting: PastorGreeting = {
+  eyebrow: "Sambutan Pendeta",
+  title: "Horas, selamat datang di HKBP Resort Srengseng Sawah",
+  body: "Dengan penuh sukacita kami menyambut setiap jemaat dan pengunjung yang hadir melalui ruang digital ini. Kiranya informasi pelayanan, ibadah, dan persekutuan yang tersedia menolong kita semakin bertumbuh dalam iman, kasih, dan pengharapan di dalam Kristus.",
+  pastorName: "Pdt. HKBP Resort Srengseng Sawah",
+  pastorRole: "Pendeta Resort",
+};
 
 const createSectionProfiles = (sectionName: string): OrganizationProfile[] =>
   Array.from({ length: 5 }, (_, index) => ({

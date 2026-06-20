@@ -10,10 +10,12 @@ import {
   type PublicationItem,
 } from "@/app/_data/publication-content";
 import {
+  defaultPastorGreeting,
   pageContent,
   type GalleryImage,
   type OrganizationProfile,
   type PageContent,
+  type PastorGreeting,
   type RetiredElderProfile,
   type WijkItem,
 } from "@/app/_data/site-content";
@@ -86,6 +88,10 @@ type BackendWijk = {
 type BackendGalleryItem = {
   description: string;
   media: { url: string };
+};
+
+type BackendSiteSettings = {
+  pastorGreeting?: Partial<PastorGreeting>;
 };
 
 const categoryLabels: Record<
@@ -247,6 +253,16 @@ export async function getCurrentWarta(): Promise<WartaItem> {
 export async function getArchivedWarta(): Promise<WartaItem[]> {
   const items = await fetchPublic<BackendWarta[]>("/api/public/warta/archive");
   return items?.map(toWarta) ?? archivedWarta;
+}
+
+export async function getPastorGreeting(): Promise<PastorGreeting> {
+  const settings = await fetchPublic<BackendSiteSettings>(
+    "/api/public/site-settings",
+  );
+  return {
+    ...defaultPastorGreeting,
+    ...(settings?.pastorGreeting ?? {}),
+  };
 }
 
 async function getGalleryImages(

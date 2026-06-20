@@ -4,10 +4,15 @@ import {
   CalendarDays,
   Church,
   Newspaper,
+  Quote,
   UsersRound,
 } from "lucide-react";
 import { HomeGalleryCarousel } from "@/app/_components/home-gallery-carousel";
-import { getPageContent, getPublications } from "@/app/_lib/backend-content";
+import {
+  getPageContent,
+  getPastorGreeting,
+  getPublications,
+} from "@/app/_lib/backend-content";
 import { pageContent } from "@/app/_data/site-content";
 
 const monthIndexes: Record<string, number> = {
@@ -41,7 +46,10 @@ const getPublicationTime = (date: string) => {
 };
 
 export default async function Home() {
-  const publications = await getPublications();
+  const [publications, pastorGreeting] = await Promise.all([
+    getPublications(),
+    getPastorGreeting(),
+  ]);
   const latestPublications = [...publications]
     .sort(
       (first, second) =>
@@ -116,6 +124,56 @@ export default async function Home() {
                   </p>
                 </Link>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-200 bg-white">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:px-8">
+          <div className="overflow-hidden rounded-md bg-slate-100">
+            {pastorGreeting.photoUrl ? (
+              <img
+                src={pastorGreeting.photoUrl}
+                alt={pastorGreeting.pastorName}
+                className="aspect-[4/5] h-full w-full object-cover"
+              />
+            ) : (
+              <div className="flex aspect-[4/5] items-center justify-center bg-[linear-gradient(135deg,#0f766e,#0f172a)] px-8 text-center text-white">
+                <div>
+                  <p className="text-sm font-bold tracking-wide uppercase text-cyan-100">
+                    HKBP
+                  </p>
+                  <p className="mt-3 text-3xl font-bold leading-tight">
+                    Resort Srengseng Sawah
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div>
+            <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
+              {pastorGreeting.eyebrow}
+            </p>
+            <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-normal text-slate-950 sm:text-4xl">
+              {pastorGreeting.title}
+            </h2>
+            <div className="mt-6 flex gap-4">
+              <span className="bg-hkbp-soft text-hkbp-link flex size-11 shrink-0 items-center justify-center rounded-md">
+                <Quote size={22} aria-hidden="true" />
+              </span>
+              <p className="max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
+                {pastorGreeting.body}
+              </p>
+            </div>
+            <div className="mt-7 border-l-4 border-hkbp-primary pl-4">
+              <p className="font-bold text-slate-950">
+                {pastorGreeting.pastorName}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-slate-500">
+                {pastorGreeting.pastorRole}
+              </p>
             </div>
           </div>
         </div>
