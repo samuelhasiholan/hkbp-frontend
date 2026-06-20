@@ -80,9 +80,18 @@ export default async function BeritaPublikasiPage() {
                     key={item.slug}
                   >
                     <div
-                      className={`relative flex aspect-[16/10] items-end overflow-hidden bg-gradient-to-br ${item.thumbnailTone} p-5 text-white`}
+                      className={`relative flex aspect-[16/10] items-end overflow-hidden bg-cover bg-center p-5 text-white ${
+                        item.thumbnailUrl
+                          ? "bg-slate-800"
+                          : `bg-gradient-to-br ${item.thumbnailTone}`
+                      }`}
+                      style={
+                        item.thumbnailUrl
+                          ? { backgroundImage: `url("${item.thumbnailUrl}")` }
+                          : undefined
+                      }
                     >
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.28),transparent_30%),linear-gradient(135deg,rgba(15,23,42,0.12),rgba(15,23,42,0.45))]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_30%),linear-gradient(135deg,rgba(15,23,42,0.24),rgba(15,23,42,0.72))]" />
                       <div className="relative">
                         <span className="inline-flex rounded-md bg-white/18 px-2.5 py-1 text-xs font-bold tracking-wide uppercase backdrop-blur">
                           {item.category}

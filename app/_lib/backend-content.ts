@@ -47,6 +47,7 @@ type BackendPublication = {
   content: string[];
   author: string;
   publishedAt: string | null;
+  thumbnailUrl: string | null;
   thumbnailTone: string | null;
   readTime: string | null;
 };
@@ -142,6 +143,7 @@ function toPublication(item: BackendPublication): PublicationItem {
     date: formatDate(item.publishedAt),
     author: item.author,
     readTime: item.readTime ?? "3 menit baca",
+    thumbnailUrl: item.thumbnailUrl ?? undefined,
     thumbnailTone:
       item.thumbnailTone ?? "from-hkbp-primary via-sky-600 to-cyan-400",
     content: item.content,

@@ -13,6 +13,28 @@ export function generateStaticParams() {
   }));
 }
 
+function PublicationBody({ content }: { content: string[] }) {
+  return (
+    <div className="grid gap-6 text-base leading-8 text-slate-700 [&_br]:block [&_figcaption]:mt-3 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:leading-6 [&_figcaption]:text-slate-500 [&_figure]:my-8 [&_img]:mx-auto [&_img]:h-auto [&_img]:w-full [&_img]:max-w-full [&_img]:rounded-md [&_img]:border [&_img]:border-slate-200 [&_img]:object-cover [&_p]:leading-8 [&_p[align='justify']]:text-justify">
+      {content.map((block, index) => {
+        const hasHtml = /<\/?[a-z][\s\S]*>/i.test(block);
+
+        if (hasHtml) {
+          return (
+            <div
+              // Konten ini berasal dari CMS admin resmi.
+              dangerouslySetInnerHTML={{ __html: block }}
+              key={`${index}-${block.slice(0, 24)}`}
+            />
+          );
+        }
+
+        return <p key={`${index}-${block.slice(0, 24)}`}>{block}</p>;
+      })}
+    </div>
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -47,9 +69,18 @@ export default async function PublicationDetailPage({
     <main className="bg-white">
       <article>
         <section
-          className={`relative overflow-hidden bg-gradient-to-br ${item.thumbnailTone} text-white`}
+          className={`relative overflow-hidden bg-cover bg-center text-white ${
+            item.thumbnailUrl
+              ? "bg-slate-900"
+              : `bg-gradient-to-br ${item.thumbnailTone}`
+          }`}
+          style={
+            item.thumbnailUrl
+              ? { backgroundImage: `url("${item.thumbnailUrl}")` }
+              : undefined
+          }
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.26),transparent_32%),linear-gradient(135deg,rgba(15,23,42,0.32),rgba(15,23,42,0.72))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),linear-gradient(135deg,rgba(15,23,42,0.48),rgba(15,23,42,0.86))]" />
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
             <Link
               className="inline-flex items-center gap-2 rounded-md bg-white/12 px-3 py-2 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
@@ -88,11 +119,7 @@ export default async function PublicationDetailPage({
 
         <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:px-8">
           <div className="max-w-3xl">
-            <div className="grid gap-5 text-base leading-8 text-slate-700">
-              {item.content.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+            <PublicationBody content={item.content} />
           </div>
 
           <aside className="grid h-fit gap-4 lg:sticky lg:top-24">

@@ -204,9 +204,18 @@ export default async function Home() {
                 key={item.slug}
               >
                 <div
-                  className={`relative flex aspect-[16/9] items-end overflow-hidden bg-gradient-to-br ${item.thumbnailTone} p-5 text-white`}
+                  className={`relative flex aspect-[16/9] items-end overflow-hidden bg-cover bg-center p-5 text-white ${
+                    item.thumbnailUrl
+                      ? "bg-slate-800"
+                      : `bg-gradient-to-br ${item.thumbnailTone}`
+                  }`}
+                  style={
+                    item.thumbnailUrl
+                      ? { backgroundImage: `url("${item.thumbnailUrl}")` }
+                      : undefined
+                  }
                 >
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.08),rgba(15,23,42,0.5))]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.2),rgba(15,23,42,0.68))]" />
                   <div className="relative">
                     <span className="inline-flex rounded-md bg-white/18 px-2.5 py-1 text-xs font-bold tracking-wide uppercase backdrop-blur">
                       {item.category}

@@ -11,6 +11,7 @@ export type PublicationItem = {
   date: string;
   author: string;
   readTime: string;
+  thumbnailUrl?: string;
   thumbnailTone: string;
   content: string[];
 };
