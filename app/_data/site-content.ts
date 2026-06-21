@@ -123,6 +123,7 @@ export type PageContent = {
   galleryImages?: GalleryImage[];
   wijkItems?: WijkItem[];
   callout?: string;
+  contactInfo?: ContactInfo;
   mapEmbedUrl?: string;
   layoutVariant?: "article" | "wijk" | "pastors" | "officers" | "council";
 };

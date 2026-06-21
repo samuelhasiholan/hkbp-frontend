@@ -8,6 +8,8 @@ import {
   HeartHandshake,
   Mail,
   MapPin,
+  MessageCircle,
+  Phone,
   UserRound,
   UsersRound,
 } from "lucide-react";
@@ -122,6 +124,13 @@ function ChildPageLinks({ childPages, title }: ChildPageLinksProps) {
 
 function ContactPageTemplate({ content }: PageTemplateProps) {
   const sectionIcons = [MapPin, Mail, Clock3];
+  const contactInfo = content.contactInfo;
+  const whatsappHref = contactInfo?.whatsapp
+    ? `https://wa.me/${contactInfo.whatsapp.replace(/\D/g, "").replace(/^0/, "62")}`
+    : "";
+  const phoneHref = contactInfo?.phone
+    ? `tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`
+    : "";
 
   return (
     <main className="bg-white">
@@ -147,32 +156,112 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div className="grid gap-4">
-          {content.sections.map((section, index) => {
-            const Icon = sectionIcons[index] ?? CheckCircle2;
+        {contactInfo ? (
+          <div className="grid gap-4">
+            <article className="rounded-md border border-slate-200 bg-white p-6">
+              <div className="flex items-start gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+                  <MapPin size={21} aria-hidden="true" />
+                </span>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-950">Alamat</h2>
+                  <p className="mt-2 leading-7 text-slate-600">
+                    {contactInfo.address}
+                  </p>
+                </div>
+              </div>
+            </article>
 
-            return (
-              <article
-                className="rounded-md border border-slate-200 bg-white p-6"
-                key={section.title}
-              >
+            <article className="rounded-md border border-slate-200 bg-white p-6">
+              <div className="flex items-start gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+                  <Mail size={21} aria-hidden="true" />
+                </span>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-950">
+                    Kanal Komunikasi
+                  </h2>
+                  <div className="mt-3 grid gap-3 text-sm font-semibold text-slate-700">
+                    {contactInfo.phone ? (
+                      <a
+                        className="inline-flex items-center gap-2 text-hkbp-link transition hover:text-hkbp-primary"
+                        href={phoneHref}
+                      >
+                        <Phone size={16} aria-hidden="true" />
+                        {contactInfo.phone}
+                      </a>
+                    ) : null}
+                    {contactInfo.whatsapp ? (
+                      <a
+                        className="inline-flex items-center gap-2 text-hkbp-link transition hover:text-hkbp-primary"
+                        href={whatsappHref}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <MessageCircle size={16} aria-hidden="true" />
+                        {contactInfo.whatsapp}
+                      </a>
+                    ) : null}
+                    {contactInfo.email ? (
+                      <a
+                        className="inline-flex items-center gap-2 text-hkbp-link transition hover:text-hkbp-primary"
+                        href={`mailto:${contactInfo.email}`}
+                      >
+                        <Mail size={16} aria-hidden="true" />
+                        {contactInfo.email}
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            {contactInfo.officeHours ? (
+              <article className="rounded-md border border-slate-200 bg-white p-6">
                 <div className="flex items-start gap-4">
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
-                    <Icon size={21} aria-hidden="true" />
+                    <Clock3 size={21} aria-hidden="true" />
                   </span>
                   <div>
                     <h2 className="text-lg font-bold text-slate-950">
-                      {section.title}
+                      Jam Pelayanan
                     </h2>
-                    <p className="mt-2 whitespace-pre-line leading-7 text-slate-600">
-                      {section.body}
+                    <p className="mt-2 leading-7 text-slate-600">
+                      {contactInfo.officeHours}
                     </p>
                   </div>
                 </div>
               </article>
-            );
-          })}
-        </div>
+            ) : null}
+          </div>
+        ) : (
+          <div className="grid gap-4">
+            {content.sections.map((section, index) => {
+              const Icon = sectionIcons[index] ?? CheckCircle2;
+
+              return (
+                <article
+                  className="rounded-md border border-slate-200 bg-white p-6"
+                  key={section.title}
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+                      <Icon size={21} aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h2 className="text-lg font-bold text-slate-950">
+                        {section.title}
+                      </h2>
+                      <p className="mt-2 whitespace-pre-line leading-7 text-slate-600">
+                        {section.body}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        )}
 
         {content.mapEmbedUrl ? (
           <section className="overflow-hidden rounded-md border border-slate-200 bg-white">

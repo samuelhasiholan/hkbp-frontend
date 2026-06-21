@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { PageTemplate } from "@/app/_components/page-template";
 import { allPageSlugs, pageContent } from "@/app/_data/site-content";
-import { getPageContent } from "@/app/_lib/backend-content";
+import { getPageContent, getSiteSettings } from "@/app/_lib/backend-content";
 
 export const dynamicParams = true;
 
@@ -36,10 +36,46 @@ export default async function Page({
   params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  const content = await getPageContent(slug.join("/"));
+  const pageSlug = slug.join("/");
+  const content = await getPageContent(pageSlug);
 
   if (!content) {
     notFound();
+  }
+
+  if (pageSlug === "kontak") {
+    const { contactInfo } = await getSiteSettings();
+
+    return (
+      <PageTemplate
+        content={{
+          ...content,
+          contactInfo,
+          sections: [
+            {
+              title: "Alamat",
+              body: contactInfo.address,
+            },
+            {
+              title: "Kanal Komunikasi",
+              body: [
+                contactInfo.phone ? `Telepon: ${contactInfo.phone}` : "",
+                contactInfo.whatsapp ? `WhatsApp: ${contactInfo.whatsapp}` : "",
+                contactInfo.email ? `Email: ${contactInfo.email}` : "",
+              ]
+                .filter(Boolean)
+                .join("\n"),
+            },
+            {
+              title: "Jam Pelayanan",
+              body:
+                contactInfo.officeHours ||
+                "Hubungi kantor gereja untuk informasi jam pelayanan.",
+            },
+          ],
+        }}
+      />
+    );
   }
 
   return <PageTemplate content={content} />;
