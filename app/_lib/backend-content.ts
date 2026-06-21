@@ -10,8 +10,10 @@ import {
   type PublicationItem,
 } from "@/app/_data/publication-content";
 import {
+  defaultChurchHistoryTimeline,
   defaultPastorGreeting,
   pageContent,
+  type ChurchHistoryTimelineItem,
   type GalleryImage,
   type OrganizationProfile,
   type PageContent,
@@ -92,6 +94,7 @@ type BackendGalleryItem = {
 
 type BackendSiteSettings = {
   pastorGreeting?: Partial<PastorGreeting>;
+  churchHistoryTimeline?: ChurchHistoryTimelineItem[];
 };
 
 const categoryLabels: Record<
@@ -262,6 +265,24 @@ export async function getPastorGreeting(): Promise<PastorGreeting> {
   return {
     ...defaultPastorGreeting,
     ...(settings?.pastorGreeting ?? {}),
+  };
+}
+
+export async function getHomeSettings(): Promise<{
+  pastorGreeting: PastorGreeting;
+  churchHistoryTimeline: ChurchHistoryTimelineItem[];
+}> {
+  const settings = await fetchPublic<BackendSiteSettings>(
+    "/api/public/site-settings",
+  );
+  return {
+    pastorGreeting: {
+      ...defaultPastorGreeting,
+      ...(settings?.pastorGreeting ?? {}),
+    },
+    churchHistoryTimeline: settings?.churchHistoryTimeline?.length
+      ? settings.churchHistoryTimeline
+      : defaultChurchHistoryTimeline,
   };
 }
 

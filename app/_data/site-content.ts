@@ -48,6 +48,11 @@ export type PastorGreeting = {
   photoUrl?: string;
 };
 
+export type ChurchHistoryTimelineItem = {
+  year: string;
+  title: string;
+};
+
 export type PageContent = {
   title: string;
   eyebrow: string;
@@ -82,6 +87,13 @@ export const defaultPastorGreeting: PastorGreeting = {
   pastorName: "Pdt. HKBP Resort Srengseng Sawah",
   pastorRole: "Pendeta Resort",
 };
+
+export const defaultChurchHistoryTimeline: ChurchHistoryTimelineItem[] = [
+  { year: "1966", title: "HKBP Srengseng Sawah didirikan" },
+  { year: "2016", title: "Jubileum 50 tahun" },
+  { year: "2017", title: "Peresmian gedung gereja baru" },
+  { year: "2026", title: "Pembangunan gereja tahap 1" },
+];
 
 const createSectionProfiles = (sectionName: string): OrganizationProfile[] =>
   Array.from({ length: 5 }, (_, index) => ({

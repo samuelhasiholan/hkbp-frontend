@@ -7,10 +7,16 @@ import {
   Quote,
   UsersRound,
 } from "lucide-react";
+import { ChurchHistoryTimeline } from "@/app/_components/church-history-timeline";
 import { HomeGalleryCarousel } from "@/app/_components/home-gallery-carousel";
 import {
+  ScrollReveal,
+  StaggerReveal,
+  StaggerRevealItem,
+} from "@/app/_components/scroll-reveal";
+import {
+  getHomeSettings,
   getPageContent,
-  getPastorGreeting,
   getPublications,
 } from "@/app/_lib/backend-content";
 import { pageContent } from "@/app/_data/site-content";
@@ -46,10 +52,11 @@ const getPublicationTime = (date: string) => {
 };
 
 export default async function Home() {
-  const [publications, pastorGreeting] = await Promise.all([
+  const [publications, homeSettings] = await Promise.all([
     getPublications(),
-    getPastorGreeting(),
+    getHomeSettings(),
   ]);
+  const { pastorGreeting, churchHistoryTimeline } = homeSettings;
   const latestPublications = [...publications]
     .sort(
       (first, second) =>
@@ -131,7 +138,10 @@ export default async function Home() {
 
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:px-8">
-          <div className="overflow-hidden rounded-md bg-slate-100">
+          <ScrollReveal
+            className="overflow-hidden rounded-md bg-slate-100"
+            direction="left"
+          >
             {pastorGreeting.photoUrl ? (
               <img
                 src={pastorGreeting.photoUrl}
@@ -150,9 +160,9 @@ export default async function Home() {
                 </div>
               </div>
             )}
-          </div>
+          </ScrollReveal>
 
-          <div>
+          <ScrollReveal direction="right">
             <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
               {pastorGreeting.eyebrow}
             </p>
@@ -175,12 +185,14 @@ export default async function Home() {
                 {pastorGreeting.pastorRole}
               </p>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
+      <ChurchHistoryTimeline items={churchHistoryTimeline} />
+
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <StaggerReveal className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
               title: "Tentang Gereja",
@@ -210,29 +222,30 @@ export default async function Home() {
             const Icon = item.icon;
 
             return (
-              <Link
-                className="hover:border-hkbp-border rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                href={item.href}
-                key={item.href}
-              >
-                <span className="bg-hkbp-soft text-hkbp-link flex size-10 items-center justify-center rounded-md">
-                  <Icon size={21} aria-hidden="true" />
-                </span>
-                <h2 className="mt-4 text-lg font-bold text-slate-950">
-                  {item.title}
-                </h2>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {item.body}
-                </p>
-              </Link>
+              <StaggerRevealItem key={item.href}>
+                <Link
+                  className="hover:border-hkbp-border block rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                  href={item.href}
+                >
+                  <span className="bg-hkbp-soft text-hkbp-link flex size-10 items-center justify-center rounded-md">
+                    <Icon size={21} aria-hidden="true" />
+                  </span>
+                  <h2 className="mt-4 text-lg font-bold text-slate-950">
+                    {item.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    {item.body}
+                  </p>
+                </Link>
+              </StaggerRevealItem>
             );
           })}
-        </div>
+        </StaggerReveal>
       </section>
 
       <section className="border-y border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <ScrollReveal className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
                 Berita Terbaru
@@ -252,62 +265,63 @@ export default async function Home() {
               Lihat semua publikasi
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
-          </div>
+          </ScrollReveal>
 
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
+          <StaggerReveal className="mt-6 grid gap-5 md:grid-cols-3">
             {latestPublications.map((item) => (
-              <Link
-                className="group hover:border-hkbp-border overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                href={`/berita-publikasi/${item.slug}`}
-                key={item.slug}
-              >
-                <div
-                  className={`relative flex aspect-[16/9] items-end overflow-hidden bg-cover bg-center p-5 text-white ${
-                    item.thumbnailUrl
-                      ? "bg-slate-800"
-                      : `bg-gradient-to-br ${item.thumbnailTone}`
-                  }`}
-                  style={
-                    item.thumbnailUrl
-                      ? { backgroundImage: `url("${item.thumbnailUrl}")` }
-                      : undefined
-                  }
+              <StaggerRevealItem key={item.slug}>
+                <Link
+                  className="group hover:border-hkbp-border block overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                  href={`/berita-publikasi/${item.slug}`}
                 >
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.2),rgba(15,23,42,0.68))]" />
-                  <div className="relative">
-                    <span className="inline-flex rounded-md bg-white/18 px-2.5 py-1 text-xs font-bold tracking-wide uppercase backdrop-blur">
-                      {item.category}
+                  <div
+                    className={`relative flex aspect-[16/9] items-end overflow-hidden bg-cover bg-center p-5 text-white ${
+                      item.thumbnailUrl
+                        ? "bg-slate-800"
+                        : `bg-gradient-to-br ${item.thumbnailTone}`
+                    }`}
+                    style={
+                      item.thumbnailUrl
+                        ? { backgroundImage: `url("${item.thumbnailUrl}")` }
+                        : undefined
+                    }
+                  >
+                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.2),rgba(15,23,42,0.68))]" />
+                    <div className="relative">
+                      <span className="inline-flex rounded-md bg-white/18 px-2.5 py-1 text-xs font-bold tracking-wide uppercase backdrop-blur">
+                        {item.category}
+                      </span>
+                      <h3 className="mt-3 max-w-[14rem] text-xl leading-tight font-bold">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                      <CalendarDays size={14} aria-hidden="true" />
+                      {item.date}
+                    </div>
+                    <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
+                      {item.excerpt}
+                    </p>
+                    <span className="text-hkbp-link mt-4 inline-flex items-center gap-2 text-sm font-bold">
+                      Baca detail
+                      <ArrowRight
+                        className="transition group-hover:translate-x-0.5"
+                        size={16}
+                        aria-hidden="true"
+                      />
                     </span>
-                    <h3 className="mt-3 max-w-[14rem] text-xl leading-tight font-bold">
-                      {item.title}
-                    </h3>
                   </div>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <CalendarDays size={14} aria-hidden="true" />
-                    {item.date}
-                  </div>
-                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
-                    {item.excerpt}
-                  </p>
-                  <span className="text-hkbp-link mt-4 inline-flex items-center gap-2 text-sm font-bold">
-                    Baca detail
-                    <ArrowRight
-                      className="transition group-hover:translate-x-0.5"
-                      size={16}
-                      aria-hidden="true"
-                    />
-                  </span>
-                </div>
-              </Link>
+                </Link>
+              </StaggerRevealItem>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <ScrollReveal className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
               Galeri Ringkas
@@ -327,9 +341,11 @@ export default async function Home() {
             Buka galeri
             <ArrowRight size={16} aria-hidden="true" />
           </Link>
-        </div>
+        </ScrollReveal>
 
-        <HomeGalleryCarousel images={galleryImages.slice(0, 8)} />
+        <ScrollReveal delay={0.12}>
+          <HomeGalleryCarousel images={galleryImages.slice(0, 8)} />
+        </ScrollReveal>
       </section>
     </main>
   );
