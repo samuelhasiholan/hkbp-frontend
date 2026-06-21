@@ -60,10 +60,6 @@ type BackendWarta = {
   slug: string;
   title: string;
   date: string;
-  liturgicalColor: string;
-  theme: string;
-  preacher: string;
-  excerpt: string;
   pdfVersions: {
     language: "INDONESIA" | "BATAK";
     label: string;
@@ -164,10 +160,6 @@ function toWarta(item: BackendWarta): WartaItem {
     slug: item.slug,
     title: item.title,
     date: formatDate(item.date),
-    liturgicalColor: item.liturgicalColor,
-    theme: item.theme,
-    preacher: item.preacher,
-    excerpt: item.excerpt,
     pdfVersions: item.pdfVersions.map((pdf) => ({
       language: languageLabels[pdf.language],
       label: pdf.label,

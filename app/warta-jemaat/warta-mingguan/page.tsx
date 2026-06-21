@@ -32,7 +32,7 @@ export default async function WartaMingguanPage() {
               {weeklyWarta.title}
             </p>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              {weeklyWarta.excerpt}
+              {weeklyWarta.date}
             </p>
           </div>
         </div>
@@ -41,7 +41,6 @@ export default async function WartaMingguanPage() {
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:px-8">
         <PdfViewer
           date={weeklyWarta.date}
-          description={weeklyWarta.theme}
           pdfVersions={weeklyWarta.pdfVersions}
           title={weeklyWarta.title}
         />

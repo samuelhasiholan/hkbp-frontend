@@ -51,9 +51,6 @@ export function ArchiveBrowser({ items }: ArchiveBrowserProps) {
                 <span className="mt-2 block text-base font-bold text-slate-950">
                   {item.title}
                 </span>
-                <span className="mt-2 line-clamp-2 block text-sm leading-6 text-slate-600">
-                  {item.excerpt}
-                </span>
                 <span className="mt-3 flex items-center gap-2 text-xs font-semibold text-slate-500">
                   <FileText size={14} aria-hidden="true" />
                   {item.pdfVersions.length} versi PDF
@@ -66,7 +63,6 @@ export function ArchiveBrowser({ items }: ArchiveBrowserProps) {
 
       <PdfViewer
         date={selectedWarta.date}
-        description={selectedWarta.excerpt}
         pdfVersions={selectedWarta.pdfVersions}
         title={selectedWarta.title}
       />
