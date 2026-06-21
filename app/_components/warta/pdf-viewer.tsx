@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Copy, Download, ExternalLink, Share2 } from "lucide-react";
+import { Check, Download, ExternalLink, Share2 } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { WartaPdfVersion } from "@/app/_data/warta-content";
@@ -195,20 +195,12 @@ export function PdfViewer({
             onClick={sharePdf}
             type="button"
           >
-            <Share2 size={17} aria-hidden="true" />
-            Share
-          </button>
-          <button
-            className="inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-sm font-bold text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
-            onClick={copyLink}
-            type="button"
-          >
             {copied ? (
               <Check size={17} aria-hidden="true" />
             ) : (
-              <Copy size={17} aria-hidden="true" />
+              <Share2 size={17} aria-hidden="true" />
             )}
-            {copied ? "Tersalin" : "Salin"}
+            {copied ? "Tersalin" : "Bagikan"}
           </button>
           <a
             className="inline-flex size-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-hkbp-border hover:bg-hkbp-soft hover:text-hkbp-link"
