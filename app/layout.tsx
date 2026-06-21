@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "./_components/site-footer";
 import { SiteHeader } from "./_components/site-header";
+import { getSiteSettings } from "./_lib/backend-content";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "HKBP Resort Srengseng Sawah",
-  description:
-    "Website HKBP Resort Srengseng Sawah untuk informasi ibadah, organisasi, warta, berita, dan kontak gereja.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  const image = settings.seoDefaults.ogImageUrl;
+
+  return {
+    title: settings.seoDefaults.title,
+    description: settings.seoDefaults.description,
+    openGraph: {
+      title: settings.seoDefaults.title,
+      description: settings.seoDefaults.description,
+      images: image ? [{ url: image }] : undefined,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

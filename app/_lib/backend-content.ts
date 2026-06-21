@@ -11,10 +11,12 @@ import {
 } from "@/app/_data/publication-content";
 import {
   defaultChurchHistoryTimeline,
+  defaultGlobalSiteSettings,
   defaultPastorGreeting,
   pageContent,
   type ChurchHistoryTimelineItem,
   type GalleryImage,
+  type GlobalSiteSettings,
   type OrganizationProfile,
   type PageContent,
   type PastorGreeting,
@@ -89,6 +91,12 @@ type BackendGalleryItem = {
 };
 
 type BackendSiteSettings = {
+  siteIdentity?: Partial<GlobalSiteSettings["siteIdentity"]>;
+  contactInfo?: Partial<GlobalSiteSettings["contactInfo"]>;
+  socialLinks?: GlobalSiteSettings["socialLinks"];
+  seoDefaults?: Partial<GlobalSiteSettings["seoDefaults"]>;
+  footerSettings?: Partial<GlobalSiteSettings["footerSettings"]>;
+  homeHero?: Partial<GlobalSiteSettings["homeHero"]>;
   pastorGreeting?: Partial<PastorGreeting>;
   churchHistoryTimeline?: ChurchHistoryTimelineItem[];
 };
@@ -260,14 +268,69 @@ export async function getPastorGreeting(): Promise<PastorGreeting> {
   };
 }
 
+export async function getSiteSettings(): Promise<GlobalSiteSettings> {
+  const settings = await fetchPublic<BackendSiteSettings>(
+    "/api/public/site-settings",
+  );
+
+  return {
+    siteIdentity: {
+      ...defaultGlobalSiteSettings.siteIdentity,
+      ...(settings?.siteIdentity ?? {}),
+    },
+    contactInfo: {
+      ...defaultGlobalSiteSettings.contactInfo,
+      ...(settings?.contactInfo ?? {}),
+    },
+    socialLinks: settings?.socialLinks ?? defaultGlobalSiteSettings.socialLinks,
+    seoDefaults: {
+      ...defaultGlobalSiteSettings.seoDefaults,
+      ...(settings?.seoDefaults ?? {}),
+    },
+    footerSettings: {
+      ...defaultGlobalSiteSettings.footerSettings,
+      ...(settings?.footerSettings ?? {}),
+    },
+    homeHero: {
+      ...defaultGlobalSiteSettings.homeHero,
+      ...(settings?.homeHero ?? {}),
+    },
+  };
+}
+
 export async function getHomeSettings(): Promise<{
+  siteSettings: GlobalSiteSettings;
   pastorGreeting: PastorGreeting;
   churchHistoryTimeline: ChurchHistoryTimelineItem[];
 }> {
   const settings = await fetchPublic<BackendSiteSettings>(
     "/api/public/site-settings",
   );
+  const siteSettings: GlobalSiteSettings = {
+    siteIdentity: {
+      ...defaultGlobalSiteSettings.siteIdentity,
+      ...(settings?.siteIdentity ?? {}),
+    },
+    contactInfo: {
+      ...defaultGlobalSiteSettings.contactInfo,
+      ...(settings?.contactInfo ?? {}),
+    },
+    socialLinks: settings?.socialLinks ?? defaultGlobalSiteSettings.socialLinks,
+    seoDefaults: {
+      ...defaultGlobalSiteSettings.seoDefaults,
+      ...(settings?.seoDefaults ?? {}),
+    },
+    footerSettings: {
+      ...defaultGlobalSiteSettings.footerSettings,
+      ...(settings?.footerSettings ?? {}),
+    },
+    homeHero: {
+      ...defaultGlobalSiteSettings.homeHero,
+      ...(settings?.homeHero ?? {}),
+    },
+  };
   return {
+    siteSettings,
     pastorGreeting: {
       ...defaultPastorGreeting,
       ...(settings?.pastorGreeting ?? {}),

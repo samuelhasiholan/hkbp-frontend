@@ -53,6 +53,55 @@ export type ChurchHistoryTimelineItem = {
   title: string;
 };
 
+export type SiteIdentity = {
+  siteName: string;
+  denomination: string;
+  logoUrl?: string;
+};
+
+export type ContactInfo = {
+  address: string;
+  phone?: string;
+  whatsapp?: string;
+  email?: string;
+  officeHours?: string;
+};
+
+export type SocialLink = {
+  label: string;
+  url: string;
+};
+
+export type SeoDefaults = {
+  title: string;
+  description: string;
+  ogImageUrl?: string;
+};
+
+export type FooterSettings = {
+  description: string;
+  copyrightText?: string;
+};
+
+export type HomeHero = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+};
+
+export type GlobalSiteSettings = {
+  siteIdentity: SiteIdentity;
+  contactInfo: ContactInfo;
+  socialLinks: SocialLink[];
+  seoDefaults: SeoDefaults;
+  footerSettings: FooterSettings;
+  homeHero: HomeHero;
+};
+
 export type PageContent = {
   title: string;
   eyebrow: string;
@@ -79,6 +128,44 @@ export type PageContent = {
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
+
+export const defaultGlobalSiteSettings: GlobalSiteSettings = {
+  siteIdentity: {
+    siteName: SITE_NAME,
+    denomination: "Huria Kristen Batak Protestan",
+    logoUrl: "",
+  },
+  contactInfo: {
+    address:
+      "Gg. Amalia Jl. Srengseng Sawah No.4, RT.3/RW.3, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630",
+    phone: "08xx-xxxx-xxxx",
+    whatsapp: "",
+    email: "admin@hkbp.or.id",
+    officeHours: "Senin - Sabtu, 09.00 - 16.00 WIB",
+  },
+  socialLinks: [],
+  seoDefaults: {
+    title: SITE_NAME,
+    description:
+      "Website HKBP Resort Srengseng Sawah untuk informasi ibadah, organisasi, warta, berita, dan kontak gereja.",
+    ogImageUrl: "",
+  },
+  footerSettings: {
+    description:
+      "Website jemaat untuk informasi ibadah, organisasi, warta, berita, dan pelayanan gereja.",
+    copyrightText: "",
+  },
+  homeHero: {
+    eyebrow: "Website Resmi",
+    title: SITE_NAME,
+    description:
+      "Pusat informasi ibadah, pelayanan, organisasi, warta jemaat, berita, dan kontak gereja untuk mendukung kehidupan persekutuan.",
+    primaryLabel: "Lihat Jadwal Ibadah",
+    primaryHref: "/jadwal-pelayanan/ibadah-minggu",
+    secondaryLabel: "Baca Warta Jemaat",
+    secondaryHref: "/warta-jemaat/warta-mingguan",
+  },
+};
 
 export const defaultPastorGreeting: PastorGreeting = {
   eyebrow: "Sambutan Pendeta",

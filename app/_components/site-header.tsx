@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ChevronDown, ChevronRight, Church, Menu } from "lucide-react";
 import { NAVIGATION } from "@/src/constants/navigation";
-import { SITE_NAME } from "@/app/_data/site-content";
+import { getSiteSettings } from "@/app/_lib/backend-content";
 
 type NavigationItem = {
   title: string;
@@ -65,20 +65,27 @@ function MobileNavigationItem({ item }: { item: NavigationItem }) {
   );
 }
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const settings = await getSiteSettings();
+  const { siteIdentity } = settings;
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-hkbp-brand text-white">
-            <Church size={22} aria-hidden="true" />
+          <span className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-hkbp-brand text-white">
+            {siteIdentity.logoUrl ? (
+              <img src={siteIdentity.logoUrl} alt="" className="h-full w-full object-cover" />
+            ) : (
+              <Church size={22} aria-hidden="true" />
+            )}
           </span>
           <span className="min-w-0">
             <span className="block text-base font-bold leading-tight text-slate-950">
-              {SITE_NAME}
+              {siteIdentity.siteName}
             </span>
             <span className="block text-xs font-medium uppercase tracking-wide text-slate-500">
-              Huria Kristen Batak Protestan
+              {siteIdentity.denomination}
             </span>
           </span>
         </Link>

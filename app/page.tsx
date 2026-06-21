@@ -56,7 +56,11 @@ export default async function Home() {
     getPublications(),
     getHomeSettings(),
   ]);
-  const { pastorGreeting, churchHistoryTimeline } = homeSettings;
+  const {
+    siteSettings: { homeHero },
+    pastorGreeting,
+    churchHistoryTimeline,
+  } = homeSettings;
   const latestPublications = [...publications]
     .sort(
       (first, second) =>
@@ -75,28 +79,27 @@ export default async function Home() {
         <div className="relative mx-auto grid min-h-[calc(100vh-4.25rem)] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
           <div>
             <p className="text-hkbp-soft text-sm font-bold tracking-wide uppercase">
-              Website Resmi
+              {homeHero.eyebrow}
             </p>
             <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-normal sm:text-6xl">
-              HKBP Resort Srengseng Sawah
+              {homeHero.title}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
-              Pusat informasi ibadah, pelayanan, organisasi, warta jemaat,
-              berita, dan kontak gereja untuk mendukung kehidupan persekutuan.
+              {homeHero.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 className="bg-hkbp-primary hover:bg-hkbp-primary-hover inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-bold text-white transition"
-                href="/jadwal-pelayanan/ibadah-minggu"
+                href={homeHero.primaryHref}
               >
-                Lihat Jadwal Ibadah
+                {homeHero.primaryLabel}
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link
                 className="inline-flex items-center justify-center rounded-md border border-white/30 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10"
-                href="/warta-jemaat/warta-mingguan"
+                href={homeHero.secondaryHref}
               >
-                Baca Warta Jemaat
+                {homeHero.secondaryLabel}
               </Link>
             </div>
           </div>
