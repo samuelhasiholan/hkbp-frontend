@@ -125,7 +125,13 @@ export type PageContent = {
   callout?: string;
   contactInfo?: ContactInfo;
   mapEmbedUrl?: string;
-  layoutVariant?: "article" | "wijk" | "pastors" | "officers" | "council";
+  layoutVariant?:
+    | "article"
+    | "wijk"
+    | "pastors"
+    | "officers"
+    | "council"
+    | "offering";
 };
 
 export const SITE_NAME = "HKBP Resort Srengseng Sawah";
@@ -1047,6 +1053,7 @@ export const pageContent: Record<string, PageContent> = {
   persembahan: {
     title: "Persembahan",
     eyebrow: "Dukungan Pelayanan",
+    layoutVariant: "offering",
     description:
       "Informasi persembahan jemaat untuk mendukung pelayanan, persekutuan, kesaksian, dan pekerjaan kasih gereja.",
     summary:

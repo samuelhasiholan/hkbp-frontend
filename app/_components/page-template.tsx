@@ -6,10 +6,13 @@ import {
   CheckCircle2,
   Clock3,
   HeartHandshake,
+  Landmark,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
+  QrCode,
+  ShieldCheck,
   UserRound,
   UsersRound,
 } from "lucide-react";
@@ -41,6 +44,22 @@ function toSectionId(value: string) {
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+function getSectionImageUrl(body: string) {
+  return body.match(/https?:\/\/\S+\.(?:png|jpe?g|webp|gif)(?:\?\S*)?/i)?.[0];
+}
+
+function withoutImageUrl(body: string, imageUrl?: string) {
+  if (!imageUrl) {
+    return body;
+  }
+
+  return body
+    .split("\n")
+    .filter((line) => !line.includes(imageUrl))
+    .join("\n")
+    .trim();
 }
 
 function ProfileGrid({ profiles }: ProfileGridProps) {
@@ -397,6 +416,102 @@ function ArticlePageTemplate({ content }: PageTemplateProps) {
   );
 }
 
+function OfferingPageTemplate({ content }: PageTemplateProps) {
+  const sectionIcons = [HeartHandshake, Landmark, QrCode];
+
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
+              {content.eyebrow}
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
+              {content.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              {content.description}
+            </p>
+          </div>
+
+          <aside className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+            <p className="text-sm leading-6 text-slate-600">
+              {content.summary}
+            </p>
+            <div className="mt-5 grid gap-3">
+              {content.highlights.map((highlight) => (
+                <p
+                  className="flex items-start gap-3 text-sm font-semibold text-slate-800"
+                  key={highlight}
+                >
+                  <CheckCircle2
+                    className="mt-0.5 size-4 shrink-0 text-hkbp-link"
+                    aria-hidden="true"
+                  />
+                  {highlight}
+                </p>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-5 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
+        {content.sections.map((section, index) => {
+          const Icon = sectionIcons[index] ?? ShieldCheck;
+          const imageUrl = getSectionImageUrl(section.body);
+          const body = withoutImageUrl(section.body, imageUrl);
+          const isQris = toSectionId(section.title).includes("qris");
+
+          return (
+            <article
+              className="scroll-mt-28 rounded-md border border-slate-200 bg-white p-6"
+              id={toSectionId(section.title)}
+              key={section.title}
+            >
+              <span className="flex size-11 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link">
+                <Icon size={22} aria-hidden="true" />
+              </span>
+              <h2 className="mt-5 text-xl font-bold text-slate-950">
+                {section.title}
+              </h2>
+              {body ? (
+                <p className="mt-3 whitespace-pre-line text-sm leading-7 text-slate-600">
+                  {body}
+                </p>
+              ) : null}
+              {isQris && imageUrl ? (
+                <div className="mt-5 overflow-hidden rounded-md border border-slate-200 bg-slate-50 p-3">
+                  <div
+                    aria-label="QRIS resmi gereja"
+                    className="mx-auto aspect-square w-full max-w-72 rounded-md object-contain"
+                    role="img"
+                    style={{
+                      backgroundImage: `url("${imageUrl}")`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "contain",
+                    }}
+                  />
+                </div>
+              ) : null}
+            </article>
+          );
+        })}
+      </section>
+
+      {content.callout ? (
+        <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+          <div className="rounded-md border border-hkbp-border bg-hkbp-soft p-5 text-sm font-medium leading-6 text-hkbp-link-strong">
+            {content.callout}
+          </div>
+        </section>
+      ) : null}
+    </main>
+  );
+}
+
 function WijkPageTemplate({ content }: PageTemplateProps) {
   const wijkItems = content.wijkItems ?? [];
 
@@ -626,6 +741,10 @@ export function PageTemplate({ content }: PageTemplateProps) {
 
   if (content.layoutVariant === "article") {
     return <ArticlePageTemplate content={content} />;
+  }
+
+  if (content.layoutVariant === "offering") {
+    return <OfferingPageTemplate content={content} />;
   }
 
   if (content.layoutVariant === "wijk") {

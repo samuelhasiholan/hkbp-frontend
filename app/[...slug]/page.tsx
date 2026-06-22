@@ -37,7 +37,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const pageSlug = slug.join("/");
-  const content = await getPageContent(pageSlug);
+  const content = await getPageContent(pageSlug) ?? pageContent[pageSlug];
 
   if (!content) {
     notFound();
