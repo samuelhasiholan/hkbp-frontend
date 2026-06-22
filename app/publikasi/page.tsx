@@ -10,7 +10,7 @@ import { publicationSections } from "@/app/_data/publication-content";
 import { pageContent } from "@/app/_data/site-content";
 import { getPublications } from "@/app/_lib/backend-content";
 
-const content = pageContent["berita-publikasi"];
+const content = pageContent["publikasi"];
 
 const sectionIcons = {
   "Berita Kegiatan": Newspaper,
@@ -76,7 +76,7 @@ export default async function BeritaPublikasiPage() {
                 {items.map((item) => (
                   <Link
                     className="group hover:border-hkbp-border overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                    href={`/berita-publikasi/${item.slug}`}
+                    href={`/publikasi/${item.slug}`}
                     key={item.slug}
                   >
                     <div

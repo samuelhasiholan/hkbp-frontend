@@ -2,7 +2,7 @@ import { PdfViewer } from "@/app/_components/warta/pdf-viewer";
 import { pageContent } from "@/app/_data/site-content";
 import { getCurrentWarta } from "@/app/_lib/backend-content";
 
-const content = pageContent["warta-jemaat/warta-mingguan"];
+const content = pageContent["warta/warta-mingguan"];
 
 export const metadata = {
   title: `${content.title} | HKBP Resort Srengseng Sawah`,

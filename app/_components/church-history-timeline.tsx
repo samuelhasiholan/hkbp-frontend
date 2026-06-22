@@ -96,7 +96,7 @@ export function ChurchHistoryTimeline({ items }: ChurchHistoryTimelineProps) {
         >
           <Link
             className="text-hkbp-link inline-flex items-center gap-2 text-sm font-bold"
-            href="/tentang-gereja/sejarah"
+            href="/tentang/sejarah"
           >
             Baca sejarah lengkap
             <ArrowRight size={16} aria-hidden="true" />

@@ -169,8 +169,8 @@ export const defaultGlobalSiteSettings: GlobalSiteSettings = {
       "Pusat informasi ibadah, pelayanan, warta jemaat, berita, dan kontak gereja untuk mendukung kehidupan persekutuan.",
     primaryLabel: "Lihat Jadwal Ibadah",
     primaryHref: "/pelayanan/jadwal-pelayanan#ibadah-minggu",
-    secondaryLabel: "Baca Warta Jemaat",
-    secondaryHref: "/warta-jemaat/warta-mingguan",
+    secondaryLabel: "Baca Warta",
+    secondaryHref: "/warta/warta-mingguan",
   },
 };
 
@@ -208,8 +208,8 @@ const retiredElderProfiles: RetiredElderProfile[] = Array.from(
 );
 
 export const pageContent: Record<string, PageContent> = {
-  "tentang-gereja": {
-    title: "Tentang Gereja",
+  "tentang": {
+    title: "Tentang",
     eyebrow: "Profil Jemaat",
     description:
       "Ruang pengenalan jemaat, arah pelayanan, dan dokumentasi kehidupan bergereja.",
@@ -221,19 +221,19 @@ export const pageContent: Record<string, PageContent> = {
         title: "Sejarah",
         description:
           "Telusuri perjalanan jemaat dari awal persekutuan hingga pelayanan yang berlangsung saat ini.",
-        href: "/tentang-gereja/sejarah",
+        href: "/tentang/sejarah",
       },
       {
         title: "Visi & Misi",
         description:
           "Lihat arah pelayanan bersama yang menuntun pertumbuhan iman, persekutuan, dan kesaksian jemaat.",
-        href: "/tentang-gereja/visi-misi",
+        href: "/tentang/visi-misi",
       },
       {
         title: "Galeri",
         description:
           "Buka dokumentasi kegiatan ibadah, pelayanan kategorial, dan momen kebersamaan jemaat.",
-        href: "/tentang-gereja/galeri",
+        href: "/tentang/galeri",
       },
     ],
     sections: [
@@ -247,9 +247,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "tentang-gereja/sejarah": {
+  "tentang/sejarah": {
     title: "Sejarah",
-    eyebrow: "Tentang Gereja",
+    eyebrow: "Tentang",
     layoutVariant: "article",
     description:
       "Catatan perjalanan jemaat dari awal persekutuan hingga pelayanan yang berlangsung saat ini.",
@@ -275,9 +275,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "tentang-gereja/visi-misi": {
+  "tentang/visi-misi": {
     title: "Visi & Misi",
-    eyebrow: "Tentang Gereja",
+    eyebrow: "Tentang",
     layoutVariant: "article",
     description:
       "Arah bersama untuk menjadi jemaat yang bertumbuh, melayani, dan menjadi berkat.",
@@ -309,9 +309,9 @@ export const pageContent: Record<string, PageContent> = {
     callout:
       "Rumusan ini dapat disesuaikan lagi dengan keputusan resmi majelis jemaat jika sudah tersedia.",
   },
-  "tentang-gereja/galeri": {
+  "tentang/galeri": {
     title: "Galeri",
-    eyebrow: "Tentang Gereja",
+    eyebrow: "Tentang",
     description:
       "Dokumentasi kegiatan ibadah, persekutuan, pelayanan sosial, dan momen khusus jemaat.",
     summary:
@@ -952,8 +952,8 @@ export const pageContent: Record<string, PageContent> = {
     callout:
       "Konten jadwal pelayanan dapat diperbarui melalui CMS sesuai agenda pelayanan terbaru.",
   },
-  "warta-jemaat": {
-    title: "Warta Jemaat",
+  "warta": {
+    title: "Warta",
     eyebrow: "Informasi Mingguan",
     description:
       "Pengumuman ibadah, agenda, persembahan, dan berita pelayanan jemaat.",
@@ -965,13 +965,13 @@ export const pageContent: Record<string, PageContent> = {
         title: "Warta Mingguan",
         description:
           "Buka warta terbaru untuk ibadah dan kegiatan minggu berjalan.",
-        href: "/warta-jemaat/warta-mingguan",
+        href: "/warta/warta-mingguan",
       },
       {
         title: "Arsip Warta",
         description:
           "Cari kumpulan warta terdahulu sebagai dokumentasi dan rujukan pelayanan.",
-        href: "/warta-jemaat/arsip-warta",
+        href: "/warta/arsip-warta",
       },
     ],
     sections: [
@@ -985,9 +985,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "warta-jemaat/warta-mingguan": {
+  "warta/warta-mingguan": {
     title: "Warta Mingguan",
-    eyebrow: "Warta Jemaat",
+    eyebrow: "Warta",
     description:
       "Warta minggu ini terbuka otomatis dalam PDF viewer, lengkap dengan tombol unduh dan share untuk memudahkan distribusi kepada jemaat.",
     summary:
@@ -1004,9 +1004,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "warta-jemaat/arsip-warta": {
+  "warta/arsip-warta": {
     title: "Arsip Warta",
-    eyebrow: "Warta Jemaat",
+    eyebrow: "Warta",
     description:
       "Beberapa sample warta minggu yang sudah berlalu. Pilih salah satu arsip untuk langsung menampilkan PDF viewer di halaman ini.",
     summary:
@@ -1027,8 +1027,8 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "berita-publikasi": {
-    title: "Berita & Publikasi",
+  "publikasi": {
+    title: "Publikasi",
     eyebrow: "Kabar Jemaat",
     description:
       "Kumpulan berita kegiatan, artikel renungan, dan publikasi resmi untuk mendukung kehidupan persekutuan jemaat.",
@@ -1108,8 +1108,8 @@ export const pageContent: Record<string, PageContent> = {
 export const allPageSlugs = Object.keys(pageContent).filter(
   (slug) =>
     ![
-      "warta-jemaat/warta-mingguan",
-      "warta-jemaat/arsip-warta",
-      "berita-publikasi",
+      "warta/warta-mingguan",
+      "warta/arsip-warta",
+      "publikasi",
     ].includes(slug),
 );

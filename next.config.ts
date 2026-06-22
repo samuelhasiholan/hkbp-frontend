@@ -4,6 +4,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/tentang-gereja",
+        destination: "/tentang",
+        permanent: true,
+      },
+      {
+        source: "/tentang-gereja/:path*",
+        destination: "/tentang/:path*",
+        permanent: true,
+      },
+      {
         source: "/organisasi",
         destination: "/pelayanan",
         permanent: true,
@@ -31,6 +41,26 @@ const nextConfig: NextConfig = {
       {
         source: "/jadwal-pelayanan/pelayanan-khusus",
         destination: "/pelayanan/jadwal-pelayanan#pelayanan-khusus",
+        permanent: true,
+      },
+      {
+        source: "/warta-jemaat",
+        destination: "/warta",
+        permanent: true,
+      },
+      {
+        source: "/warta-jemaat/:path*",
+        destination: "/warta/:path*",
+        permanent: true,
+      },
+      {
+        source: "/berita-publikasi",
+        destination: "/publikasi",
+        permanent: true,
+      },
+      {
+        source: "/berita-publikasi/:path*",
+        destination: "/publikasi/:path*",
         permanent: true,
       },
     ];

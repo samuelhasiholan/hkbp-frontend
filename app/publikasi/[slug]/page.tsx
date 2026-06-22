@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, UserRound } from "lucide-react";
-import { ShareActions } from "@/app/_components/berita-publikasi/share-actions";
+import { ShareActions } from "@/app/_components/publikasi/share-actions";
 import { publications } from "@/app/_data/publication-content";
 import { getPublicationBySlug } from "@/app/_lib/backend-content";
 
@@ -48,7 +48,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${item.title} | Berita & Publikasi`,
+    title: `${item.title} | Publikasi`,
     description: item.excerpt,
   };
 }
@@ -84,7 +84,7 @@ export default async function PublicationDetailPage({
           <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
             <Link
               className="inline-flex items-center gap-2 rounded-md bg-white/12 px-3 py-2 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
-              href="/berita-publikasi"
+              href="/publikasi"
             >
               <ArrowLeft size={16} aria-hidden="true" />
               Kembali

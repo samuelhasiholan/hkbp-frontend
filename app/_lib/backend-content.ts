@@ -400,7 +400,7 @@ export async function getPageContent(
       ? toPageContent(fallback, backendPage)
       : { ...(fallback as PageContent) };
 
-  if (slug === "tentang-gereja/galeri") {
+  if (slug === "tentang/galeri") {
     content.galleryImages = await getGalleryImages(
       fallback.galleryImages ?? [],
     );

@@ -68,8 +68,8 @@ export default async function Home() {
     )
     .slice(0, 3);
   const galleryContent =
-    (await getPageContent("tentang-gereja/galeri")) ??
-    pageContent["tentang-gereja/galeri"];
+    (await getPageContent("tentang/galeri")) ??
+    pageContent["tentang/galeri"];
   const galleryImages = galleryContent.galleryImages ?? [];
 
   return (
@@ -198,9 +198,9 @@ export default async function Home() {
         <StaggerReveal className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "Tentang Gereja",
+              title: "Tentang",
               body: "Kenali sejarah, visi misi, dan dokumentasi kegiatan jemaat.",
-              href: "/tentang-gereja",
+              href: "/tentang",
               icon: Church,
             },
             {
@@ -216,9 +216,9 @@ export default async function Home() {
               icon: CalendarDays,
             },
             {
-              title: "Warta Jemaat",
+              title: "Warta",
               body: "Baca pengumuman mingguan dan arsip warta gereja.",
-              href: "/warta-jemaat",
+              href: "/warta",
               icon: Newspaper,
             },
           ].map((item) => {
@@ -254,7 +254,7 @@ export default async function Home() {
                 Berita Terbaru
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-normal text-slate-950">
-                Kabar dari Berita & Publikasi
+                Kabar dari Publikasi
               </h2>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
                 Berita kegiatan, renungan, dan publikasi resmi terbaru untuk
@@ -263,7 +263,7 @@ export default async function Home() {
             </div>
             <Link
               className="text-hkbp-link inline-flex items-center gap-2 text-sm font-bold"
-              href="/berita-publikasi"
+              href="/publikasi"
             >
               Lihat semua publikasi
               <ArrowRight size={16} aria-hidden="true" />
@@ -275,7 +275,7 @@ export default async function Home() {
               <StaggerRevealItem key={item.slug}>
                 <Link
                   className="group hover:border-hkbp-border block overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                  href={`/berita-publikasi/${item.slug}`}
+                  href={`/publikasi/${item.slug}`}
                 >
                   <div
                     className={`relative flex aspect-[16/9] items-end overflow-hidden bg-cover bg-center p-5 text-white ${
@@ -339,7 +339,7 @@ export default async function Home() {
           </div>
           <Link
             className="text-hkbp-link inline-flex items-center gap-2 text-sm font-bold"
-            href="/tentang-gereja/galeri"
+            href="/tentang/galeri"
           >
             Buka galeri
             <ArrowRight size={16} aria-hidden="true" />

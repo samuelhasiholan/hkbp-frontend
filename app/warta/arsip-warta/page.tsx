@@ -3,7 +3,7 @@ import { ArchiveBrowser } from "@/app/_components/warta/archive-browser";
 import { pageContent } from "@/app/_data/site-content";
 import { getArchivedWarta } from "@/app/_lib/backend-content";
 
-const content = pageContent["warta-jemaat/arsip-warta"];
+const content = pageContent["warta/arsip-warta"];
 
 export const metadata = {
   title: `${content.title} | HKBP Resort Srengseng Sawah`,

@@ -4,20 +4,20 @@ export const NAVIGATION = [
     href: "/",
   },
   {
-    title: "Tentang Gereja",
-    href: "/tentang-gereja",
+    title: "Tentang",
+    href: "/tentang",
     children: [
       {
         title: "Sejarah",
-        href: "/tentang-gereja/sejarah",
+        href: "/tentang/sejarah",
       },
       {
         title: "Visi & Misi",
-        href: "/tentang-gereja/visi-misi",
+        href: "/tentang/visi-misi",
       },
       {
         title: "Galeri",
-        href: "/tentang-gereja/galeri",
+        href: "/tentang/galeri",
       },
     ],
   },
@@ -128,22 +128,22 @@ export const NAVIGATION = [
     ],
   },
   {
-    title: "Warta Jemaat",
-    href: "/warta-jemaat",
+    title: "Warta",
+    href: "/warta",
     children: [
       {
         title: "Warta Mingguan",
-        href: "/warta-jemaat/warta-mingguan",
+        href: "/warta/warta-mingguan",
       },
       {
         title: "Arsip Warta",
-        href: "/warta-jemaat/arsip-warta",
+        href: "/warta/arsip-warta",
       },
     ],
   },
   {
-    title: "Berita & Publikasi",
-    href: "/berita-publikasi",
+    title: "Publikasi",
+    href: "/publikasi",
   },
   {
     title: "Persembahan",

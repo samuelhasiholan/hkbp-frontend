@@ -47,7 +47,7 @@ export function HomeGalleryCarousel({ images }: HomeGalleryCarouselProps) {
           {images.map((image) => (
             <Link
               className="group block px-2"
-              href="/tentang-gereja/galeri"
+              href="/tentang/galeri"
               key={image.src}
               style={{ width: `${100 / images.length}%` }}
             >
