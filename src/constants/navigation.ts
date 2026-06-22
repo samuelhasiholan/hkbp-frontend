@@ -22,108 +22,108 @@ export const NAVIGATION = [
     ],
   },
   {
-    title: "Organisasi",
-    href: "/organisasi",
+    title: "Pelayanan",
+    href: "/pelayanan",
     children: [
       {
         title: "Pendeta",
-        href: "/organisasi/pendeta",
+        href: "/pelayanan/pendeta",
       },
       {
         title: "Fungsionaris",
-        href: "/organisasi/fungsionaris",
+        href: "/pelayanan/fungsionaris",
       },
       {
         title: "Dewan Koinonia",
-        href: "/organisasi/dewan-koinonia",
+        href: "/pelayanan/dewan-koinonia",
         children: [
           {
             title: "Seksi Sekolah Minggu",
-            href: "/organisasi/dewan-koinonia#seksi-sekolah-minggu",
+            href: "/pelayanan/dewan-koinonia#seksi-sekolah-minggu",
           },
           {
             title: "Seksi Remaja",
-            href: "/organisasi/dewan-koinonia#seksi-remaja",
+            href: "/pelayanan/dewan-koinonia#seksi-remaja",
           },
           {
             title: "Seksi Naposobulung",
-            href: "/organisasi/dewan-koinonia#seksi-naposobulung",
+            href: "/pelayanan/dewan-koinonia#seksi-naposobulung",
           },
           {
             title: "Seksi Parompuan",
-            href: "/organisasi/dewan-koinonia#seksi-parompuan",
+            href: "/pelayanan/dewan-koinonia#seksi-parompuan",
           },
           {
             title: "Seksi Ama",
-            href: "/organisasi/dewan-koinonia#seksi-ama",
+            href: "/pelayanan/dewan-koinonia#seksi-ama",
           },
           {
             title: "Seksi Lansia",
-            href: "/organisasi/dewan-koinonia#seksi-lansia",
+            href: "/pelayanan/dewan-koinonia#seksi-lansia",
           },
         ],
       },
       {
         title: "Dewan Marturia",
-        href: "/organisasi/dewan-marturia",
+        href: "/pelayanan/dewan-marturia",
         children: [
           {
             title: "Seksi Zending",
-            href: "/organisasi/dewan-marturia#seksi-zending",
+            href: "/pelayanan/dewan-marturia#seksi-zending",
           },
           {
             title: "Seksi Musik",
-            href: "/organisasi/dewan-marturia#seksi-musik",
+            href: "/pelayanan/dewan-marturia#seksi-musik",
           },
         ],
       },
       {
         title: "Dewan Diakonia",
-        href: "/organisasi/dewan-diakonia",
+        href: "/pelayanan/dewan-diakonia",
         children: [
           {
             title: "Seksi Diakoni Sosial",
-            href: "/organisasi/dewan-diakonia#seksi-diakoni-sosial",
+            href: "/pelayanan/dewan-diakonia#seksi-diakoni-sosial",
           },
           {
             title: "Seksi Pendidikan",
-            href: "/organisasi/dewan-diakonia#seksi-pendidikan",
+            href: "/pelayanan/dewan-diakonia#seksi-pendidikan",
           },
           {
             title: "Seksi Kesehatan",
-            href: "/organisasi/dewan-diakonia#seksi-kesehatan",
+            href: "/pelayanan/dewan-diakonia#seksi-kesehatan",
           },
           {
             title: "Seksi Kemasyarakatan",
-            href: "/organisasi/dewan-diakonia#seksi-kemasyarakatan",
+            href: "/pelayanan/dewan-diakonia#seksi-kemasyarakatan",
           },
         ],
       },
       {
         title: "Wilayah (Wijk)",
-        href: "/organisasi/wilayah-wijk",
+        href: "/pelayanan/wilayah-wijk",
       },
       {
         title: "Sintua Purnabakti",
-        href: "/organisasi/sintua-purnabakti",
-      },
-    ],
-  },
-  {
-    title: "Jadwal Pelayanan",
-    href: "/jadwal-pelayanan",
-    children: [
-      {
-        title: "Ibadah Minggu",
-        href: "/jadwal-pelayanan/ibadah-minggu",
+        href: "/pelayanan/sintua-purnabakti",
       },
       {
-        title: "Partangiangan",
-        href: "/jadwal-pelayanan/partangiangan",
-      },
-      {
-        title: "Pelayanan Khusus",
-        href: "/jadwal-pelayanan/pelayanan-khusus",
+        title: "Jadwal Pelayanan",
+        href: "/pelayanan/jadwal-pelayanan",
+        children: [
+          {
+            title: "Ibadah Minggu",
+            href: "/pelayanan/jadwal-pelayanan#ibadah-minggu",
+          },
+          {
+            title: "Partangiangan",
+            href: "/pelayanan/jadwal-pelayanan#partangiangan",
+          },
+          {
+            title: "Pelayanan Khusus",
+            href: "/pelayanan/jadwal-pelayanan#pelayanan-khusus",
+          },
+        ],
       },
     ],
   },
@@ -144,6 +144,10 @@ export const NAVIGATION = [
   {
     title: "Berita & Publikasi",
     href: "/berita-publikasi",
+  },
+  {
+    title: "Persembahan",
+    href: "/persembahan",
   },
   {
     title: "Kontak",

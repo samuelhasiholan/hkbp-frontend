@@ -110,17 +110,17 @@ export default async function Home() {
                 [
                   "Ibadah Minggu",
                   "Informasi jam ibadah dan petugas pelayanan.",
-                  "/jadwal-pelayanan/ibadah-minggu",
+                  "/pelayanan/jadwal-pelayanan#ibadah-minggu",
                 ],
                 [
                   "Partangiangan",
                   "Jadwal persekutuan doa wijk dan kategorial.",
-                  "/jadwal-pelayanan/partangiangan",
+                  "/pelayanan/jadwal-pelayanan#partangiangan",
                 ],
                 [
                   "Pelayanan Khusus",
                   "Baptis, sidi, pernikahan, dan penghiburan.",
-                  "/jadwal-pelayanan/pelayanan-khusus",
+                  "/pelayanan/jadwal-pelayanan#pelayanan-khusus",
                 ],
               ].map(([title, body, href]) => (
                 <Link
@@ -204,15 +204,15 @@ export default async function Home() {
               icon: Church,
             },
             {
-              title: "Organisasi",
+              title: "Pelayanan",
               body: "Lihat struktur pelayanan pendeta, fungsionaris, dewan, dan wijk.",
-              href: "/organisasi",
+              href: "/pelayanan",
               icon: UsersRound,
             },
             {
               title: "Jadwal Pelayanan",
               body: "Ikuti jadwal ibadah Minggu, partangiangan, dan pelayanan khusus.",
-              href: "/jadwal-pelayanan",
+              href: "/pelayanan/jadwal-pelayanan",
               icon: CalendarDays,
             },
             {

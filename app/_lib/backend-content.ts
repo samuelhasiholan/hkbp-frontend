@@ -438,7 +438,7 @@ export async function getPageContent(
     content.wijkItems = await getWijkItems(fallback.wijkItems ?? []);
   }
 
-  if (slug === "organisasi/sintua-purnabakti") {
+  if (slug === "pelayanan/sintua-purnabakti") {
     const profiles = await getRetiredElders();
     content.retiredElderProfiles = profiles.length
       ? profiles

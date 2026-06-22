@@ -13,6 +13,7 @@ import {
   UserRound,
   UsersRound,
 } from "lucide-react";
+import { ContactFeedbackForm } from "@/app/_components/contact-feedback-form";
 import { GalleryGrid } from "@/app/_components/gallery-grid";
 import { OrganizationPeopleGrid } from "@/app/_components/organization-people-grid";
 import { RetiredElderSearch } from "@/app/_components/retired-elder-search";
@@ -30,6 +31,17 @@ type ChildPageLinksProps = {
   childPages: NonNullable<PageContent["childPages"]>;
   title: string;
 };
+
+function toSectionId(value: string) {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, "dan")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 function ProfileGrid({ profiles }: ProfileGridProps) {
   return (
@@ -284,6 +296,7 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
           </section>
         ) : null}
       </section>
+      <ContactFeedbackForm />
     </main>
   );
 }
@@ -367,6 +380,7 @@ function ArticlePageTemplate({ content }: PageTemplateProps) {
           {content.sections.map((section, index) => (
             <section
               className={index === 0 ? undefined : "mt-10 border-t border-slate-200 pt-10"}
+              id={toSectionId(section.title)}
               key={section.title}
             >
               <h2 className="text-2xl font-bold tracking-normal text-slate-950">
@@ -507,10 +521,10 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
   const primaryActionLabel = isPastorPage ? "Hubungi Gereja" : "Kontak Kantor";
   const secondaryActionLabel = isPastorPage
     ? "Jadwal Pelayanan"
-    : "Lihat Organisasi";
+    : "Lihat Pelayanan";
   const secondaryActionHref = isPastorPage
-    ? "/jadwal-pelayanan"
-    : "/organisasi";
+    ? "/pelayanan/jadwal-pelayanan"
+    : "/pelayanan";
 
   return (
     <main className="bg-white">
@@ -734,7 +748,8 @@ export function PageTemplate({ content }: PageTemplateProps) {
               ? null
               : content.sections.map((section) => (
                   <article
-                    className="rounded-md border border-slate-200 bg-white p-6"
+                    className="scroll-mt-28 rounded-md border border-slate-200 bg-white p-6"
+                    id={toSectionId(section.title)}
                     key={section.title}
                   >
                     <h2 className="text-xl font-bold text-slate-950">

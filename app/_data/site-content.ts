@@ -148,21 +148,21 @@ export const defaultGlobalSiteSettings: GlobalSiteSettings = {
   seoDefaults: {
     title: SITE_NAME,
     description:
-      "Website HKBP Resort Srengseng Sawah untuk informasi ibadah, organisasi, warta, berita, dan kontak gereja.",
+      "Website HKBP Resort Srengseng Sawah untuk informasi ibadah, pelayanan, warta, berita, dan kontak gereja.",
     ogImageUrl: "",
   },
   footerSettings: {
     description:
-      "Website jemaat untuk informasi ibadah, organisasi, warta, berita, dan pelayanan gereja.",
+      "Website jemaat untuk informasi ibadah, warta, berita, dan pelayanan gereja.",
     copyrightText: "",
   },
   homeHero: {
     eyebrow: "Website Resmi",
     title: SITE_NAME,
     description:
-      "Pusat informasi ibadah, pelayanan, organisasi, warta jemaat, berita, dan kontak gereja untuk mendukung kehidupan persekutuan.",
+      "Pusat informasi ibadah, pelayanan, warta jemaat, berita, dan kontak gereja untuk mendukung kehidupan persekutuan.",
     primaryLabel: "Lihat Jadwal Ibadah",
-    primaryHref: "/jadwal-pelayanan/ibadah-minggu",
+    primaryHref: "/pelayanan/jadwal-pelayanan#ibadah-minggu",
     secondaryLabel: "Baca Warta Jemaat",
     secondaryHref: "/warta-jemaat/warta-mingguan",
   },
@@ -471,13 +471,13 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  organisasi: {
-    title: "Organisasi",
+  pelayanan: {
+    title: "Pelayanan",
     eyebrow: "Tata Pelayanan",
     description:
       "Struktur pelayan gereja yang mendukung ibadah, pembinaan, kesaksian, dan pelayanan kasih.",
     summary:
-      "Organisasi jemaat menolong pelayanan berjalan tertib: pendeta, parhalado, fungsionaris, dewan, dan wijk bekerja bersama sesuai tugas masing-masing.",
+      "Pelayanan jemaat menolong pelayanan berjalan tertib: pendeta, parhalado, fungsionaris, dewan, dan wijk bekerja bersama sesuai tugas masing-masing.",
     highlights: [
       "Pendeta dan parhalado",
       "Dewan pelayanan",
@@ -488,43 +488,49 @@ export const pageContent: Record<string, PageContent> = {
         title: "Pendeta",
         description:
           "Kenali para pelayan tertahbis yang memimpin penggembalaan, firman, dan sakramen.",
-        href: "/organisasi/pendeta",
+        href: "/pelayanan/pendeta",
       },
       {
         title: "Fungsionaris",
         description:
           "Lihat pelayan yang mengelola administrasi, keuangan, dan koordinasi kegiatan jemaat.",
-        href: "/organisasi/fungsionaris",
+        href: "/pelayanan/fungsionaris",
       },
       {
         title: "Dewan Koinonia",
         description:
           "Masuk ke bidang persekutuan, pembinaan iman, dan pelayanan kategorial jemaat.",
-        href: "/organisasi/dewan-koinonia",
+        href: "/pelayanan/dewan-koinonia",
       },
       {
         title: "Dewan Marturia",
         description:
           "Telusuri bidang kesaksian, publikasi, musik, dan pewartaan kabar baik.",
-        href: "/organisasi/dewan-marturia",
+        href: "/pelayanan/dewan-marturia",
       },
       {
         title: "Dewan Diakonia",
         description:
           "Buka bidang pelayanan kasih, kepedulian sosial, dan pendampingan warga jemaat.",
-        href: "/organisasi/dewan-diakonia",
+        href: "/pelayanan/dewan-diakonia",
       },
       {
         title: "Wilayah (Wijk)",
         description:
           "Lihat pembagian wilayah pelayanan yang mempererat perhatian antar keluarga jemaat.",
-        href: "/organisasi/wilayah-wijk",
+        href: "/pelayanan/wilayah-wijk",
       },
       {
         title: "Sintua Purnabakti",
         description:
           "Temukan arsip penghormatan bagi para sintua yang pernah melayani jemaat.",
-        href: "/organisasi/sintua-purnabakti",
+        href: "/pelayanan/sintua-purnabakti",
+      },
+      {
+        title: "Jadwal Pelayanan",
+        description:
+          "Lihat jadwal ibadah Minggu, partangiangan, dan pelayanan khusus dalam satu halaman.",
+        href: "/pelayanan/jadwal-pelayanan",
       },
     ],
     sections: [
@@ -538,9 +544,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/pendeta": {
+  "pelayanan/pendeta": {
     title: "Pendeta",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     layoutVariant: "pastors",
     description:
       "Pelayan tertahbis yang memimpin penggembalaan, pemberitaan firman, dan pelayanan sakramen.",
@@ -578,14 +584,14 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/fungsionaris": {
+  "pelayanan/fungsionaris": {
     title: "Fungsionaris",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     layoutVariant: "officers",
     description:
       "Pelayan yang membantu pengelolaan administrasi, keuangan, dan koordinasi kegiatan jemaat.",
     summary:
-      "Fungsionaris menjaga roda organisasi berjalan rapi agar pelayanan gereja dapat dilaksanakan dengan transparan, terencana, dan bertanggung jawab.",
+      "Fungsionaris menjaga roda pelayanan berjalan rapi agar pelayanan gereja dapat dilaksanakan dengan transparan, terencana, dan bertanggung jawab.",
     highlights: ["Administrasi jemaat", "Keuangan", "Koordinasi program"],
     sections: [
       {
@@ -618,9 +624,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/dewan-koinonia": {
+  "pelayanan/dewan-koinonia": {
     title: "Dewan Koinonia",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     layoutVariant: "council",
     description:
       "Bidang yang memperkuat persekutuan, pembinaan iman, dan kehidupan kategorial jemaat.",
@@ -702,9 +708,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/dewan-marturia": {
+  "pelayanan/dewan-marturia": {
     title: "Dewan Marturia",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     layoutVariant: "council",
     description:
       "Bidang kesaksian gereja melalui pekabaran Injil, komunikasi, dan keterlibatan publik.",
@@ -758,9 +764,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/dewan-diakonia": {
+  "pelayanan/dewan-diakonia": {
     title: "Dewan Diakonia",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     layoutVariant: "council",
     description:
       "Bidang pelayanan kasih untuk warga jemaat dan masyarakat yang membutuhkan perhatian.",
@@ -828,9 +834,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/wilayah-wijk": {
+  "pelayanan/wilayah-wijk": {
     title: "Wilayah (Wijk)",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     layoutVariant: "wijk",
     description:
       "Ruang pelayanan terdekat bagi keluarga jemaat untuk bertumbuh dalam persekutuan, perhatian, dan komunikasi yang hangat.",
@@ -890,9 +896,9 @@ export const pageContent: Record<string, PageContent> = {
       },
     ],
   },
-  "organisasi/sintua-purnabakti": {
+  "pelayanan/sintua-purnabakti": {
     title: "Sintua Purnabakti",
-    eyebrow: "Organisasi",
+    eyebrow: "Pelayanan",
     description:
       "Ruang penghormatan bagi para sintua purnabakti yang telah melayani jemaat dalam masa tugasnya.",
     summary:
@@ -910,128 +916,35 @@ export const pageContent: Record<string, PageContent> = {
     ],
     retiredElderProfiles,
   },
-  "jadwal-pelayanan": {
+  "pelayanan/jadwal-pelayanan": {
     title: "Jadwal Pelayanan",
     eyebrow: "Agenda Gereja",
+    layoutVariant: "article",
     description:
       "Informasi jadwal ibadah, partangiangan, dan pelayanan khusus jemaat.",
     summary:
       "Jadwal pelayanan membantu jemaat menyiapkan diri untuk beribadah, melayani, dan hadir dalam kegiatan persekutuan dengan tertib.",
-    highlights: ["Ibadah Minggu", "Partangiangan", "Pelayanan khusus"],
-    childPages: [
+    highlights: [
+      "Ibadah Minggu",
+      "Partangiangan",
+      "Pelayanan khusus",
+    ],
+    sections: [
       {
         title: "Ibadah Minggu",
-        description:
-          "Lihat jadwal ibadah Minggu, jam kebaktian, dan informasi susunan pelayanan utama.",
-        href: "/jadwal-pelayanan/ibadah-minggu",
+        body: "Ibadah Minggu dilaksanakan sebagai ruang utama persekutuan jemaat untuk memuji Tuhan, mendengar firman, berdoa, dan menerima penguatan iman bersama keluarga besar HKBP Resort Srengseng Sawah.\n\nIbadah Pagi: 06.30 - selesai\nIbadah Siang: 09.30 - selesai\nIbadah Sore: 18.00 - selesai\nIbadah Remaja: 09.00 - selesai\nSekolah Minggu: 07.00 - selesai\n\nBagian ini juga dapat memuat nama pengkhotbah, liturgis, pembaca epistel, song leader, pemusik, kolektan, penerima tamu, petugas multimedia, dan pelayan lain yang bertugas dalam ibadah Minggu.",
       },
       {
         title: "Partangiangan",
-        description:
-          "Buka jadwal persekutuan doa di wijk, rumah keluarga, dan kelompok kategorial.",
-        href: "/jadwal-pelayanan/partangiangan",
+        body: "Partangiangan wijk menjadi ruang persekutuan keluarga jemaat untuk berdoa, bernyanyi, membaca firman Tuhan, dan saling menguatkan dalam kehidupan sehari-hari. Melalui partangiangan, warga jemaat dapat semakin dekat satu sama lain dan semakin terhubung dengan pelayanan gereja.\n\nJadwal dapat menampilkan nama wijk, tanggal, waktu, alamat atau tuan rumah, pelayan firman, serta catatan khusus bagi warga yang hadir. Persekutuan doa kategorial juga dapat diumumkan di bagian ini sesuai program pembinaan jemaat.",
       },
       {
         title: "Pelayanan Khusus",
-        description:
-          "Temukan informasi pelayanan baptis, sidi, pernikahan, penghiburan, dan pastoral.",
-        href: "/jadwal-pelayanan/pelayanan-khusus",
+        body: "Pelayanan khusus meliputi baptisan kudus, naik sidi, pemberkatan pernikahan, perkunjungan orang sakit, penghiburan dukacita, dan pelayanan pastoral lainnya. Setiap pelayanan dilaksanakan dengan pendampingan firman, doa, serta tata pelayanan gereja yang tertib.\n\nWarga jemaat dapat menghubungi kantor gereja, pendeta, atau parhalado wijk untuk mengetahui persyaratan, jadwal, dokumen yang perlu disiapkan, serta bentuk pendampingan yang diperlukan.",
       },
     ],
-    sections: [
-      {
-        title: "Informasi Terpadu",
-        body: "Halaman ini menjadi pusat informasi untuk jadwal rutin maupun kegiatan khusus yang diumumkan oleh gereja.",
-      },
-      {
-        title: "Keterlibatan Pelayan",
-        body: "Petugas liturgi, song leader, pemusik, kolektan, penerima tamu, dan pelayan lain dapat menyesuaikan diri berdasarkan jadwal yang diterbitkan.",
-      },
-    ],
-  },
-  "jadwal-pelayanan/ibadah-minggu": {
-    title: "Ibadah Minggu",
-    eyebrow: "Jadwal Pelayanan",
-    layoutVariant: "article",
-    description: "Jadwal ibadah Minggu dan susunan pelayanan utama jemaat.",
-    summary:
-      "Ibadah Minggu menjadi pusat persekutuan jemaat untuk mendengar firman Tuhan, memuji, berdoa, dan mempersembahkan hidup bagi kemuliaan Allah.",
-    highlights: [
-      "Jadwal ibadah dapat diperbarui",
-      "Susunan pelayan dapat diatur dari CMS",
-      "Informasi Minggu berjalan",
-    ],
-    sections: [
-      {
-        title: "Jadwal Umum",
-        body: "Ibadah Minggu dilaksanakan sebagai ruang utama persekutuan jemaat untuk memuji Tuhan, mendengar firman, berdoa, dan menerima penguatan iman bersama keluarga besar HKBP Resort Srengseng Sawah.\n\nIbadah Pagi: 06.30 - selesai\nIbadah Siang: 09.30 - selesai\nIbadah Sore: 18.00 - selesai\nIbadah Remaja: 09.00 - selesai\nSekolah Minggu: 07.00 - selesai",
-      },
-      {
-        title: "Susunan Pelayanan",
-        body: "Bagian ini dapat memuat nama pengkhotbah, liturgis, pembaca epistel, song leader, pemusik, kolektan, penerima tamu, petugas multimedia, dan pelayan lain yang bertugas dalam ibadah Minggu.\n\nInformasi susunan pelayanan dapat diperbarui setiap minggu melalui CMS agar warga jemaat dan pelayan dapat mempersiapkan diri dengan baik.",
-      },
-      {
-        title: "Catatan CMS",
-        body: "Konten jadwal ibadah Minggu ini disiapkan sebagai data awal. Admin nantinya dapat mengubah jam ibadah, daftar pelayan, tema ibadah, catatan khusus, atau pengumuman tambahan melalui CMS tanpa mengubah layout halaman.",
-      },
-    ],
-    callout: "Silakan sesuaikan jam ibadah dengan jadwal resmi jemaat.",
-  },
-  "jadwal-pelayanan/partangiangan": {
-    title: "Partangiangan",
-    eyebrow: "Jadwal Pelayanan",
-    layoutVariant: "article",
-    description:
-      "Jadwal persekutuan doa di rumah keluarga, wijk, dan kelompok kategorial.",
-    summary:
-      "Partangiangan mempererat persekutuan keluarga jemaat melalui doa, nyanyian, pembacaan firman, dan saling menguatkan.",
-    highlights: [
-      "Jadwal wijk dan kategorial",
-      "Tuan rumah dan lokasi",
-      "Pelayan firman dan catatan khusus",
-    ],
-    sections: [
-      {
-        title: "Partangiangan Wijk",
-        body: "Partangiangan wijk menjadi ruang persekutuan keluarga jemaat untuk berdoa, bernyanyi, membaca firman Tuhan, dan saling menguatkan dalam kehidupan sehari-hari. Melalui partangiangan, warga jemaat dapat semakin dekat satu sama lain dan semakin terhubung dengan pelayanan gereja.\n\nJadwal dapat menampilkan nama wijk, tanggal, waktu, alamat atau tuan rumah, pelayan firman, serta catatan khusus bagi warga yang hadir.",
-      },
-      {
-        title: "Persekutuan Kategorial",
-        body: "Selain partangiangan wijk, persekutuan doa juga dapat dilakukan oleh kelompok kategorial sesuai program pembinaan jemaat, seperti remaja, naposo, ama, parompuan, lansia, atau kelompok pelayanan lainnya.\n\nSetiap jadwal dapat diperbarui melalui CMS agar informasi kegiatan, tempat, pelayan, dan kebutuhan persiapan selalu sesuai dengan agenda terbaru.",
-      },
-      {
-        title: "Catatan CMS",
-        body: "Konten partangiangan ini disiapkan sebagai data awal. Admin nantinya dapat menambah daftar jadwal, mengganti nama tuan rumah, memperbarui alamat, menambahkan pelayan firman, atau memberi catatan khusus melalui CMS.",
-      },
-    ],
-  },
-  "jadwal-pelayanan/pelayanan-khusus": {
-    title: "Pelayanan Khusus",
-    eyebrow: "Jadwal Pelayanan",
-    layoutVariant: "article",
-    description:
-      "Informasi pelayanan baptis, sidi, pernikahan, penghiburan, dan kegiatan gerejawi khusus.",
-    summary:
-      "Pelayanan khusus membantu jemaat melewati momen penting kehidupan dengan pendampingan firman, doa, dan tata pelayanan gereja.",
-    highlights: [
-      "Baptis, sidi, dan pernikahan",
-      "Penghiburan dan kunjungan pastoral",
-      "Persyaratan dapat diperbarui",
-    ],
-    sections: [
-      {
-        title: "Jenis Pelayanan",
-        body: "Pelayanan khusus meliputi baptisan kudus, naik sidi, pemberkatan pernikahan, perkunjungan orang sakit, penghiburan dukacita, dan pelayanan pastoral lainnya. Setiap pelayanan dilaksanakan dengan pendampingan firman, doa, serta tata pelayanan gereja yang tertib.",
-      },
-      {
-        title: "Koordinasi",
-        body: "Warga jemaat dapat menghubungi kantor gereja, pendeta, atau parhalado wijk untuk mengetahui persyaratan, jadwal, dokumen yang perlu disiapkan, serta bentuk pendampingan yang diperlukan.\n\nInformasi ini dapat diperbarui melalui CMS sesuai ketentuan terbaru gereja, jadwal pelayanan, dan kebutuhan pastoral jemaat.",
-      },
-      {
-        title: "Catatan CMS",
-        body: "Konten pelayanan khusus ini disiapkan sebagai data awal. Admin nantinya dapat memperbarui jenis pelayanan, persyaratan, jadwal koordinasi, kontak pelayanan, dan catatan pastoral melalui CMS tanpa mengubah layout halaman.",
-      },
-    ],
+    callout:
+      "Konten jadwal pelayanan dapat diperbarui melalui CMS sesuai agenda pelayanan terbaru.",
   },
   "warta-jemaat": {
     title: "Warta Jemaat",
@@ -1128,6 +1041,33 @@ export const pageContent: Record<string, PageContent> = {
       {
         title: "Distribusi Digital",
         body: "Setiap publikasi dapat dibagikan melalui tautan website agar informasi pelayanan, renungan, dan pengumuman resmi mudah dijangkau jemaat.",
+      },
+    ],
+  },
+  persembahan: {
+    title: "Persembahan",
+    eyebrow: "Dukungan Pelayanan",
+    description:
+      "Informasi persembahan jemaat untuk mendukung pelayanan, persekutuan, kesaksian, dan pekerjaan kasih gereja.",
+    summary:
+      "Jemaat dapat memberikan persembahan melalui rekening gereja atau kanal pembayaran resmi yang diinformasikan oleh gereja.",
+    highlights: [
+      "Informasi persembahan",
+      "Rekening gereja",
+      "QRIS resmi",
+    ],
+    sections: [
+      {
+        title: "Informasi Persembahan",
+        body: "Persembahan adalah bagian dari ungkapan syukur jemaat kepada Tuhan dan dukungan bagi pelayanan gereja. Setiap persembahan yang diterima akan digunakan untuk mendukung ibadah, pelayanan kategorial, kegiatan jemaat, pemeliharaan sarana gereja, serta pelayanan kasih sesuai tata kelola gereja.\n\nMohon pastikan setiap persembahan diberikan melalui kanal resmi gereja. Informasi rekening dan QRIS dapat diperbarui oleh admin melalui CMS agar selalu sesuai dengan data terbaru.",
+      },
+      {
+        title: "Rekening Gereja",
+        body: "Bank: -\nNomor Rekening: -\nAtas Nama: -\n\nSilakan lengkapi informasi rekening resmi gereja melalui CMS sebelum halaman ini dipublikasikan untuk jemaat.",
+      },
+      {
+        title: "QRIS",
+        body: "QRIS resmi gereja dapat ditampilkan pada bagian ini. Pastikan gambar QRIS yang digunakan berasal dari sumber resmi dan sudah diverifikasi oleh pengurus gereja.\n\nJika QRIS belum tersedia, admin dapat mengisi keterangan sementara atau menambahkan tautan/gambar QRIS melalui konten CMS.",
       },
     ],
   },
