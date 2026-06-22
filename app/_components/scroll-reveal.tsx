@@ -8,6 +8,7 @@ type ScrollRevealProps = {
   className?: string;
   delay?: number;
   direction?: "up" | "left" | "right";
+  id?: string;
 };
 
 type StaggerRevealProps = {
@@ -26,14 +27,16 @@ export function ScrollReveal({
   className,
   delay = 0,
   direction = "up",
+  id,
 }: ScrollRevealProps) {
   return (
     <motion.div
       className={className}
+      id={id}
       initial={{ opacity: 0, ...offsets[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       transition={{ delay, duration: 0.55, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.28 }}
+      viewport={{ once: true, amount: 0.01 }}
     >
       {children}
     </motion.div>
@@ -50,7 +53,7 @@ export function StaggerReveal({ children, className }: StaggerRevealProps) {
         hidden: {},
         visible: { transition: { staggerChildren: 0.1 } },
       }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.08 }}
     >
       {children}
     </motion.div>

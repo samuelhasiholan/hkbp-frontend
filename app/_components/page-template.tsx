@@ -20,6 +20,11 @@ import { ContactFeedbackForm } from "@/app/_components/contact-feedback-form";
 import { GalleryGrid } from "@/app/_components/gallery-grid";
 import { OrganizationPeopleGrid } from "@/app/_components/organization-people-grid";
 import { RetiredElderSearch } from "@/app/_components/retired-elder-search";
+import {
+  ScrollReveal,
+  StaggerReveal,
+  StaggerRevealItem,
+} from "@/app/_components/scroll-reveal";
 import type { PageContent } from "@/app/_data/site-content";
 
 type PageTemplateProps = {
@@ -110,45 +115,46 @@ function ChildPageLinks({ childPages, title }: ChildPageLinksProps) {
 
   return (
     <section className="grid gap-4">
-      <div>
+      <ScrollReveal>
         <h2 className="text-xl font-bold text-slate-950">
           Jelajahi {title}
         </h2>
         <p className="mt-2 text-sm leading-6 text-slate-600">
           Pilih halaman berikut untuk melihat informasi yang lebih lengkap.
         </p>
-      </div>
+      </ScrollReveal>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <StaggerReveal className="grid gap-4 md:grid-cols-3">
         {childPages.map((childPage, index) => {
           const Icon = linkIcons[index] ?? BookOpenText;
 
           return (
-            <Link
-              className="group flex min-h-48 flex-col rounded-md border border-slate-200 bg-white p-5 transition hover:border-hkbp-border hover:bg-hkbp-soft"
-              href={childPage.href}
-              key={childPage.href}
-            >
-              <span className="flex size-11 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link transition group-hover:bg-white">
-                <Icon size={21} aria-hidden="true" />
-              </span>
-              <span className="mt-5 text-lg font-bold text-slate-950">
-                {childPage.title}
-              </span>
-              <span className="mt-2 grow text-sm leading-6 text-slate-600">
-                {childPage.description}
-              </span>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hkbp-link">
-                Buka halaman
-                <ArrowRight
-                  className="size-4 transition group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </span>
-            </Link>
+            <StaggerRevealItem key={childPage.href}>
+              <Link
+                className="group flex min-h-48 flex-col rounded-md border border-slate-200 bg-white p-5 transition hover:border-hkbp-border hover:bg-hkbp-soft"
+                href={childPage.href}
+              >
+                <span className="flex size-11 items-center justify-center rounded-md bg-hkbp-soft text-hkbp-link transition group-hover:bg-white">
+                  <Icon size={21} aria-hidden="true" />
+                </span>
+                <span className="mt-5 text-lg font-bold text-slate-950">
+                  {childPage.title}
+                </span>
+                <span className="mt-2 grow text-sm leading-6 text-slate-600">
+                  {childPage.description}
+                </span>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hkbp-link">
+                  Buka halaman
+                  <ArrowRight
+                    className="size-4 transition group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Link>
+            </StaggerRevealItem>
           );
         })}
-      </div>
+      </StaggerReveal>
     </section>
   );
 }
@@ -167,7 +173,7 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
-          <div>
+          <ScrollReveal>
             <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
@@ -177,12 +183,14 @@ function ContactPageTemplate({ content }: PageTemplateProps) {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               {content.description}
             </p>
-          </div>
-          <div className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm leading-6 text-slate-600">
-              {content.summary}
-            </p>
-          </div>
+          </ScrollReveal>
+          <ScrollReveal className="self-end" direction="right" delay={0.08}>
+            <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm leading-6 text-slate-600">
+                {content.summary}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -360,7 +368,7 @@ function ArticlePageTemplate({ content }: PageTemplateProps) {
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
-          <div>
+          <ScrollReveal>
             <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
@@ -370,34 +378,36 @@ function ArticlePageTemplate({ content }: PageTemplateProps) {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               {content.description}
             </p>
-          </div>
+          </ScrollReveal>
 
-          <aside className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm leading-6 text-slate-600">
-              {content.summary}
-            </p>
-            <div className="mt-5 grid gap-3">
-              {content.highlights.map((highlight) => (
-                <p
-                  className="flex items-start gap-3 text-sm font-semibold text-slate-800"
-                  key={highlight}
-                >
-                  <CheckCircle2
-                    className="mt-0.5 size-4 shrink-0 text-hkbp-link"
-                    aria-hidden="true"
-                  />
-                  {highlight}
-                </p>
-              ))}
-            </div>
-          </aside>
+          <ScrollReveal className="self-end" direction="right" delay={0.08}>
+            <aside className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm leading-6 text-slate-600">
+                {content.summary}
+              </p>
+              <div className="mt-5 grid gap-3">
+                {content.highlights.map((highlight) => (
+                  <p
+                    className="flex items-start gap-3 text-sm font-semibold text-slate-800"
+                    key={highlight}
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 size-4 shrink-0 text-hkbp-link"
+                      aria-hidden="true"
+                    />
+                    {highlight}
+                  </p>
+                ))}
+              </div>
+            </aside>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         <article className="text-slate-700">
           {content.sections.map((section, index) => (
-            <section
+            <ScrollReveal
               className={index === 0 ? undefined : "mt-10 border-t border-slate-200 pt-10"}
               id={toSectionId(section.title)}
               key={section.title}
@@ -408,7 +418,7 @@ function ArticlePageTemplate({ content }: PageTemplateProps) {
               <div className="mt-5 whitespace-pre-line text-base leading-8">
                 {section.body}
               </div>
-            </section>
+            </ScrollReveal>
           ))}
         </article>
       </section>
@@ -423,7 +433,7 @@ function OfferingPageTemplate({ content }: PageTemplateProps) {
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
-          <div>
+          <ScrollReveal>
             <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
@@ -433,27 +443,29 @@ function OfferingPageTemplate({ content }: PageTemplateProps) {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               {content.description}
             </p>
-          </div>
+          </ScrollReveal>
 
-          <aside className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm leading-6 text-slate-600">
-              {content.summary}
-            </p>
-            <div className="mt-5 grid gap-3">
-              {content.highlights.map((highlight) => (
-                <p
-                  className="flex items-start gap-3 text-sm font-semibold text-slate-800"
-                  key={highlight}
-                >
-                  <CheckCircle2
-                    className="mt-0.5 size-4 shrink-0 text-hkbp-link"
-                    aria-hidden="true"
-                  />
-                  {highlight}
-                </p>
-              ))}
-            </div>
-          </aside>
+          <ScrollReveal className="self-end" direction="right" delay={0.08}>
+            <aside className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm leading-6 text-slate-600">
+                {content.summary}
+              </p>
+              <div className="mt-5 grid gap-3">
+                {content.highlights.map((highlight) => (
+                  <p
+                    className="flex items-start gap-3 text-sm font-semibold text-slate-800"
+                    key={highlight}
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 size-4 shrink-0 text-hkbp-link"
+                      aria-hidden="true"
+                    />
+                    {highlight}
+                  </p>
+                ))}
+              </div>
+            </aside>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -465,8 +477,9 @@ function OfferingPageTemplate({ content }: PageTemplateProps) {
           const isQris = toSectionId(section.title).includes("qris");
 
           return (
-            <article
+            <ScrollReveal
               className="scroll-mt-28 rounded-md border border-slate-200 bg-white p-6"
+              delay={index * 0.06}
               id={toSectionId(section.title)}
               key={section.title}
             >
@@ -496,7 +509,7 @@ function OfferingPageTemplate({ content }: PageTemplateProps) {
                   />
                 </div>
               ) : null}
-            </article>
+            </ScrollReveal>
           );
         })}
       </section>
@@ -555,20 +568,21 @@ function WijkPageTemplate({ content }: PageTemplateProps) {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
         <div className="grid h-fit gap-5">
-          {content.sections.map((section) => (
-            <article
+          {content.sections.map((section, index) => (
+            <ScrollReveal
               className="rounded-md border border-slate-200 bg-white p-6"
+              delay={index * 0.06}
               key={section.title}
             >
               <h2 className="text-xl font-bold text-slate-950">
                 {section.title}
               </h2>
               <p className="mt-3 leading-7 text-slate-600">{section.body}</p>
-            </article>
+            </ScrollReveal>
           ))}
         </div>
 
-        <section>
+        <ScrollReveal>
           <div className="flex items-end justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold tracking-normal text-slate-950">
@@ -608,7 +622,7 @@ function WijkPageTemplate({ content }: PageTemplateProps) {
               </article>
             ))}
           </div>
-        </section>
+        </ScrollReveal>
       </section>
     </main>
   );
@@ -734,6 +748,111 @@ function OrganizationPeoplePageTemplate({ content }: PageTemplateProps) {
   );
 }
 
+function ServiceStructurePageTemplate({ content }: PageTemplateProps) {
+  const serviceSections = content.serviceStructureSections ?? [];
+
+  return (
+    <main className="bg-white">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
+          <ScrollReveal>
+            <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
+              {content.eyebrow}
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-normal text-slate-950 sm:text-5xl">
+              {content.title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              {content.description}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal className="self-end" direction="right" delay={0.08}>
+            <aside className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm leading-6 text-slate-600">
+                {content.summary}
+              </p>
+              <div className="mt-5 grid gap-3">
+                {content.highlights.map((highlight) => (
+                  <p
+                    className="flex items-start gap-3 text-sm font-semibold text-slate-800"
+                    key={highlight}
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 size-4 shrink-0 text-hkbp-link"
+                      aria-hidden="true"
+                    />
+                    {highlight}
+                  </p>
+                ))}
+              </div>
+            </aside>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:px-8">
+        {content.sections.length ? (
+          <StaggerReveal className="grid gap-4 md:grid-cols-2">
+            {content.sections.map((section) => (
+              <StaggerRevealItem key={section.title}>
+                <article className="h-full rounded-md border border-slate-200 bg-white p-6">
+                  <h2 className="text-xl font-bold text-slate-950">
+                    {section.title}
+                  </h2>
+                  <p className="mt-3 whitespace-pre-line leading-7 text-slate-600">
+                    {section.body}
+                  </p>
+                </article>
+              </StaggerRevealItem>
+            ))}
+          </StaggerReveal>
+        ) : null}
+
+        <div className="grid gap-12">
+          {serviceSections.map((section) => (
+            <ScrollReveal
+              className="scroll-mt-28 rounded-md border border-slate-200 bg-white p-6"
+              id={section.id}
+              key={section.id}
+            >
+              <OrganizationPeopleGrid
+                columns="wide"
+                description={section.description}
+                label={section.label}
+                profiles={section.profiles}
+                title={section.title}
+              />
+
+              {section.councilSections?.length ? (
+                <div className="mt-8 grid gap-5">
+                  {section.councilSections.map((councilSection) => (
+                    <section
+                      className="scroll-mt-28 rounded-md border border-slate-200 bg-slate-50 p-5"
+                      id={councilSection.id}
+                      key={councilSection.id}
+                    >
+                      <h3 className="text-lg font-bold text-slate-950">
+                        {councilSection.title}
+                      </h3>
+                      <p className="mt-3 leading-7 text-slate-600">
+                        {councilSection.description}
+                      </p>
+                      <div className="mt-5">
+                        <ProfileGrid profiles={councilSection.profiles} />
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              ) : null}
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
 export function PageTemplate({ content }: PageTemplateProps) {
   const isTransitOrDirectoryPage =
     Boolean(content.childPages?.length) ||
@@ -745,6 +864,10 @@ export function PageTemplate({ content }: PageTemplateProps) {
 
   if (content.layoutVariant === "offering") {
     return <OfferingPageTemplate content={content} />;
+  }
+
+  if (content.layoutVariant === "service-structure") {
+    return <ServiceStructurePageTemplate content={content} />;
   }
 
   if (content.layoutVariant === "wijk") {
@@ -771,7 +894,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
-          <div>
+          <ScrollReveal>
             <p className="text-sm font-bold uppercase tracking-wide text-hkbp-link">
               {content.eyebrow}
             </p>
@@ -781,10 +904,12 @@ export function PageTemplate({ content }: PageTemplateProps) {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               {content.description}
             </p>
-          </div>
-          <div className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm leading-6 text-slate-600">{content.summary}</p>
-          </div>
+          </ScrollReveal>
+          <ScrollReveal className="self-end" direction="right" delay={0.08}>
+            <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm leading-6 text-slate-600">{content.summary}</p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -797,7 +922,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
           }
         >
           {isTransitOrDirectoryPage ? null : (
-            <aside className="h-fit rounded-md border border-slate-200 bg-white p-5">
+            <ScrollReveal className="h-fit rounded-md border border-slate-200 bg-white p-5">
               <h2 className="text-sm font-bold uppercase tracking-wide text-slate-500">
                 Fokus Halaman
               </h2>
@@ -815,7 +940,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
                   </p>
                 ))}
               </div>
-            </aside>
+            </ScrollReveal>
           )}
 
           <div className="grid gap-5">
@@ -866,7 +991,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
             {isTransitOrDirectoryPage
               ? null
               : content.sections.map((section) => (
-                  <article
+                  <ScrollReveal
                     className="scroll-mt-28 rounded-md border border-slate-200 bg-white p-6"
                     id={toSectionId(section.title)}
                     key={section.title}
@@ -877,7 +1002,7 @@ export function PageTemplate({ content }: PageTemplateProps) {
                     <p className="mt-3 whitespace-pre-line leading-7 text-slate-600">
                       {section.body}
                     </p>
-                  </article>
+                  </ScrollReveal>
                 ))}
 
             {content.galleryImages?.length ? (
@@ -903,9 +1028,9 @@ export function PageTemplate({ content }: PageTemplateProps) {
             ) : null}
 
             {content.callout ? (
-              <div className="rounded-md border border-hkbp-border bg-hkbp-soft p-5 text-sm font-medium leading-6 text-hkbp-link-strong">
+              <ScrollReveal className="rounded-md border border-hkbp-border bg-hkbp-soft p-5 text-sm font-medium leading-6 text-hkbp-link-strong">
                 {content.callout}
-              </div>
+              </ScrollReveal>
             ) : null}
 
             {content.childPages?.length ? null : (

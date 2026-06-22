@@ -18,6 +18,15 @@ type CouncilSection = {
   profiles: OrganizationProfile[];
 };
 
+export type ServiceStructureSection = {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  profiles: OrganizationProfile[];
+  councilSections?: CouncilSection[];
+};
+
 export type RetiredElderProfile = {
   id: string;
   name: string;
@@ -118,6 +127,7 @@ export type PageContent = {
     body: string;
   }[];
   organizationProfiles?: OrganizationProfile[];
+  serviceStructureSections?: ServiceStructureSection[];
   councilSections?: CouncilSection[];
   retiredElderProfiles?: RetiredElderProfile[];
   galleryImages?: GalleryImage[];
@@ -131,6 +141,7 @@ export type PageContent = {
     | "pastors"
     | "officers"
     | "council"
+    | "service-structure"
     | "offering";
 };
 
@@ -491,34 +502,10 @@ export const pageContent: Record<string, PageContent> = {
     ],
     childPages: [
       {
-        title: "Pendeta",
+        title: "Struktur Pelayanan",
         description:
-          "Kenali para pelayan tertahbis yang memimpin penggembalaan, firman, dan sakramen.",
-        href: "/pelayanan/pendeta",
-      },
-      {
-        title: "Fungsionaris",
-        description:
-          "Lihat pelayan yang mengelola administrasi, keuangan, dan koordinasi kegiatan jemaat.",
-        href: "/pelayanan/fungsionaris",
-      },
-      {
-        title: "Dewan Koinonia",
-        description:
-          "Masuk ke bidang persekutuan, pembinaan iman, dan pelayanan kategorial jemaat.",
-        href: "/pelayanan/dewan-koinonia",
-      },
-      {
-        title: "Dewan Marturia",
-        description:
-          "Telusuri bidang kesaksian, publikasi, musik, dan pewartaan kabar baik.",
-        href: "/pelayanan/dewan-marturia",
-      },
-      {
-        title: "Dewan Diakonia",
-        description:
-          "Buka bidang pelayanan kasih, kepedulian sosial, dan pendampingan warga jemaat.",
-        href: "/pelayanan/dewan-diakonia",
+          "Lihat pendeta, fungsionaris, dewan pelayanan, dan seksi-seksi dalam satu halaman.",
+        href: "/pelayanan/struktur-pelayanan",
       },
       {
         title: "Wilayah (Wijk)",
@@ -547,6 +534,30 @@ export const pageContent: Record<string, PageContent> = {
       {
         title: "Partisipasi Jemaat",
         body: "Warga jemaat didorong ambil bagian sesuai talenta, baik dalam ibadah, administrasi, musik, kunjungan, pendidikan iman, maupun pelayanan sosial.",
+      },
+    ],
+  },
+  "pelayanan/struktur-pelayanan": {
+    title: "Struktur Pelayanan",
+    eyebrow: "Pelayanan",
+    layoutVariant: "service-structure",
+    description:
+      "Susunan pelayan gereja yang mendukung penggembalaan, administrasi, persekutuan, kesaksian, dan pelayanan kasih.",
+    summary:
+      "Halaman ini menggabungkan pendeta, fungsionaris, dan dewan pelayanan agar jemaat dapat melihat struktur pelayanan gereja secara utuh.",
+    highlights: [
+      "Pendeta dan fungsionaris",
+      "Dewan Koinonia, Marturia, dan Diakonia",
+      "Seksi-seksi pelayanan",
+    ],
+    sections: [
+      {
+        title: "Koordinasi Pelayanan",
+        body: "Setiap bagian pelayanan saling terhubung melalui penggembalaan, administrasi, pembinaan, kesaksian, dan pelayanan kasih agar kebutuhan jemaat dapat dilayani dengan tertib.",
+      },
+      {
+        title: "Data CMS",
+        body: "Profil pelayan dan kategori pelayanan dapat diperbarui melalui modul Pelayanan di CMS admin.",
       },
     ],
   },

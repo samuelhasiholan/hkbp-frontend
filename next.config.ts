@@ -44,6 +44,31 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/pelayanan/pendeta",
+        destination: "/pelayanan/struktur-pelayanan#pendeta",
+        permanent: true,
+      },
+      {
+        source: "/pelayanan/fungsionaris",
+        destination: "/pelayanan/struktur-pelayanan#fungsionaris",
+        permanent: true,
+      },
+      {
+        source: "/pelayanan/dewan-koinonia",
+        destination: "/pelayanan/struktur-pelayanan#dewan-koinonia",
+        permanent: true,
+      },
+      {
+        source: "/pelayanan/dewan-marturia",
+        destination: "/pelayanan/struktur-pelayanan#dewan-marturia",
+        permanent: true,
+      },
+      {
+        source: "/pelayanan/dewan-diakonia",
+        destination: "/pelayanan/struktur-pelayanan#dewan-diakonia",
+        permanent: true,
+      },
+      {
         source: "/warta-jemaat",
         destination: "/warta",
         permanent: true,

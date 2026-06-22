@@ -21,6 +21,7 @@ import {
   type PageContent,
   type PastorGreeting,
   type RetiredElderProfile,
+  type ServiceStructureSection,
   type WijkItem,
 } from "@/app/_data/site-content";
 
@@ -379,6 +380,72 @@ async function getWijkItems(fallback: WijkItem[]): Promise<WijkItem[]> {
     : fallback;
 }
 
+async function getServiceStructureSections(): Promise<ServiceStructureSection[]> {
+  const servicePages = [
+    {
+      id: "pendeta",
+      label: "Pendeta",
+      slug: "pelayanan/pendeta",
+      categorySlug: "pendeta",
+    },
+    {
+      id: "fungsionaris",
+      label: "Fungsionaris",
+      slug: "pelayanan/fungsionaris",
+      categorySlug: "fungsionaris",
+    },
+    {
+      id: "dewan-koinonia",
+      label: "Dewan Koinonia",
+      slug: "pelayanan/dewan-koinonia",
+      categorySlug: "dewan-koinonia",
+    },
+    {
+      id: "dewan-marturia",
+      label: "Dewan Marturia",
+      slug: "pelayanan/dewan-marturia",
+      categorySlug: "dewan-marturia",
+    },
+    {
+      id: "dewan-diakonia",
+      label: "Dewan Diakonia",
+      slug: "pelayanan/dewan-diakonia",
+      categorySlug: "dewan-diakonia",
+    },
+  ];
+
+  return Promise.all(
+    servicePages.map(async (servicePage) => {
+      const fallback = pageContent[servicePage.slug];
+      const profiles = await getProfilesByCategory(servicePage.categorySlug);
+      const councilSections = fallback.councilSections?.length
+        ? await Promise.all(
+            fallback.councilSections.map(async (section) => {
+              const sectionProfiles = await getProfilesByCategory(section.id);
+              return {
+                ...section,
+                profiles: sectionProfiles.length
+                  ? sectionProfiles
+                  : section.profiles,
+              };
+            }),
+          )
+        : undefined;
+
+      return {
+        id: servicePage.id,
+        label: servicePage.label,
+        title: fallback.title,
+        description: fallback.description,
+        profiles: profiles.length
+          ? profiles
+          : (fallback.organizationProfiles ?? []),
+        councilSections,
+      };
+    }),
+  );
+}
+
 export async function getPageContent(
   slug: string,
 ): Promise<PageContent | undefined> {
@@ -436,6 +503,10 @@ export async function getPageContent(
 
   if (content.layoutVariant === "wijk") {
     content.wijkItems = await getWijkItems(fallback.wijkItems ?? []);
+  }
+
+  if (content.layoutVariant === "service-structure") {
+    content.serviceStructureSections = await getServiceStructureSections();
   }
 
   if (slug === "pelayanan/sintua-purnabakti") {

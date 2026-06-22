@@ -1,4 +1,5 @@
 import { PdfViewer } from "@/app/_components/warta/pdf-viewer";
+import { ScrollReveal } from "@/app/_components/scroll-reveal";
 import { pageContent } from "@/app/_data/site-content";
 import { getCurrentWarta } from "@/app/_lib/backend-content";
 
@@ -16,7 +17,7 @@ export default async function WartaMingguanPage() {
     <main className="bg-white">
       <section className="border-b border-slate-200 bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
-          <div>
+          <ScrollReveal>
             <p className="text-hkbp-link text-sm font-bold tracking-wide uppercase">
               {content.eyebrow}
             </p>
@@ -26,25 +27,27 @@ export default async function WartaMingguanPage() {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               {content.description}
             </p>
-          </div>
-          <div className="self-end rounded-md border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm font-bold text-slate-950">
-              {weeklyWarta.title}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              {weeklyWarta.date}
-            </p>
-          </div>
+          </ScrollReveal>
+          <ScrollReveal className="self-end" direction="right" delay={0.08}>
+            <div className="rounded-md border border-slate-200 bg-white p-5 shadow-sm">
+              <p className="text-sm font-bold text-slate-950">
+                {weeklyWarta.title}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                {weeklyWarta.date}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:px-8">
+      <ScrollReveal className="mx-auto grid max-w-7xl gap-6 px-4 py-12 sm:px-6 lg:px-8">
         <PdfViewer
           date={weeklyWarta.date}
           pdfVersions={weeklyWarta.pdfVersions}
           title={weeklyWarta.title}
         />
-      </section>
+      </ScrollReveal>
     </main>
   );
 }
